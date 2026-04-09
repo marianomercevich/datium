@@ -1112,15 +1112,18 @@ footer{
         </div>
         <div class="contact-detail reveal reveal-d1">
           <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div class="c-txt"><a href="/cdn-cgi/l/email-protection#046d6a626b446065706d71692a676b692a6576"><span class="__cf_email__" data-cfemail="5d34333b321d393c29342830733e3230733c2f">[email&#160;protected]</span></a></div>
+          <div class="c-txt"><a href="mailto:datiumtech@gmail.com"><span>datiumtech@gmail.com</span></a></div>
         </div>
-        <a href="https://wa.me/5491161613067?text=Hola%20Datium%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="wa-btn reveal reveal-d2">
+        <a href="https://wa.me/5491137936287?text=Hola%20Datium%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="wa-btn reveal reveal-d2">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Escribinos por WhatsApp
         </a>
       </div>
 
-      <form class="contact-form reveal" id="datium-form">
+  
+    
+
+      <form action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="b86ff358-3ebe-49d6-969a-8ad4c356ee51">
         <input type="hidden" name="subject" value="Nuevo lead — Datium">
         <input type="hidden" name="from_name" value="Datium Web">
@@ -1170,6 +1173,7 @@ footer{
         <button type="submit" class="form-submit" id="submit-btn">QUIERO QUE ME CONTACTEN →</button>
         <div id="form-msg"></div>
       </form>
+      
     </div>
   </div>
 </section>
@@ -1214,61 +1218,44 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 document.querySelectorAll('.why-visual').forEach(el => observer.observe(el));
 
 // ── FORM WEB3FORMS ────────────────────────────────────────
-document.getElementById('datium-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submit-btn');
-  const msg = document.getElementById('form-msg');
-  const key = this.querySelector('[name="access_key"]').value;
 
-  if (!key || key === 'b86ff358-3ebe-49d6-969a-8ad4c356ee51') {
-    showMsg('error','⚠ Formulario no configurado. Escribinos por WhatsApp.');
-    return;
-  }
+const form = document.getElementById('form');
+const submitBtn = form.querySelector('button[type="submit"]');
 
-  btn.disabled = true;
-  btn.textContent = 'ENVIANDO...';
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-  try {
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method:'POST', body: new FormData(this)
-    });
-    const json = await res.json();
-    if (json.success) {
-      showMsg('ok','✅ ¡Recibimos tu consulta! Te respondemos en menos de 2hs.');
-      this.reset();
-      document.getElementById('reply-field').value = '';
-    } else {
-      showMsg('error','❌ Error al enviar. Escribinos directamente por WhatsApp.');
+    const formData = new FormData(form);
+    formData.append("access_key", "b86ff358-3ebe-49d6-969a-8ad4c356ee51");
+
+    const originalText = submitBtn.textContent;
+
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Success! Your message has been sent.");
+            form.reset();
+        } else {
+            alert("Error: " + data.message);
+        }
+
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+    } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
     }
-  } catch {
-    showMsg('error','❌ Sin conexión. Probá por WhatsApp.');
-  }
-
-  btn.disabled = false;
-  btn.textContent = 'QUIERO QUE ME CONTACTEN →';
 });
 
-function showMsg(type, text) {
-  const el = document.getElementById('form-msg');
-  el.textContent = text;
-  el.style.display = 'block';
-  el.style.padding = '.9rem 1.2rem';
-  el.style.borderRadius = '8px';
-  el.style.fontSize = '.85rem';
-  el.style.fontWeight = '500';
-  el.style.marginTop = '1rem';
-  el.style.textAlign = 'center';
-  if (type === 'ok') {
-    el.style.background = 'rgba(0,229,255,0.08)';
-    el.style.border = '1px solid rgba(0,229,255,0.25)';
-    el.style.color = '#00E5FF';
-  } else {
-    el.style.background = 'rgba(255,61,0,0.08)';
-    el.style.border = '1px solid rgba(255,61,0,0.25)';
-    el.style.color = '#FF3D00';
-  }
-  setTimeout(() => el.style.display = 'none', 9000);
-}
 
 // ── SMOOTH SCROLL NAV ─────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {
