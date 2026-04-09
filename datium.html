@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Datium — Desarrollo web, apps, automatizaciones y chatbots con IA. Landing pages desde $350.000. Resultados reales para tu negocio.">
+<title>Datium — Tecnología que vende</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#080B14;
+  --bg2:#0D1120;
+  --bg3:#111827;
+  --cyan:#00E5FF;
+  --cyan-dim:rgba(0,229,255,0.12);
+  --cyan-brd:rgba(0,229,255,0.25);
+  --red:#FF3D00;
+  --red-dim:rgba(255,61,0,0.12);
+  --tx:#F0F4FF;
+  --tx2:#8896B3;
+  --tx3:#3D4F70;
+  --card:rgba(255,255,255,0.03);
+  --brd:rgba(255,255,255,0.07);
+  --brd-c:rgba(0,229,255,0.2);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--tx);
+  overflow-x:hidden;
+  cursor:default;
+}
+
+/* ═══════════════════════════════════════════
+   NOISE TEXTURE OVERLAY
+═══════════════════════════════════════════ */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:0.4;
+}
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(8,11,20,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--brd);
+}
+.logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:1.7rem;
+  letter-spacing:0.04em;
+  color:var(--tx);
+}
+.logo span{color:var(--cyan)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{
+  color:var(--tx2);text-decoration:none;
+  font-size:0.88rem;font-weight:500;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--tx)}
+.nav-cta{
+  background:var(--cyan);
+  color:#080B14;
+  padding:0.55rem 1.4rem;
+  border-radius:6px;
+  font-weight:700;font-size:0.85rem;
+  text-decoration:none;
+  transition:opacity 0.2s,transform 0.2s;
+  white-space:nowrap;
+}
+.nav-cta:hover{opacity:0.9;transform:translateY(-1px)}
+.nav-menu{display:none}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:7rem 2rem 4rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute;
+  top:-20%;left:50%;
+  transform:translateX(-50%);
+  width:900px;height:600px;
+  background:radial-gradient(ellipse,rgba(0,229,255,0.07) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-glow-red{
+  position:absolute;
+  bottom:-10%;right:-10%;
+  width:500px;height:400px;
+  background:radial-gradient(ellipse,rgba(255,61,0,0.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+/* grid de fondo */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,0.03) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,black 40%,transparent 100%);
+  mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,black 40%,transparent 100%);
+}
+.hero-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 420px;
+  gap:4rem;align-items:center;
+  position:relative;width:100%;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,61,0,0.1);
+  border:1px solid rgba(255,61,0,0.3);
+  border-radius:4px;
+  padding:0.38rem 0.9rem;
+  margin-bottom:1.5rem;
+  font-size:0.75rem;font-weight:700;
+  color:var(--red);letter-spacing:0.1em;text-transform:uppercase;
+}
+.hero-badge::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--red);animation:blink 1.5s infinite;flex-shrink:0;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+
+.hero-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(3.2rem,6vw,5.5rem);
+  font-weight:900;
+  line-height:0.95;
+  letter-spacing:-0.01em;
+  margin-bottom:1.5rem;
+}
+.hero-title .line1{display:block;color:var(--tx)}
+.hero-title .line2{
+  display:block;
+  color:var(--cyan);
+  -webkit-text-stroke:2px var(--cyan);
+  /* outline style */
+}
+.hero-title .line3{display:block;color:var(--tx)}
+
+.hero-sub{
+  font-size:1.05rem;color:var(--tx2);
+  line-height:1.7;max-width:480px;
+  margin-bottom:2.5rem;
+}
+.hero-sub strong{color:var(--tx)}
+
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-main{
+  background:var(--cyan);color:#080B14;
+  padding:1rem 2.2rem;border-radius:6px;
+  font-weight:700;font-size:1rem;
+  text-decoration:none;
+  transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 0 32px rgba(0,229,255,0.3);
+  white-space:nowrap;
+}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 0 48px rgba(0,229,255,0.45)}
+.btn-wa{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(37,211,102,0.12);
+  border:1px solid rgba(37,211,102,0.35);
+  color:#25D366;
+  padding:1rem 1.8rem;border-radius:6px;
+  font-weight:700;font-size:1rem;
+  text-decoration:none;
+  transition:background 0.2s;
+  white-space:nowrap;
+}
+.btn-wa:hover{background:rgba(37,211,102,0.2)}
+.btn-wa svg{width:20px;height:20px;fill:#25D366;flex-shrink:0}
+
+/* Hero card promo */
+.hero-card{
+  background:var(--bg2);
+  border:1px solid var(--brd-c);
+  border-radius:16px;
+  padding:2.5rem 2rem;
+  position:relative;
+  overflow:hidden;
+}
+.hero-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--cyan),rgba(0,229,255,0.3));
+}
+.promo-tag{
+  font-size:0.7rem;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--red);
+  margin-bottom:0.8rem;display:flex;align-items:center;gap:6px;
+}
+.promo-tag::before{content:'🔥'}
+.promo-price-old{
+  font-size:1rem;color:var(--tx3);
+  text-decoration:line-through;
+  margin-bottom:0.2rem;
+}
+.promo-price{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:3.8rem;font-weight:900;
+  line-height:1;color:var(--tx);
+  margin-bottom:0.3rem;
+}
+.promo-price span{font-size:1.6rem;color:var(--tx2);font-weight:600}
+.promo-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.3rem;font-weight:700;
+  color:var(--cyan);margin-bottom:1.2rem;
+  letter-spacing:0.02em;
+}
+.promo-items{list-style:none;margin-bottom:1.8rem}
+.promo-items li{
+  font-size:0.85rem;color:var(--tx2);
+  padding:0.35rem 0;
+  display:flex;align-items:flex-start;gap:8px;
+  border-bottom:1px solid var(--brd);
+}
+.promo-items li:last-child{border-bottom:none}
+.promo-items li::before{content:'✓';color:var(--cyan);font-weight:700;flex-shrink:0}
+.promo-cta{
+  display:block;text-align:center;
+  background:linear-gradient(135deg,#FF3D00,#FF6B35);
+  color:#fff;padding:1rem;border-radius:8px;
+  font-weight:700;font-size:1rem;
+  text-decoration:none;
+  transition:transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 4px 24px rgba(255,61,0,0.3);
+}
+.promo-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,61,0,0.45)}
+.promo-urgencia{
+  text-align:center;font-size:0.75rem;
+  color:var(--tx3);margin-top:0.8rem;
+}
+
+/* ═══════════════════════════════════════════
+   STATS BAR
+═══════════════════════════════════════════ */
+.stats-bar{
+  background:var(--bg2);
+  border-top:1px solid var(--brd);
+  border-bottom:1px solid var(--brd);
+  padding:2rem;
+  position:relative;z-index:1;
+}
+.stats-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;justify-content:space-around;
+  flex-wrap:wrap;gap:2rem;
+}
+.stat-item{text-align:center}
+.stat-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:2.8rem;font-weight:900;
+  color:var(--cyan);line-height:1;
+}
+.stat-label{
+  font-size:0.8rem;color:var(--tx3);
+  text-transform:uppercase;letter-spacing:0.08em;
+  margin-top:0.25rem;
+}
+
+/* ═══════════════════════════════════════════
+   SECCIÓN GENÉRICA
+═══════════════════════════════════════════ */
+section{padding:6rem 2rem;position:relative}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{
+  font-size:0.72rem;font-weight:700;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:0.8rem;
+  display:flex;align-items:center;gap:8px;
+}
+.section-eyebrow::before{
+  content:'';width:24px;height:2px;background:var(--cyan);
+}
+.section-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(2.2rem,4vw,3.5rem);
+  font-weight:900;line-height:1.05;
+  margin-bottom:1rem;letter-spacing:-0.01em;
+}
+.section-sub{
+  color:var(--tx2);font-size:1rem;line-height:1.7;
+  max-width:560px;margin-bottom:3rem;
+}
+
+/* ═══════════════════════════════════════════
+   SERVICIOS
+═══════════════════════════════════════════ */
+#servicios{background:var(--bg)}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1.2rem;
+}
+.svc-card{
+  background:var(--card);
+  border:1px solid var(--brd);
+  border-radius:12px;
+  padding:2rem;
+  transition:border-color 0.3s,transform 0.3s,background 0.3s;
+  position:relative;overflow:hidden;
+  cursor:default;
+}
+.svc-card:hover{
+  border-color:var(--brd-c);
+  transform:translateY(-4px);
+  background:rgba(0,229,255,0.03);
+}
+.svc-card.featured{
+  border-color:rgba(255,61,0,0.35);
+  background:rgba(255,61,0,0.04);
+}
+.svc-card.featured:hover{
+  border-color:rgba(255,61,0,0.6);
+  background:rgba(255,61,0,0.07);
+}
+.svc-card::after{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.svc-card:hover::after{opacity:1}
+.svc-card.featured::after{
+  background:linear-gradient(90deg,transparent,var(--red),transparent);
+  opacity:1;
+}
+.svc-icon{
+  width:44px;height:44px;
+  border-radius:10px;
+  background:var(--cyan-dim);
+  border:1px solid var(--cyan-brd);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.2rem;font-size:1.2rem;
+}
+.svc-card.featured .svc-icon{
+  background:var(--red-dim);
+  border-color:rgba(255,61,0,0.3);
+}
+.svc-badge{
+  position:absolute;top:1.2rem;right:1.2rem;
+  font-size:0.62rem;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;
+  background:var(--red);color:#fff;
+  padding:3px 9px;border-radius:4px;
+}
+.svc-card h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.35rem;font-weight:800;
+  margin-bottom:0.6rem;letter-spacing:0.01em;
+}
+.svc-card p{
+  font-size:0.85rem;color:var(--tx2);
+  line-height:1.65;margin-bottom:1.2rem;
+}
+.svc-price{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.6rem;font-weight:900;
+  color:var(--cyan);
+}
+.svc-card.featured .svc-price{color:var(--red)}
+.svc-price .since{
+  font-size:0.75rem;color:var(--tx3);
+  font-family:'DM Sans',sans-serif;
+  font-weight:400;margin-right:4px;
+}
+.svc-features{list-style:none;margin-top:1rem}
+.svc-features li{
+  font-size:0.82rem;color:var(--tx2);
+  padding:0.25rem 0;
+  display:flex;align-items:flex-start;gap:7px;
+}
+.svc-features li::before{
+  content:'→';color:var(--cyan);
+  font-size:0.75rem;margin-top:1px;flex-shrink:0;
+}
+.svc-card.featured .svc-features li::before{color:var(--red)}
+
+/* ═══════════════════════════════════════════
+   PROCESO
+═══════════════════════════════════════════ */
+#proceso{background:var(--bg2)}
+.proceso-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:0;position:relative;
+}
+.proceso-grid::before{
+  content:'';
+  position:absolute;top:52px;left:12%;right:12%;
+  height:1px;background:linear-gradient(90deg,transparent,var(--brd-c),transparent);
+}
+.paso{text-align:center;padding:2rem 1.5rem;position:relative}
+.paso-num{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--bg);
+  border:2px solid var(--brd-c);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.5rem;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.5rem;font-weight:900;color:var(--cyan);
+  position:relative;z-index:1;
+  transition:background 0.3s,border-color 0.3s;
+}
+.paso:hover .paso-num{
+  background:var(--cyan-dim);
+  border-color:var(--cyan);
+}
+.paso h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.2rem;font-weight:800;
+  margin-bottom:0.6rem;
+}
+.paso p{font-size:0.84rem;color:var(--tx2);line-height:1.6}
+
+/* ═══════════════════════════════════════════
+   POR QUÉ DATIUM
+═══════════════════════════════════════════ */
+#why{background:var(--bg)}
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+}
+.why-list{list-style:none}
+.why-item{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  padding:1.4rem 0;
+  border-bottom:1px solid var(--brd);
+}
+.why-item:first-child{border-top:1px solid var(--brd)}
+.why-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:2.2rem;font-weight:900;
+  color:var(--cyan);opacity:0.3;
+  line-height:1;flex-shrink:0;width:44px;text-align:right;
+}
+.why-text h4{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.1rem;font-weight:800;
+  margin-bottom:0.3rem;
+}
+.why-text p{font-size:0.84rem;color:var(--tx2);line-height:1.6}
+.why-visual{
+  background:var(--bg2);
+  border:1px solid var(--brd);
+  border-radius:16px;
+  padding:2.5rem;
+  position:relative;overflow:hidden;
+}
+.why-visual::before{
+  content:'';
+  position:absolute;bottom:0;right:0;
+  width:200px;height:200px;
+  background:radial-gradient(circle,rgba(0,229,255,0.08),transparent 70%);
+}
+.metric-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 0;
+  border-bottom:1px solid var(--brd);
+}
+.metric-row:last-child{border-bottom:none}
+.metric-label{font-size:0.84rem;color:var(--tx2)}
+.metric-val{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.8rem;font-weight:900;
+  color:var(--cyan);
+}
+.metric-bar-wrap{height:4px;background:var(--brd);border-radius:2px;margin-top:0.5rem;margin-bottom:0.8rem}
+.metric-bar{height:4px;background:linear-gradient(90deg,var(--cyan),rgba(0,229,255,0.3));border-radius:2px;transition:width 1.5s ease}
+
+/* ═══════════════════════════════════════════
+   TECH STACK
+═══════════════════════════════════════════ */
+#tech{background:var(--bg2)}
+.tech-marquee-wrap{overflow:hidden;margin-top:2rem;position:relative}
+.tech-marquee-wrap::before,.tech-marquee-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;
+}
+.tech-marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent)}
+.tech-marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent)}
+.tech-marquee{
+  display:flex;gap:2rem;
+  animation:scroll-x 25s linear infinite;
+  width:max-content;
+}
+.tech-marquee:hover{animation-play-state:paused}
+@keyframes scroll-x{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tech-pill{
+  display:flex;align-items:center;gap:10px;
+  background:var(--card);border:1px solid var(--brd);
+  border-radius:8px;padding:0.7rem 1.2rem;
+  font-size:0.85rem;font-weight:500;color:var(--tx2);
+  white-space:nowrap;flex-shrink:0;
+  transition:border-color 0.2s,color 0.2s;
+}
+.tech-pill:hover{border-color:var(--brd-c);color:var(--tx)}
+.tech-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);opacity:0.6}
+
+/* ═══════════════════════════════════════════
+   CONTACTO
+═══════════════════════════════════════════ */
+#contacto{background:var(--bg)}
+.contact-wrap{
+  display:grid;grid-template-columns:1fr 1.4fr;
+  gap:5rem;align-items:start;
+}
+.contact-left h2{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(2.5rem,4vw,3.8rem);
+  font-weight:900;line-height:1;
+  margin-bottom:1.2rem;
+}
+.contact-left h2 .highlight{color:var(--cyan)}
+.contact-left p{
+  color:var(--tx2);font-size:0.95rem;
+  line-height:1.7;margin-bottom:2.5rem;
+}
+.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+.c-ico{
+  width:40px;height:40px;border-radius:8px;
+  background:var(--cyan-dim);border:1px solid var(--cyan-brd);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.c-ico svg{width:17px;height:17px;stroke:var(--cyan);fill:none;stroke-width:1.8}
+.c-txt{font-size:0.9rem;color:var(--tx2)}
+.c-txt a{color:var(--cyan);text-decoration:none}
+.c-txt a:hover{text-decoration:underline}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(37,211,102,0.1);
+  border:1px solid rgba(37,211,102,0.3);
+  color:#25D366;
+  padding:0.9rem 1.8rem;border-radius:8px;
+  font-weight:700;font-size:0.95rem;
+  text-decoration:none;margin-top:1.5rem;
+  transition:background 0.2s;
+}
+.wa-btn:hover{background:rgba(37,211,102,0.18)}
+.wa-btn svg{width:22px;height:22px;fill:#25D366}
+
+/* FORM */
+.contact-form{
+  background:var(--bg2);
+  border:1px solid var(--brd);
+  border-radius:16px;padding:2.5rem;
+}
+.contact-form::before{
+  content:'';display:block;height:3px;
+  background:linear-gradient(90deg,var(--cyan),transparent);
+  margin:-2.5rem -2.5rem 2.5rem;border-radius:16px 16px 0 0;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
+.fg label{
+  font-size:0.75rem;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--tx3);
+}
+.fg input,.fg select,.fg textarea{
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--brd);
+  border-radius:8px;
+  padding:0.8rem 1rem;
+  color:var(--tx);
+  font-family:'DM Sans',sans-serif;
+  font-size:0.9rem;outline:none;
+  transition:border-color 0.2s,background 0.2s;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--tx3)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:var(--cyan);
+  background:rgba(0,229,255,0.04);
+}
+.fg select option{background:#0D1120;color:var(--tx)}
+.fg textarea{resize:vertical;min-height:100px}
+.fg-full{grid-column:1/-1}
+.prv{display:flex;align-items:flex-start;gap:10px;margin-bottom:1rem}
+.prv input{margin-top:3px;accent-color:var(--cyan);flex-shrink:0}
+.prv label{font-size:0.78rem;color:var(--tx3);line-height:1.5}
+.prv a{color:var(--cyan);text-decoration:none}
+.form-submit{
+  width:100%;
+  background:var(--cyan);color:#080B14;
+  border:none;padding:1.1rem;
+  border-radius:8px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-size:1.2rem;
+  letter-spacing:0.05em;
+  cursor:pointer;
+  transition:opacity 0.2s,transform 0.2s,box-shadow 0.2s;
+  box-shadow:0 0 24px rgba(0,229,255,0.3);
+}
+.form-submit:hover{opacity:0.92;transform:translateY(-1px);box-shadow:0 0 40px rgba(0,229,255,0.45)}
+#form-msg{display:none;margin-top:1rem;padding:.9rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:500;text-align:center}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer{
+  background:var(--bg2);
+  border-top:1px solid var(--brd);
+  padding:2.5rem 2rem;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.4rem;font-weight:900;color:var(--tx);
+}
+.footer-logo span{color:var(--cyan)}
+.footer-copy{font-size:0.8rem;color:var(--tx3)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:0.82rem;color:var(--tx3);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--cyan)}
+
+/* ═══════════════════════════════════════════
+   WHATSAPP FLOTANTE
+═══════════════════════════════════════════ */
+.wa-float{
+  position:fixed;bottom:1.8rem;right:1.8rem;z-index:200;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,0.45);
+  text-decoration:none;
+  transition:transform 0.25s,box-shadow 0.25s;
+  animation:waFloat 3s ease-in-out infinite;
+}
+@keyframes waFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.wa-float:hover{
+  transform:scale(1.1);
+  box-shadow:0 6px 28px rgba(37,211,102,0.6);
+  animation:none;
+}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.wa-tooltip{
+  position:absolute;right:70px;top:50%;transform:translateY(-50%);
+  background:#080B14;border:1px solid var(--brd);
+  color:var(--tx);font-size:0.8rem;font-weight:600;
+  padding:0.45rem 0.9rem;border-radius:6px;
+  white-space:nowrap;pointer-events:none;
+  opacity:0;transition:opacity 0.2s;
+}
+.wa-float:hover .wa-tooltip{opacity:1}
+
+/* ═══════════════════════════════════════════
+   ANIMACIONES DE ENTRADA
+═══════════════════════════════════════════ */
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity 0.7s cubic-bezier(.22,1,.36,1),transform 0.7s cubic-bezier(.22,1,.36,1);
+}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:0.1s}
+.reveal-d2{transition-delay:0.2s}
+.reveal-d3{transition-delay:0.3s}
+.reveal-d4{transition-delay:0.4s}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-card{max-width:480px}
+  .why-grid{grid-template-columns:1fr}
+  .contact-wrap{grid-template-columns:1fr;gap:2.5rem}
+  .proceso-grid::before{display:none}
+}
+@media(max-width:680px){
+  .nav-links{display:none}
+  .nav-menu{display:block}
+  .hero-title{font-size:clamp(2.8rem,10vw,4rem)}
+  .form-row{grid-template-columns:1fr}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+  .stats-inner{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav>
+  <a href="#" class="logo">DATI<span>UM</span></a>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="#proceso">Cómo trabajamos</a>
+    <a href="#why">Por qué elegirnos</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a href="#contacto" class="nav-cta">Hablar con un asesor</a>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-red"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Promo de lanzamiento — cupos limitados</div>
+      <h1 class="hero-title">
+        <span class="line1">TECNOLOGÍA</span>
+        <span class="line2">QUE VENDE.</span>
+        <span class="line3">RESULTADOS<br>REALES.</span>
+      </h1>
+      <p class="hero-sub">
+        Desarrollamos <strong>sitios web, apps, automatizaciones y chatbots con IA</strong> para que tu negocio crezca en serio. Sin excusas, sin vueltas.
+      </p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-main">Quiero empezar ahora</a>
+        <a href="https://wa.me/5491161613067?text=Hola%20Datium%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="btn-wa">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <!-- Card promo -->
+    <div class="hero-card reveal">
+      <div class="promo-tag">Oferta de lanzamiento</div>
+      <div class="promo-price-old">$650.000</div>
+      <div class="promo-price">$350<span>.000</span></div>
+      <div class="promo-title">LANDING PAGE PROFESIONAL</div>
+      <ul class="promo-items">
+        <li>Diseño a medida (no plantillas)</li>
+        <li>Optimizada para convertir visitas en clientes</li>
+        <li>Formulario de contacto funcional</li>
+        <li>Adaptada a celular y tablet</li>
+        <li>SEO básico incluido</li>
+        <li>Entrega en 7 días hábiles</li>
+      </ul>
+      <a href="#contacto" class="promo-cta">QUIERO ESTA PROMO →</a>
+      <p class="promo-urgencia">⏳ Solo 5 cupos disponibles este mes</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ STATS ════════ -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">+80</div>
+      <div class="stat-label">Proyectos entregados</div>
+    </div>
+    <div class="stat-item reveal reveal-d1">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Días promedio de entrega</div>
+    </div>
+    <div class="stat-item reveal reveal-d2">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Clientes satisfechos</div>
+    </div>
+    <div class="stat-item reveal reveal-d3">
+      <div class="stat-num">3X</div>
+      <div class="stat-label">ROI promedio de clientes</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SERVICIOS ════════ -->
+<section id="servicios">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Lo que hacemos</div>
+    <h2 class="section-title reveal">SERVICIOS QUE<br><span style="color:var(--cyan)">GENERAN RESULTADOS</span></h2>
+    <p class="section-sub reveal">Desde una landing que convierte hasta sistemas complejos de automatización. Todo a medida, todo con foco en tu retorno de inversión.</p>
+
+    <div class="services-grid">
+
+      <!-- FEATURED -->
+      <div class="svc-card featured reveal">
+        <span class="svc-badge">🔥 PROMO</span>
+        <div class="svc-icon">🚀</div>
+        <h3>Landing Page</h3>
+        <p>Tu mejor vendedor disponible las 24hs. Diseño profesional, optimizada para conversión, entregada en 7 días. Ideal para campañas de Meta Ads y Google Ads.</p>
+        <div class="svc-price"><span class="since">desde </span>$350.000</div>
+        <ul class="svc-features">
+          <li>Diseño único a medida</li>
+          <li>Formulario + integración WhatsApp</li>
+          <li>SEO on-page incluido</li>
+          <li>100% adaptada a mobile</li>
+          <li>Entrega en 7 días hábiles</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal reveal-d1">
+        <div class="svc-icon">🌐</div>
+        <h3>Sitio Web Corporativo</h3>
+        <p>Presencia digital profesional con múltiples secciones, blog, galería de servicios y panel de administración para que lo manejes vos solo.</p>
+        <div class="svc-price"><span class="since">desde </span>$850.000</div>
+        <ul class="svc-features">
+          <li>Hasta 8 secciones/páginas</li>
+          <li>Panel admin para editar contenido</li>
+          <li>Dominio + hosting 1er año</li>
+          <li>Formulario de contacto con email</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal reveal-d2">
+        <div class="svc-icon">📱</div>
+        <h3>App Móvil</h3>
+        <p>iOS y Android. Para digitalizar tu negocio, crear una comunidad, gestionar clientes o lanzar un MVP al mercado rápidamente y con bajo costo.</p>
+        <div class="svc-price"><span class="since">desde </span>USD 3.500</div>
+        <ul class="svc-features">
+          <li>iOS + Android (React Native)</li>
+          <li>Panel de administración</li>
+          <li>Notificaciones push</li>
+          <li>Pagos integrados (MercadoPago)</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-icon">⚙️</div>
+        <h3>Automatizaciones y CRM</h3>
+        <p>Eliminá tareas repetitivas. Automatizamos tus flujos de ventas, seguimiento de leads, reportes y procesos internos. Tu equipo enfocado en lo que importa.</p>
+        <div class="svc-price"><span class="since">desde </span>$680.000</div>
+        <ul class="svc-features">
+          <li>CRM personalizado a tu operación</li>
+          <li>Integración WhatsApp Business API</li>
+          <li>Automatización de emails y tareas</li>
+          <li>Dashboard con métricas en vivo</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal reveal-d1">
+        <div class="svc-icon">🤖</div>
+        <h3>Chatbots con IA</h3>
+        <p>Un asistente que atiende a tus clientes 24/7, responde preguntas, califica leads y cierra ventas mientras vos dormís. Integrado a WhatsApp e Instagram.</p>
+        <div class="svc-price"><span class="since">desde </span>$480.000</div>
+        <ul class="svc-features">
+          <li>IA entrenada con tu negocio</li>
+          <li>WhatsApp + Instagram + Web</li>
+          <li>Calificación automática de leads</li>
+          <li>Panel de control y analytics</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal reveal-d2">
+        <div class="svc-icon">📈</div>
+        <h3>SEO y Posicionamiento</h3>
+        <p>Que tus clientes te encuentren primero en Google. Optimización técnica, contenido estratégico y link building para posicionarte por encima de la competencia.</p>
+        <div class="svc-price"><span class="since">desde </span>$280.000<span style="font-size:.8rem;color:var(--tx3)">/mes</span></div>
+        <ul class="svc-features">
+          <li>Auditoría técnica SEO completa</li>
+          <li>Optimización de contenido y keywords</li>
+          <li>Link building local y nacional</li>
+          <li>Reportes mensuales de posiciones</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-icon">🛒</div>
+        <h3>E-commerce</h3>
+        <p>Tu tienda online lista para vender. Catálogo, carrito, medios de pago argentinos y extranjeros, gestión de stock y panel de pedidos completo.</p>
+        <div class="svc-price"><span class="since">desde </span>$1.200.000</div>
+        <ul class="svc-features">
+          <li>Catálogo ilimitado de productos</li>
+          <li>MercadoPago + tarjetas + transferencia</li>
+          <li>Panel de pedidos y stock</li>
+          <li>Integración redes sociales</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal reveal-d1">
+        <div class="svc-icon">💼</div>
+        <h3>Consultoría Digital</h3>
+        <p>No sabés por dónde empezar con la digitalización de tu empresa. Te asesoramos, armamos el plan y lo ejecutamos. Sin tecnobabble, solo resultados.</p>
+        <div class="svc-price"><span class="since">desde </span>$150.000</div>
+        <ul class="svc-features">
+          <li>Diagnóstico digital completo</li>
+          <li>Roadmap de implementación</li>
+          <li>Acompañamiento durante el proceso</li>
+          <li>Recomendación de herramientas</li>
+        </ul>
+      </div>
+
+      <div class="svc-card reveal reveal-d2">
+        <div class="svc-icon">🔧</div>
+        <h3>Mantenimiento y Soporte</h3>
+        <p>Tu sitio o sistema funcionando siempre. Actualizaciones, backups, monitoreo 24/7 y soporte técnico prioritario cuando lo necesitás.</p>
+        <div class="svc-price"><span class="since">desde </span>$120.000<span style="font-size:.8rem;color:var(--tx3)">/mes</span></div>
+        <ul class="svc-features">
+          <li>Monitoreo 24/7 con alertas</li>
+          <li>Backups automáticos diarios</li>
+          <li>Actualizaciones de seguridad</li>
+          <li>Soporte por WhatsApp y email</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PROCESO ════════ -->
+<section id="proceso">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Sin vueltas</div>
+    <h2 class="section-title reveal">ASÍ DE SIMPLE<br><span style="color:var(--cyan)">ES ARRANCAR</span></h2>
+    <div class="proceso-grid">
+      <div class="paso reveal">
+        <div class="paso-num">01</div>
+        <h3>HABLAMOS</h3>
+        <p>Nos contás tu idea o problema. En 24hs te mandamos una propuesta clara con precio y tiempos. Sin compromisos.</p>
+      </div>
+      <div class="paso reveal reveal-d1">
+        <div class="paso-num">02</div>
+        <h3>DESARROLLAMOS</h3>
+        <p>Nuestro equipo trabaja con metodología ágil. Ves el avance en tiempo real y podés pedir ajustes en el camino.</p>
+      </div>
+      <div class="paso reveal reveal-d2">
+        <div class="paso-num">03</div>
+        <h3>LANZAMOS</h3>
+        <p>Entregamos, capacitamos y acompañamos el lanzamiento. Tu proyecto en producción, funcionando y generando resultados.</p>
+      </div>
+      <div class="paso reveal reveal-d3">
+        <div class="paso-num">04</div>
+        <h3>CRECEMOS</h3>
+        <p>Post-lanzamiento medimos resultados y optimizamos. Queremos ser tu socio tecnológico a largo plazo, no un proveedor más.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ POR QUÉ DATIUM ════════ -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div>
+        <div class="section-eyebrow reveal">La diferencia</div>
+        <h2 class="section-title reveal">POR QUÉ<br><span style="color:var(--cyan)">DATIUM</span></h2>
+        <ul class="why-list">
+          <li class="why-item reveal">
+            <div class="why-num">01</div>
+            <div class="why-text">
+              <h4>Precios reales, sin sorpresas</h4>
+              <p>Te decimos el precio desde el principio. No hay costos ocultos ni presupuestos que se inflan a mitad del proyecto.</p>
+            </div>
+          </li>
+          <li class="why-item reveal reveal-d1">
+            <div class="why-num">02</div>
+            <div class="why-text">
+              <h4>Entregamos en tiempo y forma</h4>
+              <p>Nos comprometemos con fechas y las cumplimos. Si hay demoras, te avisamos antes y te compensamos.</p>
+            </div>
+          </li>
+          <li class="why-item reveal reveal-d2">
+            <div class="why-num">03</div>
+            <div class="why-text">
+              <h4>Orientados a tu ROI, no a las horas</h4>
+              <p>No cobramos por hora. Cobramos por resultado. Tu inversión tiene que generarte más de lo que pagaste.</p>
+            </div>
+          </li>
+          <li class="why-item reveal reveal-d3">
+            <div class="why-num">04</div>
+            <div class="why-text">
+              <h4>Soporte real, no un ticket</h4>
+              <p>Tenés acceso directo al equipo por WhatsApp. Sin call centers, sin esperar 72hs para una respuesta.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="why-visual reveal">
+        <div style="margin-bottom:1.5rem">
+          <div class="section-eyebrow" style="margin-bottom:0.5rem">Resultados típicos</div>
+          <p style="font-size:0.82rem;color:var(--tx3)">Promedio de clientes activos — últimos 6 meses</p>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label">Aumento de leads</div>
+            <div class="metric-bar-wrap"><div class="metric-bar" data-w="78" style="width:0%"></div></div>
+          </div>
+          <div class="metric-val">+78%</div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label">Reducción de costos operativos</div>
+            <div class="metric-bar-wrap"><div class="metric-bar" data-w="62" style="width:0%"></div></div>
+          </div>
+          <div class="metric-val">-62%</div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label">Tiempo de respuesta al cliente</div>
+            <div class="metric-bar-wrap"><div class="metric-bar" data-w="90" style="width:0%"></div></div>
+          </div>
+          <div class="metric-val">-90%</div>
+        </div>
+        <div class="metric-row">
+          <div>
+            <div class="metric-label">Conversión web promedio</div>
+            <div class="metric-bar-wrap"><div class="metric-bar" data-w="45" style="width:0%"></div></div>
+          </div>
+          <div class="metric-val">+45%</div>
+        </div>
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--brd)">
+          <p style="font-size:0.8rem;color:var(--tx3);text-align:center">¿Querés estos números en tu negocio?</p>
+          <a href="#contacto" style="display:block;text-align:center;margin-top:1rem;background:var(--cyan-dim);border:1px solid var(--cyan-brd);color:var(--cyan);padding:.8rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:.88rem;transition:background .2s" onmouseover="this.style.background='rgba(0,229,255,0.18)'" onmouseout="this.style.background='var(--cyan-dim)'">Hablemos de tu caso →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ TECH ════════ -->
+<section id="tech" style="padding:4rem 2rem">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal" style="justify-content:center">Stack tecnológico</div>
+    <p style="text-align:center;color:var(--tx3);font-size:.85rem;margin-bottom:0" class="reveal">Trabajamos con las herramientas que los grandes usan</p>
+  </div>
+  <div class="tech-marquee-wrap" style="margin-top:2rem">
+    <div class="tech-marquee">
+      <!-- set 1 -->
+      <div class="tech-pill"><div class="tech-dot"></div>React Native</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Next.js</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Node.js</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Python</div>
+      <div class="tech-pill"><div class="tech-dot"></div>OpenAI API</div>
+      <div class="tech-pill"><div class="tech-dot"></div>WhatsApp Business API</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Make (Integromat)</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Zapier</div>
+      <div class="tech-pill"><div class="tech-dot"></div>HubSpot</div>
+      <div class="tech-pill"><div class="tech-dot"></div>MercadoPago</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Stripe</div>
+      <div class="tech-pill"><div class="tech-dot"></div>PostgreSQL</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Firebase</div>
+      <div class="tech-pill"><div class="tech-dot"></div>AWS</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Vercel</div>
+      <!-- set 2 (duplicado para loop infinito) -->
+      <div class="tech-pill"><div class="tech-dot"></div>React Native</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Next.js</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Node.js</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Python</div>
+      <div class="tech-pill"><div class="tech-dot"></div>OpenAI API</div>
+      <div class="tech-pill"><div class="tech-dot"></div>WhatsApp Business API</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Make (Integromat)</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Zapier</div>
+      <div class="tech-pill"><div class="tech-dot"></div>HubSpot</div>
+      <div class="tech-pill"><div class="tech-dot"></div>MercadoPago</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Stripe</div>
+      <div class="tech-pill"><div class="tech-dot"></div>PostgreSQL</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Firebase</div>
+      <div class="tech-pill"><div class="tech-dot"></div>AWS</div>
+      <div class="tech-pill"><div class="tech-dot"></div>Vercel</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CONTACTO ════════ -->
+<section id="contacto">
+  <div class="section-inner">
+    <div class="contact-wrap">
+      <div class="contact-left">
+        <div class="section-eyebrow reveal">Hablemos</div>
+        <h2 class="reveal">¿LISTO PARA<br><span class="highlight">CRECER?</span></h2>
+        <p class="reveal">Completá el formulario o escribinos por WhatsApp. Te respondemos en menos de 2hs en horario laboral.</p>
+        <div class="contact-detail reveal">
+          <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 6 6z"/></svg></div>
+          <div class="c-txt"><a href="tel:+5491161613067">+54 911 6161 3067</a></div>
+        </div>
+        <div class="contact-detail reveal reveal-d1">
+          <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="c-txt"><a href="mailto:info@datium.com.ar">info@datium.com.ar</a></div>
+        </div>
+        <a href="https://wa.me/5491161613067?text=Hola%20Datium%2C%20quiero%20información%20sobre%20sus%20servicios" target="_blank" class="wa-btn reveal reveal-d2">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escribinos por WhatsApp
+        </a>
+      </div>
+
+      <form class="contact-form reveal" id="datium-form">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+        <input type="hidden" name="subject" value="Nuevo lead — Datium">
+        <input type="hidden" name="from_name" value="Datium Web">
+        <input type="hidden" name="replyto" id="reply-field" value="">
+        <input type="checkbox" name="botcheck" style="display:none">
+        <div class="form-row">
+          <div class="fg">
+            <label>Nombre *</label>
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="fg">
+            <label>Apellido *</label>
+            <input type="text" name="apellido" placeholder="Tu apellido" required>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Email *</label>
+          <input type="email" name="email" id="email-f" placeholder="tu@email.com" required oninput="document.getElementById('reply-field').value=this.value">
+        </div>
+        <div class="fg">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" name="telefono" placeholder="+54 9 ...">
+        </div>
+        <div class="fg">
+          <label>Servicio de interés *</label>
+          <select name="servicio" required>
+            <option value="" disabled selected>¿Qué necesitás?</option>
+            <option>Landing Page — Promo $350.000</option>
+            <option>Sitio Web Corporativo</option>
+            <option>App Móvil</option>
+            <option>Automatizaciones y CRM</option>
+            <option>Chatbot con IA</option>
+            <option>SEO y Posicionamiento</option>
+            <option>E-commerce</option>
+            <option>Consultoría Digital</option>
+            <option>Otro / No sé por dónde empezar</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Contanos tu proyecto</label>
+          <textarea name="mensaje" placeholder="Describí brevemente qué necesitás, en qué rubro estás y qué resultado esperás..."></textarea>
+        </div>
+        <div class="prv">
+          <input type="checkbox" id="prv" name="privacy" required>
+          <label for="prv">Acepto la <a href="#">política de privacidad</a> y que Datium me contacte con información sobre sus servicios.</label>
+        </div>
+        <button type="submit" class="form-submit" id="submit-btn">QUIERO QUE ME CONTACTEN →</button>
+        <div id="form-msg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">DATI<span>UM</span></div>
+    <div class="footer-copy">© 2025 Datium · Todos los derechos reservados</div>
+    <div class="footer-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#">Privacidad</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════ WHATSAPP FLOTANTE ════════ -->
+<a href="https://wa.me/5491161613067?text=Hola%20Datium%2C%20quiero%20información" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <div class="wa-tooltip">¡Escribinos ahora!</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// ── SCROLL REVEAL ─────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Animar barras de métricas
+      const bars = e.target.querySelectorAll('.metric-bar[data-w]');
+      bars.forEach(b => {
+        setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 300);
+      });
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Animar barras cuando el contenedor es visible
+document.querySelectorAll('.why-visual').forEach(el => observer.observe(el));
+
+// ── FORM WEB3FORMS ────────────────────────────────────────
+document.getElementById('datium-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const msg = document.getElementById('form-msg');
+  const key = this.querySelector('[name="access_key"]').value;
+
+  if (!key || key === 'YOUR_WEB3FORMS_KEY') {
+    showMsg('error','⚠ Formulario no configurado. Escribinos por WhatsApp.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'ENVIANDO...';
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method:'POST', body: new FormData(this)
+    });
+    const json = await res.json();
+    if (json.success) {
+      showMsg('ok','✅ ¡Recibimos tu consulta! Te respondemos en menos de 2hs.');
+      this.reset();
+      document.getElementById('reply-field').value = '';
+    } else {
+      showMsg('error','❌ Error al enviar. Escribinos directamente por WhatsApp.');
+    }
+  } catch {
+    showMsg('error','❌ Sin conexión. Probá por WhatsApp.');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'QUIERO QUE ME CONTACTEN →';
+});
+
+function showMsg(type, text) {
+  const el = document.getElementById('form-msg');
+  el.textContent = text;
+  el.style.display = 'block';
+  el.style.padding = '.9rem 1.2rem';
+  el.style.borderRadius = '8px';
+  el.style.fontSize = '.85rem';
+  el.style.fontWeight = '500';
+  el.style.marginTop = '1rem';
+  el.style.textAlign = 'center';
+  if (type === 'ok') {
+    el.style.background = 'rgba(0,229,255,0.08)';
+    el.style.border = '1px solid rgba(0,229,255,0.25)';
+    el.style.color = '#00E5FF';
+  } else {
+    el.style.background = 'rgba(255,61,0,0.08)';
+    el.style.border = '1px solid rgba(255,61,0,0.25)';
+    el.style.color = '#FF3D00';
+  }
+  setTimeout(() => el.style.display = 'none', 9000);
+}
+
+// ── SMOOTH SCROLL NAV ─────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ── COUNTER ANIMATION ─────────────────────────────────────
+const counters = document.querySelectorAll('.stat-num');
+const countObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const text = el.textContent;
+      const num = parseFloat(text.replace(/[^0-9.]/g,''));
+      const prefix = text.match(/^[^0-9]*/)?.[0] || '';
+      const suffix = text.match(/[^0-9.%X]+$/)?.[0] || '';
+      const hasPlus = text.includes('+');
+      const hasPercent = text.includes('%');
+      if (!isNaN(num)) {
+        let start = 0;
+        const step = num / 40;
+        const timer = setInterval(() => {
+          start = Math.min(start + step, num);
+          el.textContent = (hasPlus ? '+' : '') + Math.round(start) + (hasPercent ? '%' : '') + (suffix && !hasPercent ? suffix : '');
+          if (start >= num) clearInterval(timer);
+        }, 30);
+      }
+      countObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => countObserver.observe(c));
+</script>
+</body>
+</html>
