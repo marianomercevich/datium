@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DatiumTech — Kit Instagram v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ══ SHELL ══════════════════════════════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F0F4FF;font-family:'Nunito',sans-serif;color:#1E293B;padding:2.5rem}
+.kit-header{margin-bottom:2.5rem}
+.kit-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;font-weight:900;color:#1E293B;margin-bottom:.3rem}
+.kit-title span{color:#2563EB}
+.kit-sub{color:#64748B;font-size:.88rem}
+.section-label{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:800;
+  letter-spacing:.15em;text-transform:uppercase;color:#94A3B8;
+  margin:3rem 0 1.5rem;padding-bottom:.6rem;
+  border-bottom:2px solid #E2E8F0;
+  display:flex;align-items:center;gap:10px;
+}
+.section-label .dot{width:8px;height:8px;border-radius:50%;background:#2563EB}
+.pieces-grid{display:flex;flex-wrap:wrap;gap:2.5rem;align-items:flex-start}
+.piece-wrap{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.piece-meta{text-align:center}
+.piece-meta .plabel{font-size:.78rem;font-weight:700;color:#1E293B}
+.piece-meta .psize{font-size:.65rem;color:#94A3B8;margin-top:1px}
+.piece-meta .phint{font-size:.62rem;color:#2563EB;margin-top:2px}
+
+/* ── PIEZA BASE ─────────────────────────────────────────────────────────── */
+.piece{position:relative;overflow:hidden;flex-shrink:0;font-family:'Plus Jakarta Sans',sans-serif}
+
+/* ── LOGO INLINE ─────────────────────────────────────────────────────────── */
+.logo-inline{display:flex;align-items:center;gap:7px}
+.logo-inline .wm{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:.85rem;letter-spacing:-.01em;color:#1E293B}
+.logo-inline .wm em{color:#2563EB;font-style:normal}
+.logo-inline-white .wm{color:#fff}
+.logo-inline-white .wm em{color:rgba(255,255,255,.7)}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   AD-01 — FEED 1:1 — Anuncio pagado principal
+   Fondo: gradiente azul vibrante. Texto blanco.
+══════════════════════════════════════════════════════════════════════════ */
+.ad01{width:500px;height:500px;background:linear-gradient(135deg,#1D4ED8 0%,#2563EB 50%,#3B82F6 100%)}
+.ad01 .blob1{position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
+.ad01 .blob2{position:absolute;bottom:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.06)}
+.ad01 .blob3{position:absolute;bottom:60px;right:30px;width:90px;height:90px;border-radius:50%;background:#F97316;opacity:.9}
+.ad01 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:2rem}
+.ad01 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:auto}
+.ad01 .pill-red{
+  background:#F43F5E;color:#fff;font-size:.6rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;
+  border-radius:100px;display:flex;align-items:center;gap:5px;
+}
+.ad01 .pill-red::before{content:'';width:5px;height:5px;border-radius:50%;background:#fff;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.ad01 .big-hook{font-size:2.8rem;font-weight:900;line-height:.92;color:#fff;margin-bottom:.9rem;letter-spacing:-.02em}
+.ad01 .big-hook .y{color:#FBBF24}
+.ad01 .body{font-family:'Nunito',sans-serif;font-size:.82rem;color:rgba(255,255,255,.75);line-height:1.55;margin-bottom:1.4rem;max-width:280px}
+.ad01 .price-row{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
+.ad01 .price-old{font-size:.9rem;color:rgba(255,255,255,.4);text-decoration:line-through;font-family:'Nunito',sans-serif}
+.ad01 .price-new{font-size:2.6rem;font-weight:900;color:#fff;line-height:1}
+.ad01 .price-new sup{font-size:1.2rem;color:#FBBF24}
+.ad01 .cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;color:#1D4ED8;
+  font-size:.85rem;font-weight:800;letter-spacing:-.01em;
+  padding:.65rem 1.5rem;border-radius:100px;width:fit-content;
+}
+.ad01 .bottom{margin-top:auto;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;align-items:center}
+.ad01 .url{font-size:.6rem;color:rgba(255,255,255,.4);font-family:'Nunito',sans-serif;letter-spacing:.05em}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   AD-02 — STORY 9:16 — Anuncio Stories
+   Fondo: naranja vibrante + blanco. Energético.
+══════════════════════════════════════════════════════════════════════════ */
+.ad02{width:390px;height:693px;background:#fff}
+.ad02 .top-band{
+  position:absolute;top:0;left:0;right:0;height:55%;
+  background:linear-gradient(145deg,#F97316,#FB923C,#FBBF24);
+}
+.ad02 .blob-a{position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.15)}
+.ad02 .blob-b{position:absolute;top:80px;left:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.1)}
+.ad02 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.ad02 .ig-bar{display:flex;gap:3px;margin-bottom:1rem}
+.ad02 .ig-seg{height:2.5px;flex:1;border-radius:2px;background:rgba(255,255,255,.4)}
+.ad02 .ig-seg.done{background:rgba(255,255,255,.85)}
+.ad02 .ig-seg.now{background:#fff}
+.ad02 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.ad02 .logo-pill{background:rgba(255,255,255,.25);border-radius:100px;padding:.3rem .8rem;display:flex;align-items:center;gap:6px}
+.ad02 .logo-pill span{font-size:.7rem;font-weight:800;color:#fff;letter-spacing:-.01em}
+.ad02 .promo-badge{background:#1E293B;color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px}
+.ad02 .big-price-top{margin-bottom:auto}
+.ad02 .price-label{font-size:.65rem;font-weight:700;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem;font-family:'Nunito',sans-serif}
+.ad02 .price-amt{font-size:3.8rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em}
+.ad02 .price-amt sup{font-size:1.8rem;color:rgba(255,255,255,.8)}
+.ad02 .price-was{font-size:.8rem;color:rgba(255,255,255,.6);text-decoration:line-through;font-family:'Nunito',sans-serif;margin-top:.2rem}
+.ad02 .white-card{
+  background:#fff;border-radius:18px;padding:1.3rem 1.4rem;
+  margin-top:auto;box-shadow:0 8px 32px rgba(0,0,0,.08);
+}
+.ad02 .card-title{font-size:.95rem;font-weight:900;color:#1E293B;margin-bottom:.8rem;line-height:1.2;letter-spacing:-.02em}
+.ad02 .feat-list{list-style:none;margin-bottom:1rem}
+.ad02 .feat-list li{font-size:.72rem;color:#475569;padding:.22rem 0;display:flex;align-items:center;gap:7px;font-family:'Nunito',sans-serif;border-bottom:1px solid #F1F5F9}
+.ad02 .feat-list li:last-child{border-bottom:none}
+.ad02 .feat-list li::before{content:'✓';color:#F97316;font-weight:900;font-size:.65rem;flex-shrink:0}
+.ad02 .cta-full{
+  background:linear-gradient(135deg,#F97316,#EF4444);color:#fff;
+  font-size:.9rem;font-weight:900;letter-spacing:-.01em;
+  padding:.8rem;border-radius:10px;text-align:center;margin-bottom:.5rem;
+}
+.ad02 .urgency{text-align:center;font-size:.62rem;color:#94A3B8;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P1 — POST FEED 1:1 — Presentación DatiumTech
+   Fondo blanco con acento azul grande.
+══════════════════════════════════════════════════════════════════════════ */
+.p1{width:470px;height:470px;background:#fff;border:2px solid #E2E8F0}
+.p1 .top-accent{position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#2563EB,#F97316,#84CC16)}
+.p1 .blob{position:absolute;bottom:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:#EFF6FF}
+.p1 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p1 .eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#2563EB;margin-bottom:.5rem;font-family:'Nunito',sans-serif}
+.p1 .brand-name{font-size:3.4rem;font-weight:900;line-height:.85;letter-spacing:-.04em;color:#1E293B;margin-bottom:.4rem}
+.p1 .brand-name em{color:#2563EB;font-style:normal}
+.p1 .tagline{font-size:.8rem;color:#64748B;font-family:'Nunito',sans-serif;margin-bottom:1.2rem;font-weight:600}
+.p1 .svc-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:auto}
+.p1 .chip{
+  font-size:.68rem;font-weight:700;padding:.35rem .8rem;border-radius:100px;
+  font-family:'Nunito',sans-serif;
+}
+.p1 .chip.blue{background:#EFF6FF;color:#2563EB}
+.p1 .chip.orange{background:#FFF7ED;color:#F97316}
+.p1 .chip.green{background:#F0FDF4;color:#16A34A}
+.p1 .chip.red{background:#FFF1F2;color:#F43F5E}
+.p1 .chip.yellow{background:#FFFBEB;color:#D97706}
+.p1 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.8rem;border-top:1px solid #F1F5F9}
+.p1 .dm-cta{font-size:.68rem;font-weight:800;color:#2563EB;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P2 — CARRUSEL SLIDE 1 — "¿Tu negocio no tiene web?"
+   Fondo amarillo/cálido. Texto oscuro grande.
+══════════════════════════════════════════════════════════════════════════ */
+.p2{width:470px;height:470px;background:#FFFBEB}
+.p2 .stripe-v{position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,#F59E0B,#F97316)}
+.p2 .blob-r{position:absolute;right:-50px;top:-50px;width:200px;height:200px;border-radius:50%;background:rgba(251,191,36,.2)}
+.p2 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.6rem 1.8rem}
+.p2 .slide-ind{font-size:.62rem;font-weight:700;color:#D97706;letter-spacing:.1em;text-transform:uppercase;font-family:'Nunito',sans-serif;margin-bottom:auto}
+.p2 .question{font-size:2.2rem;font-weight:900;line-height:.92;letter-spacing:-.03em;color:#1E293B;margin-bottom:.9rem}
+.p2 .question .hl{color:#F59E0B}
+.p2 .stat-box{background:#fff;border-radius:12px;padding:.9rem 1.1rem;margin-bottom:.9rem;display:flex;align-items:center;gap:7rem;border:1.5px solid #FDE68A;box-shadow:0 2px 8px rgba(251,191,36,.15)}
+.p2 .stat-num{font-size:2.8rem;font-weight:900;color:#F59E0B;line-height:1;margin-right:.7rem;flex-shrink:0}
+.p2 .stat-txt{font-size:.72rem;color:#64748B;font-family:'Nunito',sans-serif;line-height:1.4;font-weight:600}
+.p2 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.7rem;border-top:1.5px solid #FDE68A}
+.p2 .next-lbl{font-size:.62rem;font-weight:800;color:#F59E0B;display:flex;align-items:center;gap:4px;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P3 — STORY ORGÁNICA — Promo urgencia
+   Fondo gradiente verde lima → azul. Muy llamativo.
+══════════════════════════════════════════════════════════════════════════ */
+.p3{width:390px;height:693px;background:linear-gradient(160deg,#2563EB 0%,#0EA5E9 45%,#06B6D4 100%)}
+.p3 .circle1{position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08)}
+.p3 .circle2{position:absolute;bottom:80px;left:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.06)}
+.p3 .square{position:absolute;bottom:-20px;right:30px;width:80px;height:80px;border-radius:20px;background:#FBBF24;opacity:.8;transform:rotate(20deg)}
+.p3 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.4rem}
+.p3 .ig-bar{display:flex;gap:3px;margin-bottom:1rem}
+.p3 .seg{height:2px;flex:1;border-radius:1px}
+.p3 .seg.d{background:rgba(255,255,255,.7)}
+.p3 .seg.a{background:#fff}
+.p3 .seg.p{background:rgba(255,255,255,.3)}
+.p3 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.p3 .logo-badge{background:rgba(255,255,255,.2);backdrop-filter:blur(8px);border-radius:100px;padding:.3rem .9rem;font-size:.72rem;font-weight:800;color:#fff;letter-spacing:-.01em}
+.p3 .fire-tag{background:#F43F5E;color:#fff;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px}
+.p3 .hook{font-size:2.4rem;font-weight:900;line-height:.92;color:#fff;letter-spacing:-.03em;margin-bottom:.7rem}
+.p3 .hook .y{color:#FBBF24}
+.p3 .bodycopy{font-family:'Nunito',sans-serif;font-size:.75rem;color:rgba(255,255,255,.8);line-height:1.55;margin-bottom:1.2rem}
+.p3 .white-card{background:#fff;border-radius:16px;padding:1.1rem 1.3rem;margin-bottom:.8rem;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+.p3 .price-label{font-size:.58rem;font-weight:700;color:#94A3B8;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem;font-family:'Nunito',sans-serif}
+.p3 .price-big{font-size:2.6rem;font-weight:900;color:#1E293B;line-height:1;letter-spacing:-.03em}
+.p3 .price-big sup{font-size:1.2rem}
+.p3 .price-old{font-size:.7rem;color:#CBD5E1;text-decoration:line-through;font-family:'Nunito',sans-serif}
+.p3 .feats{list-style:none;margin-top:.7rem}
+.p3 .feats li{font-size:.68rem;color:#475569;padding:.2rem 0;display:flex;align-items:center;gap:6px;font-family:'Nunito',sans-serif;border-bottom:1px solid #F1F5F9}
+.p3 .feats li:last-child{border-bottom:none}
+.p3 .feats li::before{content:'✓';color:#2563EB;font-weight:900;font-size:.62rem}
+.p3 .swipe{background:#FBBF24;color:#1E293B;font-size:.88rem;font-weight:900;letter-spacing:-.01em;padding:.8rem;border-radius:12px;text-align:center;margin-bottom:.5rem}
+.p3 .hint{text-align:center;font-size:.6rem;color:rgba(255,255,255,.5);font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P4 — FEED 1:1 — "¿Qué incluye una landing?"
+   Fondo blanco + checklist visual colorida.
+══════════════════════════════════════════════════════════════════════════ */
+.p4{width:470px;height:470px;background:#fff;border:2px solid #E2E8F0}
+.p4 .blob-tl{position:absolute;top:-50px;left:-50px;width:180px;height:180px;border-radius:50%;background:#EFF6FF}
+.p4 .blob-br{position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:#FFF7ED}
+.p4 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p4 .header-row{margin-bottom:.8rem}
+.p4 .eyebrow{font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#2563EB;font-family:'Nunito',sans-serif;margin-bottom:.3rem}
+.p4 .title{font-size:1.7rem;font-weight:900;line-height:1;letter-spacing:-.03em;color:#1E293B}
+.p4 .title em{color:#2563EB;font-style:normal}
+.p4 .items{display:flex;flex-direction:column;gap:.5rem;flex:1;margin:.4rem 0}
+.p4 .item{
+  display:flex;align-items:center;gap:.75rem;padding:.6rem .8rem;
+  border-radius:10px;border:1.5px solid transparent;
+}
+.p4 .item.blue{background:#EFF6FF;border-color:#BFDBFE}
+.p4 .item.orange{background:#FFF7ED;border-color:#FED7AA}
+.p4 .item.green{background:#F0FDF4;border-color:#BBF7D0}
+.p4 .item.pink{background:#FFF1F2;border-color:#FECDD3}
+.p4 .item.yellow{background:#FFFBEB;border-color:#FDE68A}
+.p4 .item-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0}
+.p4 .item.blue .item-icon{background:#DBEAFE}
+.p4 .item.orange .item-icon{background:#FFEDD5}
+.p4 .item.green .item-icon{background:#DCFCE7}
+.p4 .item.pink .item-icon{background:#FFE4E6}
+.p4 .item.yellow .item-icon{background:#FEF9C3}
+.p4 .item-txt{font-size:.72rem;font-weight:700;color:#1E293B;font-family:'Nunito',sans-serif}
+.p4 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.7rem;border-top:1px solid #F1F5F9}
+.p4 .cta-sm{font-size:.65rem;font-weight:800;color:#F97316;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P5 — REEL COVER 9:16 — "Antes vs después"
+   Fondo: split vertical azul/blanco con impacto visual.
+══════════════════════════════════════════════════════════════════════════ */
+.p5{width:390px;height:693px;background:#fff}
+.p5 .left-half{position:absolute;top:0;left:0;width:50%;height:100%;background:#1E293B}
+.p5 .right-half{position:absolute;top:0;right:0;width:50%;height:100%;background:#2563EB}
+.p5 .divider-line{position:absolute;top:0;left:50%;width:4px;background:#FBBF24;transform:translateX(-50%);height:100%}
+.p5 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p5 .top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.p5 .reel-tag{background:#F43F5E;color:#fff;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:100px}
+.p5 .logo-w{font-size:.78rem;font-weight:900;color:#fff;letter-spacing:-.01em}
+.p5 .logo-w em{color:#FBBF24;font-style:normal}
+.p5 .col-labels{display:flex;margin-bottom:auto;margin-top:.5rem}
+.p5 .col-left,.p5 .col-right{flex:1;text-align:center;padding:.5rem}
+.p5 .col-left-label{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);font-family:'Nunito',sans-serif;margin-bottom:.4rem}
+.p5 .col-right-label{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);font-family:'Nunito',sans-serif;margin-bottom:.4rem}
+.p5 .icon-big{font-size:3.2rem;display:block;margin-bottom:.5rem}
+.p5 .col-left p{font-size:.68rem;color:rgba(255,255,255,.45);font-family:'Nunito',sans-serif;line-height:1.4}
+.p5 .col-right p{font-size:.68rem;color:rgba(255,255,255,.8);font-family:'Nunito',sans-serif;line-height:1.4}
+.p5 .main-text{font-size:2.4rem;font-weight:900;color:#fff;line-height:.88;letter-spacing:-.03em;margin-bottom:.6rem;text-shadow:0 2px 12px rgba(0,0,0,.3)}
+.p5 .main-text .yl{color:#FBBF24}
+.p5 .sub-text{font-family:'Nunito',sans-serif;font-size:.75rem;color:rgba(255,255,255,.7);margin-bottom:1.5rem}
+.p5 .watch-btn{background:#FBBF24;color:#1E293B;font-size:.82rem;font-weight:900;padding:.75rem 1.5rem;border-radius:100px;text-align:center;margin-bottom:.4rem}
+.p5 .play-hint{text-align:center;font-size:.6rem;color:rgba(255,255,255,.4);font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P6 — FEED 1:1 — Chatbot 24/7
+   Fondo: verde lima muy llamativo. Chat mockup blanco.
+══════════════════════════════════════════════════════════════════════════ */
+.p6{width:470px;height:470px;background:linear-gradient(135deg,#16A34A,#22C55E)}
+.p6 .blob1{position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.1)}
+.p6 .blob2{position:absolute;bottom:-30px;left:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.08)}
+.p6 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.6rem}
+.p6 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.p6 .chat-card{background:#fff;border-radius:14px;padding:.9rem;margin-bottom:.9rem;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.p6 .chat-header{font-size:.6rem;font-weight:800;color:#16A34A;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;font-family:'Nunito',sans-serif;display:flex;align-items:center;gap:5px}
+.p6 .chat-header::before{content:'';width:6px;height:6px;border-radius:50%;background:#22C55E}
+.p6 .msg-r{display:flex;gap:.4rem;margin-bottom:.3rem}
+.p6 .msg-r.right{justify-content:flex-end}
+.p6 .bubble{max-width:80%;padding:.3rem .6rem;border-radius:9px;font-size:.58rem;font-family:'Nunito',sans-serif;line-height:1.4;font-weight:600}
+.p6 .b-green{background:#DCFCE7;color:#15803D}
+.p6 .b-gray{background:#F1F5F9;color:#64748B}
+.p6 .main-claim{font-size:2rem;font-weight:900;color:#fff;line-height:.92;letter-spacing:-.03em;margin-bottom:.4rem}
+.p6 .main-claim .u{text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(255,255,255,.4)}
+.p6 .sub{font-family:'Nunito',sans-serif;font-size:.72rem;color:rgba(255,255,255,.8);line-height:1.45;margin-bottom:auto}
+.p6 .tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.7rem}
+.p6 .tag{font-size:.6rem;font-weight:700;padding:.25rem .65rem;border-radius:100px;background:rgba(255,255,255,.2);color:#fff;font-family:'Nunito',sans-serif}
+.p6 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.2)}
+.p6 .cta-g{font-size:.62rem;font-weight:800;color:#fff;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P7 — CARRUSEL SLIDE 1 — "5 errores que matan una web"
+   Fondo rosa/coral. Tipografía impactante.
+══════════════════════════════════════════════════════════════════════════ */
+.p7{width:470px;height:470px;background:#FFF1F2}
+.p7 .accent-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#F43F5E,#FB7185)}
+.p7 .num-ghost{position:absolute;right:-10px;bottom:-20px;font-size:9rem;font-weight:900;color:rgba(244,63,94,.1);line-height:1;letter-spacing:-.05em}
+.p7 .blob{position:absolute;top:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:rgba(244,63,94,.08)}
+.p7 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.6rem}
+.p7 .nav-dots{display:flex;gap:4px;margin-bottom:auto}
+.p7 .dot-active{width:20px;height:4px;border-radius:2px;background:#F43F5E}
+.p7 .dot-off{width:8px;height:4px;border-radius:2px;background:#FECDD3}
+.p7 .err-tag{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#F43F5E;font-family:'Nunito',sans-serif;display:flex;align-items:center;gap:5px;margin-bottom:.4rem}
+.p7 .err-num{font-size:1rem;color:#FECDD3}
+.p7 .error-title{font-size:2rem;font-weight:900;line-height:.92;letter-spacing:-.03em;color:#1E293B;margin-bottom:.7rem}
+.p7 .error-body{font-size:.75rem;color:#64748B;font-family:'Nunito',sans-serif;line-height:1.55;margin-bottom:.8rem}
+.p7 .fix-box{background:#fff;border:1.5px solid #FECDD3;border-radius:10px;padding:.7rem .9rem}
+.p7 .fix-label{font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#F43F5E;font-family:'Nunito',sans-serif;margin-bottom:.25rem}
+.p7 .fix-txt{font-size:.7rem;color:#475569;font-family:'Nunito',sans-serif;line-height:1.4;font-weight:600}
+.p7 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.7rem;border-top:1.5px solid #FECDD3;margin-top:.7rem}
+.p7 .swipe-next{font-size:.62rem;font-weight:800;color:#F43F5E;display:flex;align-items:center;gap:4px;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P8 — FEED 4:5 — Case Study iResident
+   Blanco limpio con foto-mockup y datos.
+══════════════════════════════════════════════════════════════════════════ */
+.p8{width:420px;height:525px;background:#fff;border:2px solid #E2E8F0}
+.p8 .header-band{position:absolute;top:0;left:0;right:0;height:44%;background:linear-gradient(135deg,#1E293B,#334155)}
+.p8 .hex-deco{position:absolute;top:1.2rem;right:1.2rem;opacity:.15}
+.p8 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.4rem}
+.p8 .case-tag{background:#FBBF24;color:#1E293B;font-size:.58rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .75rem;border-radius:100px;width:fit-content;margin-bottom:.6rem}
+.p8 .case-title{font-size:1.6rem;font-weight:900;color:#fff;line-height:1;letter-spacing:-.03em;margin-bottom:.3rem}
+.p8 .case-sub{font-size:.7rem;color:rgba(255,255,255,.6);font-family:'Nunito',sans-serif;margin-bottom:auto}
+.p8 .phone-mock{
+  background:#fff;border-radius:16px;border:6px solid #1E293B;
+  width:90px;height:160px;position:absolute;right:1.5rem;top:1.2rem;
+  overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 8px 24px rgba(0,0,0,.3);
+}
+.p8 .phone-screen{flex:1;background:linear-gradient(160deg,#F97316,#FB923C,#FBBF24);display:flex;flex-direction:column;padding:.4rem}
+.p8 .phone-icon{width:24px;height:24px;background:rgba(255,255,255,.9);border-radius:6px;margin:0 auto .3rem;display:flex;align-items:center;justify-content:center;font-size:.7rem}
+.p8 .phone-title{font-size:.42rem;font-weight:800;color:#fff;text-align:center;line-height:1.2}
+.p8 .phone-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:.3rem;background:rgba(255,255,255,.9);border-radius:6px;overflow:hidden;padding:3px}
+.p8 .phone-item{background:#FFF7ED;border-radius:3px;padding:2px;text-align:center;font-size:.3rem;color:#92400E;font-family:'Nunito',sans-serif;font-weight:700}
+.p8 .info-block{background:#F8FAFC;border-radius:14px;padding:1rem 1.1rem;margin-top:1.8rem}
+.p8 .metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.5rem;margin-bottom:.6rem}
+.p8 .metric{text-align:center}
+.p8 .metric-val{font-size:1.3rem;font-weight:900;color:#2563EB;line-height:1}
+.p8 .metric-lbl{font-size:.55rem;color:#94A3B8;font-family:'Nunito',sans-serif;font-weight:600}
+.p8 .case-desc{font-size:.68rem;color:#64748B;font-family:'Nunito',sans-serif;line-height:1.45;border-top:1px solid #E2E8F0;padding-top:.5rem}
+.p8 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.7rem;border-top:1px solid #F1F5F9}
+.p8 .cta-sm{font-size:.62rem;font-weight:800;color:#2563EB;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P9 — FEED 1:1 — Automatizaciones
+   Fondo degradado morado. Flechas y flujo visual.
+══════════════════════════════════════════════════════════════════════════ */
+.p9{width:470px;height:470px;background:linear-gradient(135deg,#7C3AED,#8B5CF6,#A78BFA)}
+.p9 .blob1{position:absolute;top:-60px;left:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.07)}
+.p9 .blob2{position:absolute;bottom:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.06)}
+.p9 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.6rem}
+.p9 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:9rem}
+.p9 .title{font-size:1.9rem;font-weight:900;color:#fff;line-height:.92;letter-spacing:-.03em;margin-bottom:.5rem}
+.p9 .title .yl{color:#FBBF24}
+.p9 .sub{font-family:'Nunito',sans-serif;font-size:.72rem;color:rgba(255,255,255,.7);margin-bottom:.9rem}
+.p9 .flow{display:flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.1);border-radius:12px;padding:.7rem .8rem;margin-bottom:.7rem;flex-wrap:wrap}
+.p9 .step{text-align:center}
+.p9 .step-icon{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem;margin:0 auto .25rem}
+.p9 .step-lbl{font-size:.55rem;color:rgba(255,255,255,.8);font-family:'Nunito',sans-serif;font-weight:700;white-space:nowrap}
+.p9 .arrow{color:rgba(255,255,255,.4);font-size:.8rem;padding-top:8px}
+.p9 .tools{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:auto}
+.p9 .tool-chip{background:rgba(255,255,255,.15);color:#fff;font-size:.62rem;font-weight:700;padding:.28rem .7rem;border-radius:100px;font-family:'Nunito',sans-serif}
+.p9 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.15)}
+.p9 .cta{font-size:.62rem;font-weight:800;color:#FBBF24;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P10 — STORY — Social proof / "Trabajamos con"
+   Fondo blanco limpio + logos de tecnologías en chips de colores.
+══════════════════════════════════════════════════════════════════════════ */
+.p10{width:390px;height:693px;background:#F8FAFF}
+.p10 .top-bar-c{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#2563EB,#7C3AED,#F43F5E,#F97316)}
+.p10 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p10 .ig-bar{display:flex;gap:3px;margin-bottom:1rem}
+.p10 .seg{height:2px;flex:1;border-radius:1px}
+.p10 .seg.d{background:#CBD5E1}
+.p10 .seg.a{background:#2563EB}
+.p10 .seg.p{background:#E2E8F0}
+.p10 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.p10 .eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#2563EB;font-family:'Nunito',sans-serif;margin-bottom:.4rem}
+.p10 .main-hook{font-size:2.5rem;font-weight:900;line-height:.9;letter-spacing:-.03em;color:#1E293B;margin-bottom:.5rem}
+.p10 .main-hook em{color:#2563EB;font-style:normal}
+.p10 .body-txt{font-family:'Nunito',sans-serif;font-size:.75rem;color:#64748B;line-height:1.55;margin-bottom:1.2rem}
+.p10 .proof-items{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.2rem}
+.p10 .proof-card{background:#fff;border-radius:14px;padding:.8rem 1rem;border:1.5px solid #E2E8F0;display:flex;align-items:center;gap:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.p10 .proof-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.p10 .proof-icon.blue{background:#EFF6FF}
+.p10 .proof-icon.green{background:#F0FDF4}
+.p10 .proof-icon.orange{background:#FFF7ED}
+.p10 .proof-title{font-size:.78rem;font-weight:800;color:#1E293B;margin-bottom:.1rem}
+.p10 .proof-sub{font-size:.62rem;color:#94A3B8;font-family:'Nunito',sans-serif;font-weight:600}
+.p10 .cta-box{background:#2563EB;border-radius:14px;padding:.9rem 1.1rem;margin-top:auto;margin-bottom:.5rem}
+.p10 .cta-box p{font-size:.88rem;font-weight:900;color:#fff;margin-bottom:.2rem;letter-spacing:-.01em}
+.p10 .cta-box span{font-size:.65rem;color:rgba(255,255,255,.7);font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P11 — FEED 1:1 — SEO "aparecer en Google"
+   Blanco + barra de búsqueda Google mockup.
+══════════════════════════════════════════════════════════════════════════ */
+.p11{width:470px;height:470px;background:#fff;border:2px solid #E2E8F0}
+.p11 .blob-tr{position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:#EFF6FF}
+.p11 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.7rem}
+.p11 .eyebrow{font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#16A34A;font-family:'Nunito',sans-serif;margin-bottom:.3rem}
+.p11 .title{font-size:1.85rem;font-weight:900;line-height:.9;letter-spacing:-.03em;color:#1E293B;margin-bottom:.8rem}
+.p11 .title em{color:#2563EB;font-style:normal}
+.p11 .search-mock{background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem .8rem;margin-bottom:.6rem}
+.p11 .search-bar{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
+.p11 .g-icon{width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#4285F4,#34A853,#FBBC05,#EA4335);flex-shrink:0}
+.p11 .search-txt{font-size:.68rem;color:#64748B;font-family:'Nunito',sans-serif;flex:1}
+.p11 .result{padding:.45rem 0;border-bottom:1px solid #E2E8F0}
+.p11 .result:last-child{border-bottom:none}
+.p11 .result-rank{font-size:.55rem;color:#94A3B8;font-family:'Nunito',sans-serif;font-weight:700;margin-bottom:1px}
+.p11 .result-title{font-size:.68rem;font-weight:800;color:#2563EB;font-family:'Nunito',sans-serif}
+.p11 .result-url{font-size:.55rem;color:#16A34A;font-family:'Nunito',sans-serif}
+.p11 .result.highlight .result-rank{color:#F97316;font-weight:900}
+.p11 .result.highlight .result-title{color:#1E293B;font-size:.7rem}
+.p11 .result.highlight{background:#FFFBEB;border-radius:6px;padding:.45rem .5rem;margin:0 -.5rem;border-bottom:none}
+.p11 .stat-row{display:flex;gap:.6rem;margin:.6rem 0}
+.p11 .stat-box{flex:1;background:#EFF6FF;border-radius:8px;padding:.5rem .7rem;text-align:center}
+.p11 .stat-box .n{font-size:1.2rem;font-weight:900;color:#2563EB}
+.p11 .stat-box .l{font-size:.58rem;color:#64748B;font-family:'Nunito',sans-serif;font-weight:600}
+.p11 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.6rem;border-top:1px solid #F1F5F9;margin-top:auto}
+.p11 .cta-sm{font-size:.62rem;font-weight:800;color:#16A34A;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P12 — FEED 1:1 — E-commerce "vendé sin comisiones"
+   Naranja vibrante con comparativa de comisiones.
+══════════════════════════════════════════════════════════════════════════ */
+.p12{width:470px;height:470px;background:linear-gradient(145deg,#EA580C,#F97316,#FB923C)}
+.p12 .blob1{position:absolute;top:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.1)}
+.p12 .blob2{position:absolute;bottom:-30px;left:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.08)}
+.p12 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.6rem}
+.p12 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem}
+.p12 .title{font-size:2rem;font-weight:900;color:#fff;line-height:.88;letter-spacing:-.04em;margin-bottom:.6rem}
+.p12 .title .u{text-decoration:underline;text-decoration-color:rgba(255,255,255,.4);text-underline-offset:3px}
+.p12 .comp-table{background:rgba(255,255,255,.12);border-radius:12px;padding:.7rem .8rem;margin-bottom:.7rem}
+.p12 .comp-row{display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.p12 .comp-row:last-child{border-bottom:none}
+.p12 .comp-name{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.85);font-family:'Nunito',sans-serif}
+.p12 .comp-fee{font-size:.85rem;font-weight:900;color:#fff}
+.p12 .comp-fee.our{color:#FBBF24;font-size:1rem}
+.p12 .comp-fee.bad{color:rgba(255,255,255,.5)}
+.p12 .highlight-row{background:rgba(255,255,255,.15);border-radius:8px;margin:0 -.3rem;padding:.3rem .3rem}
+.p12 .cta-box{background:#fff;border-radius:10px;padding:.6rem .9rem;display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.p12 .cta-txt{font-size:.78rem;font-weight:900;color:#EA580C;letter-spacing:-.01em}
+.p12 .cta-arrow{font-size:.8rem;color:#EA580C}
+.p12 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.15);margin-top:.5rem}
+.p12 .url{font-size:.58rem;color:rgba(255,255,255,.4);font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P13 — STORY — Proceso de trabajo (Reel cover)
+   Azul oscuro profesional con pasos numerados.
+══════════════════════════════════════════════════════════════════════════ */
+.p13{width:390px;height:693px;background:#1E293B}
+.p13 .color-bar{position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,#2563EB,#7C3AED,#F43F5E,#F97316)}
+.p13 .blob{position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(37,99,235,.15)}
+.p13 .blob2{position:absolute;bottom:-40px;left:30px;width:140px;height:140px;border-radius:50%;background:rgba(124,58,237,.1)}
+.p13 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem 1.5rem 1.5rem 1.8rem}
+.p13 .ig-bar{display:flex;gap:3px;margin-bottom:1rem}
+.p13 .seg{height:2px;flex:1;border-radius:1px}
+.p13 .seg.d{background:rgba(255,255,255,.5)}
+.p13 .seg.a{background:#2563EB}
+.p13 .seg.p{background:rgba(255,255,255,.2)}
+.p13 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.p13 .reel-tag{background:#F43F5E;color:#fff;font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .7rem;border-radius:100px}
+.p13 .eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7C3AED;font-family:'Nunito',sans-serif;margin-bottom:.35rem}
+.p13 .main-title{font-size:2.4rem;font-weight:900;color:#fff;line-height:.88;letter-spacing:-.03em;margin-bottom:.6rem}
+.p13 .main-title em{color:#FBBF24;font-style:normal}
+.p13 .sub{font-family:'Nunito',sans-serif;font-size:.72rem;color:rgba(255,255,255,.55);margin-bottom:1.2rem}
+.p13 .steps{display:flex;flex-direction:column;gap:.55rem;flex:1}
+.p13 .step-item{display:flex;align-items:flex-start;gap:.8rem;background:rgba(255,255,255,.04);border-radius:12px;padding:.7rem .85rem;border:1px solid rgba(255,255,255,.07)}
+.p13 .step-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;flex-shrink:0}
+.p13 .step-num.s1{background:#EFF6FF;color:#2563EB}
+.p13 .step-num.s2{background:#F0FDF4;color:#16A34A}
+.p13 .step-num.s3{background:#FFF7ED;color:#F97316}
+.p13 .step-num.s4{background:#FFF1F2;color:#F43F5E}
+.p13 .step-txt-title{font-size:.72rem;font-weight:800;color:#fff;margin-bottom:.15rem}
+.p13 .step-txt-sub{font-size:.62rem;color:rgba(255,255,255,.5);font-family:'Nunito',sans-serif;font-weight:600}
+.p13 .bottom-cta{background:#2563EB;border-radius:12px;padding:.75rem 1rem;text-align:center;margin-top:.8rem}
+.p13 .bottom-cta p{font-size:.82rem;font-weight:900;color:#fff;letter-spacing:-.01em}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P14 — CARRUSEL — FAQ "preguntas frecuentes"
+   Blanco + Q&A visual con chips de colores por pregunta.
+══════════════════════════════════════════════════════════════════════════ */
+.p14{width:470px;height:470px;background:#fff;border:2px solid #E2E8F0}
+.p14 .top-stripe{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#2563EB,#7C3AED)}
+.p14 .blob{position:absolute;bottom:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#EFF6FF}
+.p14 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.6rem}
+.p14 .title{font-size:1.7rem;font-weight:900;line-height:.92;letter-spacing:-.03em;color:#1E293B;margin-bottom:.8rem}
+.p14 .title em{color:#7C3AED;font-style:normal}
+.p14 .qa-list{display:flex;flex-direction:column;gap:.5rem;flex:1}
+.p14 .qa-item{border-radius:10px;padding:.6rem .8rem;border:1.5px solid transparent}
+.p14 .qa-item.c1{background:#EFF6FF;border-color:#BFDBFE}
+.p14 .qa-item.c2{background:#F0FDF4;border-color:#BBF7D0}
+.p14 .qa-item.c3{background:#FFF7ED;border-color:#FED7AA}
+.p14 .qa-item.c4{background:#FFF1F2;border-color:#FECDD3}
+.p14 .qa-q{font-size:.7rem;font-weight:800;color:#1E293B;margin-bottom:.2rem;line-height:1.2}
+.p14 .qa-a{font-size:.65rem;color:#64748B;font-family:'Nunito',sans-serif;line-height:1.4;font-weight:600}
+.p14 .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:.7rem;border-top:1px solid #F1F5F9}
+.p14 .more{font-size:.62rem;font-weight:800;color:#7C3AED;font-family:'Nunito',sans-serif}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   P15 — STORY — Countdown "última semana promo"
+   Rojo/urgencia con timer visual.
+══════════════════════════════════════════════════════════════════════════ */
+.p15{width:390px;height:693px;background:linear-gradient(160deg,#BE123C,#E11D48,#F43F5E)}
+.p15 .blob1{position:absolute;top:-50px;left:-50px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.08)}
+.p15 .blob2{position:absolute;bottom:50px;right:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.06)}
+.p15 .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p15 .ig-bar{display:flex;gap:3px;margin-bottom:1rem}
+.p15 .seg{height:2.5px;flex:1;border-radius:1px}
+.p15 .seg.d{background:rgba(255,255,255,.6)}
+.p15 .seg.a{background:#fff}
+.p15 .seg.p{background:rgba(255,255,255,.25)}
+.p15 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.p15 .logo-w{font-size:.75rem;font-weight:900;color:#fff;letter-spacing:-.01em}
+.p15 .logo-w em{color:#FBBF24;font-style:normal}
+.p15 .urgent-tag{background:rgba(255,255,255,.2);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border-radius:100px}
+.p15 .main-hook{font-size:3rem;font-weight:900;color:#fff;line-height:.85;letter-spacing:-.04em;margin-bottom:.6rem}
+.p15 .main-hook .y{color:#FBBF24}
+.p15 .sub{font-family:'Nunito',sans-serif;font-size:.78rem;color:rgba(255,255,255,.8);margin-bottom:1.2rem}
+.p15 .timer{display:flex;gap:.6rem;justify-content:center;margin-bottom:1.2rem}
+.p15 .time-block{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:12px;padding:.7rem .9rem;text-align:center;flex:1}
+.p15 .time-val{font-size:2.2rem;font-weight:900;color:#fff;line-height:1;display:block}
+.p15 .time-lbl{font-size:.52rem;color:rgba(255,255,255,.6);font-family:'Nunito',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.p15 .white-card{background:#fff;border-radius:16px;padding:1.1rem 1.2rem;margin-bottom:.8rem}
+.p15 .card-title{font-size:.85rem;font-weight:900;color:#1E293B;margin-bottom:.35rem;letter-spacing:-.02em}
+.p15 .price-compare{display:flex;align-items:center;gap:8rem;justify-content:space-between}
+.p15 .price-old-sm{font-size:1rem;color:#CBD5E1;text-decoration:line-through;font-family:'Nunito',sans-serif;font-weight:700}
+.p15 .arrow-mid{color:#E11D48;font-size:1.2rem}
+.p15 .price-new-sm{font-size:1.8rem;font-weight:900;color:#E11D48;letter-spacing:-.03em}
+.p15 .price-new-sm sup{font-size:.85rem}
+.p15 .save-badge{background:#F0FDF4;color:#16A34A;font-size:.6rem;font-weight:800;padding:.2rem .6rem;border-radius:100px;font-family:'Nunito',sans-serif}
+.p15 .cta-white{background:#FBBF24;color:#1E293B;font-size:.9rem;font-weight:900;letter-spacing:-.01em;padding:.8rem;border-radius:12px;text-align:center;margin-bottom:.4rem}
+.p15 .hint{text-align:center;font-size:.6rem;color:rgba(255,255,255,.45);font-family:'Nunito',sans-serif}
+</style>
+</head>
+<body>
+
+<div class="kit-header">
+  <div class="kit-title">DATIUM<span>TECH</span> — Kit Instagram</div>
+  <div class="kit-sub">17 piezas · Estilo colorido + moderno · Semanas 1, 2 y 3 de Mayo · Español neutro LATAM</div>
+</div>
+
+<!-- ══ ANUNCIOS PAGADOS ═══════════════════════════════════════════════════ -->
+<div class="section-label"><span class="dot"></span> Anuncios de pago — Instagram Ads</div>
+<div class="pieces-grid">
+
+  <!-- AD-01 -->
+  <div class="piece-wrap">
+    <div class="piece ad01">
+      <div class="blob1"></div><div class="blob2"></div><div class="blob3"></div>
+      <div class="content">
+        <div class="top">
+          <div class="pill-red">Solo esta semana</div>
+          <div class="logo-inline logo-inline-white">
+            <svg width="20" height="20" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.8)" stroke-width="1.5"/><path d="M13 12H20C24.4 12 28 15.6 28 20C28 24.4 24.4 28 20 28H13V12Z" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" fill="none"/><circle cx="28" cy="20" r="2.5" fill="#FBBF24"/></svg>
+            <span class="wm">DATIUM<em>TECH</em></span>
+          </div>
+        </div>
+        <div class="big-hook">¿CUÁNTOS<br>CLIENTES<br><span class="y">PERDÉS</span><br>SIN WEB?</div>
+        <div class="body">Tu competencia ya tiene presencia digital. Cada día sin web es un cliente que va a otro lado.</div>
+        <div class="price-row">
+          <span class="price-old">$650.000</span>
+          <span class="price-new"><sup>$</sup>350.000</span>
+        </div>
+        <div class="cta">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          QUIERO LA PROMO
+        </div>
+        <div class="bottom">
+          <div style="font-size:.65rem;color:rgba(255,255,255,0.5);font-family:'Nunito',sans-serif">Landing page profesional · 7 días</div>
+          <span class="url">datiumtech.com.ar</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">AD-01 · Feed 1:1</div><div class="psize">1080×1080 · Anuncio principal</div></div>
+  </div>
+
+  <!-- AD-02 Story -->
+  <div class="piece-wrap">
+    <div class="piece ad02">
+      <div class="top-band"></div>
+      <div class="blob-a"></div><div class="blob-b"></div>
+      <div class="content">
+        <div class="ig-bar"><div class="ig-seg done"></div><div class="ig-seg now"></div><div class="ig-seg" style="background:rgba(255,255,255,0.3)"></div></div>
+        <div class="top-row">
+          <div class="logo-pill"><svg width="16" height="16" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="rgba(255,255,255,0.8)" stroke-width="1.8"/></svg><span>DATIUMTECH</span></div>
+          <div class="promo-badge">Promo</div>
+        </div>
+        <div class="big-price-top">
+          <div class="price-label">Landing page desde</div>
+          <div class="price-amt"><sup>$</sup>350.000</div>
+          <div class="price-was">Valor normal: $650.000</div>
+        </div>
+        <div class="white-card">
+          <div class="card-title">Tu negocio merece<br>más clientes online 🚀</div>
+          <ul class="feat-list">
+            <li>Diseño único — sin plantillas genéricas</li>
+            <li>Formulario + integración WhatsApp</li>
+            <li>SEO básico para aparecer en Google</li>
+            <li>100% adaptada a celular</li>
+            <li>Entrega garantizada en 7 días</li>
+          </ul>
+          <div class="cta-full">QUIERO ESTA PROMO →</div>
+          <div class="urgency">⏳ Solo 5 cupos disponibles este mes</div>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">AD-02 · Story 9:16</div><div class="psize">1080×1920 · Anuncio Stories</div></div>
+  </div>
+
+</div>
+
+<!-- ══ SEMANA 1 ════════════════════════════════════════════════════════════ -->
+<div class="section-label"><span class="dot" style="background:#F97316"></span> Semana 1 — Presentación, Promo y Educativo</div>
+<div class="pieces-grid">
+
+  <!-- P1 Presentación -->
+  <div class="piece-wrap">
+    <div class="piece p1">
+      <div class="top-accent"></div><div class="blob"></div>
+      <div class="content">
+        <div class="eyebrow">Bienvenidos a</div>
+        <div class="brand-name">DATIUM<em>TECH</em></div>
+        <div class="tagline">Tecnología que genera resultados reales</div>
+        <div class="svc-chips">
+          <span class="chip blue">Sitios web</span>
+          <span class="chip orange">Landing pages</span>
+          <span class="chip green">Apps móviles</span>
+          <span class="chip red">Chatbots con IA</span>
+          <span class="chip yellow">Automatizaciones</span>
+          <span class="chip blue">CRM a medida</span>
+          <span class="chip green">SEO y Google</span>
+          <span class="chip orange">E-commerce</span>
+        </div>
+        <div class="bottom">
+          <div class="logo-inline"><svg width="16" height="16" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#2563EB" stroke-width="1.8"/><path d="M13 12H20C24.4 12 28 15.6 28 20C28 24.4 24.4 28 20 28H13V12Z" stroke="#2563EB" stroke-width="1.8" fill="none"/></svg><span class="wm">DATIUM<em>TECH</em></span></div>
+          <span class="dm-cta">Escribinos por DM →</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P1 · Feed 1:1</div><div class="psize">1080×1080 · S1 Lunes</div></div>
+  </div>
+
+  <!-- P2 Carrusel hook -->
+  <div class="piece-wrap">
+    <div class="piece p2">
+      <div class="stripe-v"></div><div class="blob-r"></div>
+      <div class="content">
+        <div class="slide-ind">01 / 05 · Deslizá para ver →</div>
+        <div class="question">¿TU<br>NEGOCIO<br><span class="hl">NO TIENE</span><br>WEB?</div>
+        <div class="stat-box">
+          <div class="stat-num">70%</div>
+          <div class="stat-txt">de los negocios sin presencia digital pierden clientes todos los días sin darse cuenta</div>
+        </div>
+        <div class="bottom">
+          <div class="logo-inline"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#2563EB" stroke-width="2"/></svg><span class="wm" style="font-size:.72rem">DATIUMTECH</span></div>
+          <div class="next-lbl">Ver solución <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P2 · Carrusel slide 1</div><div class="psize">1080×1080 · S1 Miércoles</div></div>
+  </div>
+
+  <!-- P3 Story promo -->
+  <div class="piece-wrap">
+    <div class="piece p3">
+      <div class="circle1"></div><div class="circle2"></div><div class="square"></div>
+      <div class="content">
+        <div class="ig-bar"><div class="seg d"></div><div class="seg a"></div><div class="seg p"></div><div class="seg p"></div></div>
+        <div class="top-row">
+          <div class="logo-badge">DATIUMTECH</div>
+          <div class="fire-tag">🔥 Promo</div>
+        </div>
+        <div class="hook">LANDING<br><span class="y">PAGE</span><br>DESDE<br>$350.000</div>
+        <div class="bodycopy">Diseño profesional. Entrega en 7 días. Sin plantillas genéricas. Tu negocio con la presencia que se merece.</div>
+        <div class="white-card">
+          <div class="price-label">Precio de lanzamiento</div>
+          <div class="price-big"><sup>$</sup>350.000</div>
+          <div class="price-old">Valor normal: $650.000</div>
+          <ul class="feats">
+            <li>Diseño único a medida</li>
+            <li>SEO + formulario de contacto</li>
+            <li>100% adaptada a celular</li>
+          </ul>
+        </div>
+        <div class="swipe">QUIERO LA PROMO →</div>
+        <div class="hint">Escribinos por DM o visitá datiumtech.com.ar</div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P3 · Story 9:16</div><div class="psize">1080×1920 · S1 Martes</div></div>
+  </div>
+
+  <!-- P4 Qué incluye landing -->
+  <div class="piece-wrap">
+    <div class="piece p4">
+      <div class="blob-tl"></div><div class="blob-br"></div>
+      <div class="content">
+        <div class="header-row">
+          <div class="eyebrow">Lo que incluye</div>
+          <div class="title">Tu <em>landing</em><br>perfecta</div>
+        </div>
+        <div class="items">
+          <div class="item blue"><div class="item-icon">🎨</div><span class="item-txt">Diseño único a medida — sin plantillas</span></div>
+          <div class="item orange"><div class="item-icon">📱</div><span class="item-txt">100% adaptada a celular y tablet</span></div>
+          <div class="item green"><div class="item-icon">🔍</div><span class="item-txt">SEO básico para aparecer en Google</span></div>
+          <div class="item pink"><div class="item-icon">💬</div><span class="item-txt">Formulario + botón de WhatsApp</span></div>
+          <div class="item yellow"><div class="item-icon">⚡</div><span class="item-txt">Entrega garantizada en 7 días</span></div>
+        </div>
+        <div class="bottom">
+          <div class="logo-inline"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#2563EB" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div>
+          <span class="cta-sm">Cotizá la tuya →</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P4 · Feed 1:1</div><div class="psize">1080×1080 · S1 Jueves</div></div>
+  </div>
+
+  <!-- P5 Reel cover -->
+  <div class="piece-wrap">
+    <div class="piece p5">
+      <div class="left-half"></div><div class="right-half"></div><div class="divider-line"></div>
+      <div class="content">
+        <div class="top-bar">
+          <div class="reel-tag">▶ Reel</div>
+          <div class="logo-w">DATIUM<em>TECH</em></div>
+        </div>
+        <div class="col-labels">
+          <div class="col-left">
+            <div class="col-left-label">Sin web</div>
+            <span class="icon-big">😰</span>
+            <p>Clientes que no te encuentran online</p>
+          </div>
+          <div class="col-right">
+            <div class="col-right-label">Con web</div>
+            <span class="icon-big">🚀</span>
+            <p>Leads 24/7 mientras dormís</p>
+          </div>
+        </div>
+        <div class="main-text">ANTES<br>VS<br><span class="yl">DESPUÉS</span></div>
+        <div class="sub-text">Mirá la diferencia que hace una landing profesional</div>
+        <div class="watch-btn">▶ Mirá el antes y después</div>
+        <div class="play-hint">Tocá para ver el video completo</div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P5 · Reel cover 9:16</div><div class="psize">1080×1920 · S1 Viernes</div></div>
+  </div>
+
+</div>
+
+<!-- ══ SEMANA 2 ════════════════════════════════════════════════════════════ -->
+<div class="section-label"><span class="dot" style="background:#16A34A"></span> Semana 2 — Chatbot, Errores, Case Study, Automatizaciones, Social Proof</div>
+<div class="pieces-grid">
+
+  <!-- P6 Chatbot -->
+  <div class="piece-wrap">
+    <div class="piece p6">
+      <div class="blob1"></div><div class="blob2"></div>
+      <div class="content">
+        <div class="top-row">
+          <div class="logo-inline logo-inline-white"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="rgba(255,255,255,0.8)" stroke-width="1.8"/></svg><span class="wm">DATIUM<em>TECH</em></span></div>
+          <span style="font-size:1.3rem">🤖</span>
+        </div>
+        <div class="chat-card">
+          <div class="chat-header">Bot activo — 03:47 AM</div>
+          <div class="msg-r bot"><div class="bubble b-green">¡Hola! ¿En qué te puedo ayudar?</div></div>
+          <div class="msg-r right"><div class="bubble b-gray">¿Cuánto cuesta una web?</div></div>
+          <div class="msg-r bot"><div class="bubble b-green">Landings desde $350k con entrega en 7 días ✓</div></div>
+          <div class="msg-r right"><div class="bubble b-gray">Perfecto, quiero saber más</div></div>
+          <div class="msg-r bot"><div class="bubble b-green">¡Genial! Te agendo una llamada ahora 📅</div></div>
+        </div>
+        <div class="main-claim">TU NEGOCIO<br>ATIENDE<br><span class="u">LAS 24HS</span></div>
+        <div class="sub">Un chatbot entrenado con tu negocio responde, califica leads y agenda reuniones automáticamente.</div>
+        <div class="tags"><span class="tag">WhatsApp</span><span class="tag">Instagram</span><span class="tag">Web</span><span class="tag">24/7</span></div>
+        <div class="bottom">
+          <div class="logo-inline logo-inline-white" style="opacity:.5"><svg width="12" height="12" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="white" stroke-width="2"/></svg><span class="wm" style="font-size:.65rem;color:rgba(255,255,255,0.4)">DATIUMTECH</span></div>
+          <span class="cta-g">DM "BOT" para info →</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P6 · Feed 1:1</div><div class="psize">1080×1080 · S2 Lunes</div></div>
+  </div>
+
+  <!-- P7 Errores carrusel -->
+  <div class="piece-wrap">
+    <div class="piece p7">
+      <div class="accent-top"></div><div class="num-ghost">01</div><div class="blob"></div>
+      <div class="content">
+        <div class="nav-dots"><div class="dot-active"></div><div class="dot-off"></div><div class="dot-off"></div><div class="dot-off"></div><div class="dot-off"></div></div>
+        <div class="err-tag"><span class="err-num">⚠</span> Error 1 de 5</div>
+        <div class="error-title">NO TENER<br>UN LLAMADO<br>A LA ACCIÓN</div>
+        <div class="error-body">Tu visitante llega, ve información... y no sabe qué tiene que hacer. Sin un botón claro, simplemente se va sin contactarte.</div>
+        <div class="fix-box">
+          <div class="fix-label">✓ Cómo lo resolvemos</div>
+          <div class="fix-txt">Cada landing que hacemos tiene un CTA principal visible desde el primer scroll y reforzado cada 2 secciones.</div>
+        </div>
+        <div class="bottom">
+          <div class="logo-inline"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#F43F5E" stroke-width="2"/></svg><span class="wm" style="font-size:.65rem;color:#F43F5E">DATIUMTECH</span></div>
+          <div class="swipe-next">Error #2 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F43F5E" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P7 · Carrusel 1/5</div><div class="psize">1080×1080 · S2 Martes</div></div>
+  </div>
+
+  <!-- P8 Case Study iResident -->
+  <div class="piece-wrap">
+    <div class="piece p8">
+      <div class="header-band"></div>
+      <div class="hex-deco">
+        <svg width="80" height="80" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="white" stroke-width="1"/><path d="M20 9L30 14.5V25.5L20 31L10 25.5V14.5L20 9Z" stroke="white" stroke-width="0.5"/></svg>
+      </div>
+      <div class="content">
+        <div class="case-tag">Caso real</div>
+        <div class="case-title">iResident</div>
+        <div class="case-sub">App de gestión de condominios — iOS & Android</div>
+        <div class="phone-mock">
+          <div class="phone-screen">
+            <div class="phone-icon">🏠</div>
+            <div class="phone-title">iResident</div>
+            <div class="phone-grid">
+              <div class="phone-item">🔒 Accesos</div>
+              <div class="phone-item">👥 Invitados</div>
+              <div class="phone-item">📋 Reglas</div>
+              <div class="phone-item">🔔 Avisos</div>
+            </div>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="metrics">
+            <div class="metric"><div class="metric-val">iOS</div><div class="metric-lbl">+ Android</div></div>
+            <div class="metric"><div class="metric-val">5</div><div class="metric-lbl">Módulos</div></div>
+            <div class="metric"><div class="metric-val">24/7</div><div class="metric-lbl">Disponible</div></div>
+          </div>
+          <div class="case-desc">Control de accesos, gestión de invitados, vigilancia, buzón y notificaciones. Todo en una app.</div>
+        </div>
+        <div class="bottom">
+          <div class="logo-inline"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#2563EB" stroke-width="2"/></svg><span class="wm" style="font-size:.65rem">DATIUMTECH</span></div>
+          <span class="cta-sm">¿Tu proyecto? →</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P8 · Feed 4:5</div><div class="psize">1080×1350 · S2 Miércoles</div></div>
+  </div>
+
+  <!-- P9 Automatizaciones -->
+  <div class="piece-wrap">
+    <div class="piece p9">
+      <div class="blob1"></div><div class="blob2"></div>
+      <div class="content">
+        <div class="top-row" style="margin-bottom:.7rem">
+          <div class="logo-inline logo-inline-white"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.8"/></svg><span class="wm">DATIUMTECH</span></div>
+          <span style="font-size:1.2rem">⚙️</span>
+        </div>
+        <div class="title">TU NEGOCIO<br><span class="yl">EN PILOTO</span><br>AUTOMÁTICO</div>
+        <div class="sub">Eliminá tareas repetitivas. Más tiempo para vender, menos tiempo en administración.</div>
+        <div class="flow">
+          <div class="step"><div class="step-icon">📝</div><div class="step-lbl">Lead entra</div></div>
+          <div class="arrow">→</div>
+          <div class="step"><div class="step-icon">💬</div><div class="step-lbl">WA auto</div></div>
+          <div class="arrow">→</div>
+          <div class="step"><div class="step-icon">📊</div><div class="step-lbl">CRM</div></div>
+          <div class="arrow">→</div>
+          <div class="step"><div class="step-icon">🔔</div><div class="step-lbl">Alerta</div></div>
+        </div>
+        <div class="tools">
+          <span class="tool-chip">Make</span>
+          <span class="tool-chip">WhatsApp API</span>
+          <span class="tool-chip">HubSpot</span>
+          <span class="tool-chip">Zapier</span>
+          <span class="tool-chip">Google Sheets</span>
+        </div>
+        <div class="bottom">
+          <div class="logo-inline logo-inline-white" style="opacity:.4"><svg width="12" height="12" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="white" stroke-width="2"/></svg><span class="wm" style="font-size:.65rem;color:rgba(255,255,255,0.3)">DATIUMTECH</span></div>
+          <span class="cta">Automatizá hoy →</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P9 · Feed 1:1</div><div class="psize">1080×1080 · S2 Jueves</div></div>
+  </div>
+
+  <!-- P10 Social proof Story -->
+  <div class="piece-wrap">
+    <div class="piece p10">
+      <div class="top-bar-c"></div>
+      <div class="content">
+        <div class="ig-bar"><div class="seg d"></div><div class="seg d"></div><div class="seg a"></div><div class="seg p"></div></div>
+        <div class="top-row">
+          <div class="logo-inline"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#2563EB" stroke-width="1.8"/><path d="M13 12H20C24.4 12 28 15.6 28 20C28 24.4 24.4 28 20 28H13V12Z" stroke="#2563EB" stroke-width="1.8" fill="none"/></svg><span class="wm">DATIUM<em>TECH</em></span></div>
+          <span style="font-size:.65rem;font-weight:700;color:#94A3B8;font-family:'Nunito',sans-serif">hace 1h</span>
+        </div>
+        <div class="eyebrow">Lo que ya hicimos</div>
+        <div class="main-hook">PROYECTOS<br>QUE <em>FUNCIONAN</em></div>
+        <div class="body-txt">No prometemos. Mostramos. Estos son algunos de los proyectos reales que desarrollamos para clientes de toda Latinoamérica.</div>
+        <div class="proof-items">
+          <div class="proof-card">
+            <div class="proof-icon orange">🏠</div>
+            <div><div class="proof-title">iResident</div><div class="proof-sub">App gestión condominios · iOS & Android</div></div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-icon blue">🛍️</div>
+            <div><div class="proof-title">Muse App</div><div class="proof-sub">Marketplace de productos · SaaS</div></div>
+          </div>
+          <div class="proof-card">
+            <div class="proof-icon green">🎙️</div>
+            <div><div class="proof-title">Podcast Ganadero</div><div class="proof-sub">Plataforma de contenidos · España</div></div>
+          </div>
+        </div>
+        <div class="cta-box">
+          <p>¿Tu negocio es el siguiente?</p>
+          <span>Escribinos por DM y te contamos cómo</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P10 · Story 9:16</div><div class="psize">1080×1920 · S2 Viernes</div></div>
+  </div>
+
+</div>
+
+<!-- ══ SEMANA 3 ════════════════════════════════════════════════════════════ -->
+<div class="section-label"><span class="dot" style="background:#16A34A"></span> Semana 3 — SEO, E-commerce, Proceso, FAQ, Countdown</div>
+<div class="pieces-grid">
+
+  <!-- P11 SEO -->
+  <div class="piece-wrap">
+    <div class="piece p11">
+      <div class="blob-tr"></div>
+      <div class="content">
+        <div class="eyebrow">Posicionamiento web</div>
+        <div class="title">Aparecer<br>en <em>Google</em><br>importa</div>
+        <div class="search-mock">
+          <div class="search-bar">
+            <div class="g-icon"></div>
+            <div class="search-txt">plomero cerca de mí</div>
+          </div>
+          <div class="result highlight">
+            <div class="result-rank">🏆 #1 Resultado</div>
+            <div class="result-title">Tu Negocio — Servicio Profesional</div>
+            <div class="result-url">datiumtech.com.ar/tu-negocio</div>
+          </div>
+          <div class="result">
+            <div class="result-rank">#2</div>
+            <div class="result-title">Competidor A</div>
+            <div class="result-url">competidor.com</div>
+          </div>
+          <div class="result">
+            <div class="result-rank">#3</div>
+            <div class="result-title">Competidor B</div>
+            <div class="result-url">otro.com</div>
+          </div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="n">91%</div><div class="l">clicks van al top 3</div></div>
+          <div class="stat-box"><div class="n">0%</div><div class="l">clicks en pág. 2</div></div>
+        </div>
+        <div class="bottom">
+          <div class="logo-inline"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#2563EB" stroke-width="2"/></svg><span class="wm" style="font-size:.68rem">DATIUMTECH</span></div>
+          <span class="cta-sm">Optimizá tu web →</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P11 · Feed 1:1</div><div class="psize">1080×1080 · S3 Lunes</div></div>
+  </div>
+
+  <!-- P12 E-commerce -->
+  <div class="piece-wrap">
+    <div class="piece p12">
+      <div class="blob1"></div><div class="blob2"></div>
+      <div class="content">
+        <div class="top-row" style="margin-bottom:.7rem">
+          <div class="logo-inline logo-inline-white"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.8"/></svg><span class="wm">DATIUMTECH</span></div>
+          <span style="font-size:1.2rem">🛒</span>
+        </div>
+        <div class="title">VENDÉ SIN<br><span class="u">COMISIONES</span><br>DE NADIE</div>
+        <div class="comp-table">
+          <div class="comp-row"><span class="comp-name">MercadoLibre</span><span class="comp-fee bad">15% por venta</span></div>
+          <div class="comp-row"><span class="comp-name">Tiendanube</span><span class="comp-fee bad">3% por venta</span></div>
+          <div class="comp-row highlight-row"><span class="comp-name" style="color:#fff;font-weight:900">Tu tienda propia</span><span class="comp-fee our">0%</span></div>
+        </div>
+        <div class="cta-box">
+          <span class="cta-txt">Creá tu tienda online →</span>
+          <span class="cta-arrow">→</span>
+        </div>
+        <div class="bottom">
+          <div class="logo-inline logo-inline-white" style="opacity:.4"><svg width="12" height="12" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="white" stroke-width="2"/></svg><span class="wm" style="font-size:.62rem;color:rgba(255,255,255,0.3)">DATIUMTECH</span></div>
+          <span class="url">datiumtech.com.ar</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P12 · Feed 1:1</div><div class="psize">1080×1080 · S3 Martes</div></div>
+  </div>
+
+  <!-- P13 Proceso Reel -->
+  <div class="piece-wrap">
+    <div class="piece p13">
+      <div class="color-bar"></div><div class="blob"></div><div class="blob2"></div>
+      <div class="content">
+        <div class="ig-bar"><div class="seg d"></div><div class="seg d"></div><div class="seg d"></div><div class="seg a"></div><div class="seg p"></div></div>
+        <div class="top-row">
+          <div class="reel-tag">▶ Reel</div>
+          <div style="font-size:.72rem;font-weight:900;color:#fff;letter-spacing:-.01em">DATIUM<span style="color:#FBBF24">TECH</span></div>
+        </div>
+        <div class="eyebrow">Así trabajamos</div>
+        <div class="main-title">DE IDEA<br>A WEB EN<br><em>7 DÍAS</em></div>
+        <div class="sub">Proceso claro, comunicación constante y entrega garantizada.</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num s1">1</div><div><div class="step-txt-title">Primera llamada gratis</div><div class="step-txt-sub">Entendemos tu negocio y objetivo</div></div></div>
+          <div class="step-item"><div class="step-num s2">2</div><div><div class="step-txt-title">Propuesta en 24hs</div><div class="step-txt-sub">Precio fijo, sin sorpresas</div></div></div>
+          <div class="step-item"><div class="step-num s3">3</div><div><div class="step-txt-title">Desarrollo en 5 días</div><div class="step-txt-sub">Seguimiento diario del avance</div></div></div>
+          <div class="step-item"><div class="step-num s4">4</div><div><div class="step-txt-title">Lanzamiento y soporte</div><div class="step-txt-sub">Online y generando resultados</div></div></div>
+        </div>
+        <div class="bottom-cta"><p>Empezá hoy — primera llamada gratis →</p></div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P13 · Reel cover 9:16</div><div class="psize">1080×1920 · S3 Miércoles</div></div>
+  </div>
+
+  <!-- P14 FAQ -->
+  <div class="piece-wrap">
+    <div class="piece p14">
+      <div class="top-stripe"></div><div class="blob"></div>
+      <div class="content">
+        <div class="title">Preguntas<br><em>frecuentes</em></div>
+        <div class="qa-list">
+          <div class="qa-item c1">
+            <div class="qa-q">¿Cuánto tarda en hacerse una landing?</div>
+            <div class="qa-a">7 días hábiles desde que confirmás el proyecto. Garantizado.</div>
+          </div>
+          <div class="qa-item c2">
+            <div class="qa-q">¿Puedo editar el contenido yo solo?</div>
+            <div class="qa-a">Sí. Te entregamos el sitio listo y te explicamos cómo actualizar textos e imágenes.</div>
+          </div>
+          <div class="qa-item c3">
+            <div class="qa-q">¿El precio de $350k incluye el dominio?</div>
+            <div class="qa-a">El dominio y hosting se paga aparte (~$15 USD/año). Te ayudamos a contratarlo.</div>
+          </div>
+          <div class="qa-item c4">
+            <div class="qa-q">¿Trabajan con clientes de otros países?</div>
+            <div class="qa-a">Sí. Tenemos clientes en Argentina, México, Colombia, España y más.</div>
+          </div>
+        </div>
+        <div class="bottom">
+          <div class="logo-inline"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#7C3AED" stroke-width="2"/></svg><span class="wm" style="font-size:.65rem">DATIUMTECH</span></div>
+          <span class="more">Más dudas → DM →</span>
+        </div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P14 · Feed 1:1</div><div class="psize">1080×1080 · S3 Jueves</div></div>
+  </div>
+
+  <!-- P15 Countdown Story -->
+  <div class="piece-wrap">
+    <div class="piece p15">
+      <div class="blob1"></div><div class="blob2"></div>
+      <div class="content">
+        <div class="ig-bar"><div class="seg d"></div><div class="seg d"></div><div class="seg d"></div><div class="seg d"></div><div class="seg a"></div></div>
+        <div class="top-row">
+          <div class="logo-w">DATIUM<em>TECH</em></div>
+          <div class="urgent-tag">⏰ Urgente</div>
+        </div>
+        <div class="main-hook">ÚLTIMA<br><span class="y">SEMANA</span><br>DE PROMO</div>
+        <div class="sub">El precio de la landing vuelve a $650.000 el próximo lunes. Si estabas pensándolo, este es el momento.</div>
+        <div class="timer">
+          <div class="time-block"><span class="time-val">04</span><span class="time-lbl">Días</span></div>
+          <div class="time-block"><span class="time-val">18</span><span class="time-lbl">Horas</span></div>
+          <div class="time-block"><span class="time-val">32</span><span class="time-lbl">Minutos</span></div>
+        </div>
+        <div class="white-card">
+          <div class="card-title">Landing Page Profesional</div>
+          <div class="price-compare">
+            <span class="price-old-sm">$650.000</span>
+            <span class="arrow-mid">→</span>
+            <span class="price-new-sm"><sup>$</sup>350.000</span>
+            <span class="save-badge">Ahorrás $300k</span>
+          </div>
+        </div>
+        <div class="cta-white">QUIERO APROVECHAR LA PROMO →</div>
+        <div class="hint">Escribinos por DM o entrá a datiumtech.com.ar</div>
+      </div>
+    </div>
+    <div class="piece-meta"><div class="plabel">P15 · Story 9:16 · Countdown</div><div class="psize">1080×1920 · S3 Viernes</div></div>
+  </div>
+
+</div>
+
+<!-- ══ INSTRUCCIONES ════════════════════════════════════════════════════════ -->
+<div class="section-label" style="margin-top:4rem"><span class="dot" style="background:#F97316"></span> Instrucciones de uso</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;max-width:1200px;margin-bottom:3rem">
+  <div style="background:#fff;border-radius:14px;padding:1.3rem;border:2px solid #E2E8F0">
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:800;color:#2563EB;margin-bottom:.6rem">📸 Capturar a 1080px</div>
+    <div style="font-size:.78rem;color:#64748B;font-family:'Nunito',sans-serif;line-height:1.6">Chrome → F12 → Device toolbar → ancho 1080<br>o usar extensión "GoFullPage".<br>Para Stories: ancho 1080, alto 1920.</div>
+  </div>
+  <div style="background:#fff;border-radius:14px;padding:1.3rem;border:2px solid #E2E8F0">
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:800;color:#F97316;margin-bottom:.6rem">🎨 Editar en Canva</div>
+    <div style="font-size:.78rem;color:#64748B;font-family:'Nunito',sans-serif;line-height:1.6">Capturá cada pieza como PNG.<br>Canva → subir como fondo → editar texto.<br>Fuente: Plus Jakarta Sans Bold / Black<br>Colores: #2563EB · #F97316 · #F43F5E</div>
+  </div>
+  <div style="background:#fff;border-radius:14px;padding:1.3rem;border:2px solid #E2E8F0">
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:800;color:#16A34A;margin-bottom:.6rem">📅 Calendario de publicación</div>
+    <div style="font-size:.78rem;color:#64748B;font-family:'Nunito',sans-serif;line-height:1.6">Semana 1: P1 L · P3 M · P2 X · P4 J · P5 V<br>Semana 2: P6 L · P7 M · P8 X · P9 J · P10 V<br>Semana 3: P11 L · P12 M · P13 X · P14 J · P15 V<br>Anuncios: AD-01 y AD-02 desde día 1</div>
+  </div>
+  <div style="background:#fff;border-radius:14px;padding:1.3rem;border:2px solid #E2E8F0">
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:800;color:#7C3AED;margin-bottom:.6rem">🚀 Próximos sets</div>
+    <div style="font-size:.78rem;color:#64748B;font-family:'Nunito',sans-serif;line-height:1.6">→ Slides 2-5 del carrusel de errores<br>→ Carrusel Muse App case study<br>→ Story animada con JS timer real<br>→ Set de Junio con audiencia LATAM<br>→ Highlights de Instagram (portadas)</div>
+  </div>
+</div>
+
+</body>
+</html>
