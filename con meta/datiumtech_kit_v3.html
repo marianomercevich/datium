@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DatiumTech — Kit Instagram Vol.2 — 30 piezas</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#02040B;font-family:'DM Sans',sans-serif;color:#fff;padding:2rem}
+:root{
+  --bg:#080B14;--bg2:#0D1120;--bg3:#0A0E1A;
+  --cyan:#00E5FF;--cyan2:rgba(0,229,255,0.12);--cyan3:rgba(0,229,255,0.06);
+  --red:#FF3D00;--red2:rgba(255,61,0,0.12);
+  --green:#00C853;--green2:rgba(0,200,83,0.12);
+  --yellow:#FFD600;--yellow2:rgba(255,214,0,0.12);
+  --purple:#8B5CF6;--purple2:rgba(139,92,246,0.12);
+  --orange:#F97316;--orange2:rgba(249,115,22,0.12);
+  --tx:#F0F4FF;--tx2:#8896B3;--tx3:#3D4F70;
+}
+.kit-head{margin-bottom:3rem}
+.kit-title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;color:var(--cyan);letter-spacing:.05em;margin-bottom:.2rem}
+.kit-sub{color:var(--tx2);font-size:.85rem}
+.section-label{font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--tx2);margin:3.5rem 0 1.5rem;padding-bottom:.6rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';width:20px;height:2px;background:var(--cyan);flex-shrink:0}
+.grid{display:flex;flex-wrap:wrap;gap:2.2rem;align-items:flex-start}
+.pw{display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.plabel{font-size:.7rem;color:var(--tx2);letter-spacing:.07em;text-align:center}
+.psize{font-size:.62rem;color:rgba(255,255,255,.18);letter-spacing:.05em}
+.piece{position:relative;overflow:hidden;flex-shrink:0}
+
+/* ── LOGO SVG reutilizable ────────────────────────────────────────────────── */
+.lm{display:flex;align-items:center;gap:7px}
+.lm .wm{font-family:'Barlow Condensed',sans-serif;font-weight:900;letter-spacing:.05em;color:#fff}
+.lm .wm em{color:var(--cyan);font-style:normal}
+
+/* ── FONDO GRID ────────────────────────────────────────────────────────────── */
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.grid-bg-sm{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.03) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.dots-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(0,229,255,.06) 1px,transparent 1px);background-size:24px 24px;pointer-events:none}
+
+/* ── GLOW ──────────────────────────────────────────────────────────────────── */
+.g-tl{position:absolute;top:-80px;left:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.12),transparent 65%);pointer-events:none}
+.g-tr{position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.1),transparent 65%);pointer-events:none}
+.g-br{position:absolute;bottom:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,61,0,.1),transparent 65%);pointer-events:none}
+.g-bl{position:absolute;bottom:-50px;left:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.08),transparent 65%);pointer-events:none}
+.g-c{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,229,255,.07),transparent 65%);pointer-events:none}
+.g-purple{position:absolute;top:-60px;right:-60px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.15),transparent 65%);pointer-events:none}
+.g-green{position:absolute;bottom:-50px;left:-50px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,83,.1),transparent 65%);pointer-events:none}
+
+/* ── HEX DECO ──────────────────────────────────────────────────────────────── */
+.hex{position:absolute;opacity:.06;pointer-events:none}
+
+/* ── BADGES ────────────────────────────────────────────────────────────────── */
+.badge{display:inline-flex;align-items:center;gap:5px;border-radius:4px;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .75rem;font-family:'DM Sans',sans-serif}
+.badge-red{background:rgba(255,61,0,.12);border:1px solid rgba(255,61,0,.3);color:#FF3D00}
+.badge-cyan{background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.25);color:#00E5FF}
+.badge-green{background:rgba(0,200,83,.1);border:1px solid rgba(0,200,83,.25);color:#00C853}
+.badge-yellow{background:rgba(255,214,0,.1);border:1px solid rgba(255,214,0,.25);color:#FFD600}
+.badge-purple{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.3);color:#A78BFA}
+.badge-orange{background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);color:#F97316}
+.badge::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor;animation:bl 1.5s infinite;flex-shrink:0}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* ── CTA BOTONES ────────────────────────────────────────────────────────────── */
+.cta-cyan{display:inline-flex;align-items:center;gap:7px;background:var(--cyan);color:#080B14;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:900;letter-spacing:.04em;padding:.55rem 1.3rem;border-radius:5px;width:fit-content}
+.cta-red{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,#FF3D00,#FF6B35);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:.88rem;font-weight:900;letter-spacing:.04em;padding:.55rem 1.3rem;border-radius:5px;width:fit-content}
+.cta-outline{display:inline-flex;align-items:center;gap:7px;background:transparent;border:1px solid rgba(0,229,255,.3);color:var(--cyan);font-family:'Barlow Condensed',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.04em;padding:.5rem 1.2rem;border-radius:5px;width:fit-content}
+
+/* ── BOTTOM BAR ────────────────────────────────────────────────────────────── */
+.bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.06);padding-top:.6rem}
+.bot .url{font-size:.58rem;color:rgba(255,255,255,.2);font-family:'DM Sans',sans-serif;letter-spacing:.06em}
+
+/* ═══════════════════════════════════════════════════════════════
+   01 — FEED 1:1 — ROI Calculator visual
+   "¿Cuánto vale 1 cliente nuevo?"
+═══════════════════════════════════════════════════════════════ */
+.p01{width:480px;height:480px;background:var(--bg)}
+.p01 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p01 .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:auto}
+.p01 .q{font-family:'Barlow Condensed',sans-serif;font-size:2.1rem;font-weight:900;line-height:.92;letter-spacing:-.01em;color:var(--tx);margin-bottom:.7rem}
+.p01 .q em{color:var(--cyan);font-style:normal}
+.p01 .calc-rows{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.p01 .calc-row{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:.5rem .8rem}
+.p01 .calc-label{font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif}
+.p01 .calc-val{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--tx)}
+.p01 .calc-row.result{background:rgba(0,229,255,.06);border-color:rgba(0,229,255,.2)}
+.p01 .calc-row.result .calc-label{color:var(--cyan)}
+.p01 .calc-row.result .calc-val{color:var(--cyan);font-size:1.5rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   02 — FEED 1:1 — "¿Cuánto perdés sin web?" stat post
+═══════════════════════════════════════════════════════════════ */
+.p02{width:480px;height:480px;background:var(--bg)}
+.p02 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p02 .big-stat{font-family:'Barlow Condensed',sans-serif;font-size:7rem;font-weight:900;line-height:.85;letter-spacing:-.04em;color:var(--red);margin-bottom:.3rem}
+.p02 .stat-label{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:900;color:var(--tx);margin-bottom:.5rem;line-height:.95}
+.p02 .stat-body{font-size:.8rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.6;max-width:280px;margin-bottom:auto}
+.p02 .source{font-size:.58rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;margin-bottom:.7rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   03 — STORY 9:16 — Automatización WA: flujo visual
+═══════════════════════════════════════════════════════════════ */
+.p03{width:390px;height:693px;background:var(--bg)}
+.p03 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p03 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.p03 .title{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;line-height:.9;color:var(--tx);letter-spacing:-.01em;margin-bottom:.5rem}
+.p03 .title em{color:var(--cyan);font-style:normal}
+.p03 .sub{font-size:.75rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.55;margin-bottom:1rem}
+.p03 .flow-steps{display:flex;flex-direction:column;gap:.5rem;flex:1}
+.p03 .step{display:flex;align-items:flex-start;gap:.8rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:.65rem .8rem}
+.p03 .step.active{background:rgba(0,229,255,.06);border-color:rgba(0,229,255,.2)}
+.p03 .step-num{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--cyan);flex-shrink:0;width:18px}
+.p03 .step-ico{font-size:.9rem;flex-shrink:0;width:20px}
+.p03 .step-txt{font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.4}
+.p03 .step-txt strong{color:var(--tx);display:block;font-size:.75rem;margin-bottom:1px}
+.p03 .connector{width:1px;height:10px;background:rgba(0,229,255,.2);margin:0 auto -3px;flex-shrink:0;position:relative;left:27px}
+.p03 .cta-full{background:var(--cyan);color:#080B14;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;letter-spacing:.04em;padding:.75rem;border-radius:7px;text-align:center;margin-top:.8rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   04 — FEED 4:5 — Case Study Muse App
+═══════════════════════════════════════════════════════════════ */
+.p04{width:420px;height:525px;background:var(--bg)}
+.p04 .header{position:absolute;top:0;left:0;right:0;height:42%;background:linear-gradient(135deg,#4C1D95,#7C3AED)}
+.p04 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.4rem}
+.p04 .case-tag{background:#FFD600;color:#1E293B;font-size:.58rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .75rem;border-radius:100px;width:fit-content;margin-bottom:.5rem}
+.p04 .case-title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;color:#fff;line-height:.95;letter-spacing:-.02em;margin-bottom:.2rem}
+.p04 .case-sub{font-size:.7rem;color:rgba(255,255,255,.55);font-family:'DM Sans',sans-serif;margin-bottom:auto}
+.p04 .screen-mock{position:absolute;right:1.2rem;top:1rem;background:#fff;border-radius:12px;border:5px solid #1E293B;width:80px;height:145px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.p04 .screen-inner{height:100%;background:linear-gradient(160deg,#7C3AED,#A78BFA,#C4B5FD);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.4rem;gap:.3rem}
+.p04 .screen-icon{font-size:1.4rem}
+.p04 .screen-txt{font-size:.3rem;font-weight:800;color:rgba(255,255,255,.9);text-align:center;letter-spacing:.05em;text-transform:uppercase}
+.p04 .screen-row{width:100%;height:3px;border-radius:2px;background:rgba(255,255,255,.25);margin-top:.15rem}
+.p04 .info-card{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.9rem 1rem;margin-top:1.6rem}
+.p04 .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-bottom:.55rem}
+.p04 .metric-v{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:900;color:var(--purple);line-height:1;text-align:center}
+.p04 .metric-l{font-size:.55rem;color:var(--tx3);font-family:'DM Sans',sans-serif;text-align:center;margin-top:.1rem}
+.p04 .case-desc{font-size:.68rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.45;border-top:1px solid rgba(255,255,255,.06);padding-top:.5rem}
+.p04 .bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.06);padding-top:.6rem;margin-top:.5rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   05 — FEED 1:1 — "5 razones para tener web" carrusel s2
+═══════════════════════════════════════════════════════════════ */
+.p05{width:480px;height:480px;background:var(--bg)}
+.p05 .stripe{position:absolute;top:0;left:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--cyan),rgba(0,229,255,.1))}
+.p05 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.7rem 1.8rem}
+.p05 .slide-num{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:rgba(255,255,255,.2);letter-spacing:.1em;margin-bottom:auto}
+.p05 .reason-num{font-family:'Barlow Condensed',sans-serif;font-size:4.5rem;font-weight:900;color:rgba(0,229,255,.12);line-height:1;position:absolute;right:1.5rem;bottom:3.5rem}
+.p05 .label{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-family:'DM Sans',sans-serif;margin-bottom:.4rem}
+.p05 .title{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;line-height:.92;letter-spacing:-.01em;color:var(--tx);margin-bottom:.65rem}
+.p05 .body{font-size:.78rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.6;max-width:300px;margin-bottom:.9rem}
+.p05 .stat-pill{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.15);border-radius:5px;padding:.4rem .8rem}
+.p05 .stat-pill .n{font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:900;color:var(--cyan)}
+.p05 .stat-pill .l{font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.3}
+
+/* ═══════════════════════════════════════════════════════════════
+   06 — STORY 9:16 — Countdown "Última semana"
+═══════════════════════════════════════════════════════════════ */
+.p06{width:390px;height:693px;background:var(--bg)}
+.p06 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p06 .ig-bar{display:flex;gap:3px;margin-bottom:.9rem}
+.p06 .seg{height:2px;flex:1;border-radius:1px}
+.p06 .seg.d{background:rgba(255,255,255,.55)}
+.p06 .seg.a{background:var(--cyan);animation:prog 3s linear infinite}
+.p06 .seg.p{background:rgba(255,255,255,.18)}
+@keyframes prog{from{opacity:1}to{opacity:.5}}
+.p06 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.p06 .hook{font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:900;line-height:.85;letter-spacing:-.03em;color:var(--tx);margin-bottom:.5rem}
+.p06 .hook em{color:var(--red);font-style:normal}
+.p06 .sub{font-size:.75rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.55;margin-bottom:1rem}
+.p06 .timer{display:flex;gap:.5rem;margin-bottom:1rem}
+.p06 .tblock{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.7rem .5rem;text-align:center}
+.p06 .tval{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:900;color:var(--cyan);line-height:1;display:block}
+.p06 .tlbl{font-size:.52rem;color:var(--tx3);font-family:'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.08em}
+.p06 .price-card{background:rgba(255,255,255,.03);border:1px solid rgba(0,229,255,.15);border-radius:12px;padding:1rem 1.2rem;margin-bottom:.8rem}
+.p06 .price-lbl{font-size:.58rem;color:var(--tx3);font-family:'DM Sans',sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.2rem}
+.p06 .price-big{font-family:'Barlow Condensed',sans-serif;font-size:2.8rem;font-weight:900;color:var(--tx);line-height:1}
+.p06 .price-big em{color:var(--cyan);font-style:normal;font-size:1.6rem}
+.p06 .price-old{font-size:.7rem;color:rgba(255,255,255,.22);text-decoration:line-through;font-family:'DM Sans',sans-serif}
+.p06 .includes{list-style:none;margin:.6rem 0 0}
+.p06 .includes li{font-size:.67rem;color:var(--tx2);padding:.2rem 0;display:flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;border-bottom:1px solid rgba(255,255,255,.04)}
+.p06 .includes li::before{content:'✓';color:var(--cyan);font-size:.6rem;flex-shrink:0}
+.p06 .swipe{background:linear-gradient(135deg,var(--red),#FF6B35);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;letter-spacing:.04em;padding:.8rem;border-radius:7px;text-align:center;margin-top:auto;margin-bottom:.4rem}
+.p06 .hint{text-align:center;font-size:.6rem;color:var(--tx3);font-family:'DM Sans',sans-serif}
+
+/* ═══════════════════════════════════════════════════════════════
+   07 — FEED 1:1 — SEO mockup Google resultado
+═══════════════════════════════════════════════════════════════ */
+.p07{width:480px;height:480px;background:var(--bg)}
+.p07 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p07 .eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-family:'DM Sans',sans-serif;margin-bottom:.35rem}
+.p07 .title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;line-height:.9;color:var(--tx);margin-bottom:.9rem;letter-spacing:-.01em}
+.p07 .title em{color:var(--green);font-style:normal}
+.p07 .browser{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.7rem .8rem;margin-bottom:.7rem}
+.p07 .browser-bar{display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
+.p07 .b-dots{display:flex;gap:3px}
+.p07 .b-dot{width:6px;height:6px;border-radius:50%}
+.p07 .b-dot:nth-child(1){background:#FF5F57}
+.p07 .b-dot:nth-child(2){background:#FFBD2E}
+.p07 .b-dot:nth-child(3){background:#28C840}
+.p07 .b-url{flex:1;background:rgba(255,255,255,.04);border-radius:4px;padding:.2rem .6rem;font-size:.6rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.p07 .g-result{padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.p07 .g-result:last-child{border-bottom:none}
+.p07 .g-rank{font-size:.55rem;color:var(--tx3);font-family:'DM Sans',sans-serif;margin-bottom:1px}
+.p07 .g-title{font-size:.7rem;color:#4DA6FF;font-family:'DM Sans',sans-serif;font-weight:600}
+.p07 .g-url{font-size:.55rem;color:var(--green);font-family:'DM Sans',sans-serif}
+.p07 .g-result.hl{background:rgba(0,200,83,.06);border:1px solid rgba(0,200,83,.15);border-radius:6px;padding:.4rem .5rem;margin:0 -.3rem}
+.p07 .g-result.hl .g-rank{color:var(--green);font-weight:700}
+.p07 .g-result.hl .g-title{color:var(--tx);font-size:.72rem;font-weight:700}
+.p07 .stats-row{display:flex;gap:.5rem;margin-top:.5rem}
+.p07 .stat-b{flex:1;background:rgba(0,200,83,.07);border:1px solid rgba(0,200,83,.15);border-radius:7px;padding:.5rem .6rem;text-align:center}
+.p07 .stat-n{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:900;color:var(--green);line-height:1}
+.p07 .stat-l{font-size:.58rem;color:var(--tx3);font-family:'DM Sans',sans-serif;margin-top:.1rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   08 — FEED 1:1 — Terminal / código "Así automatizamos"
+═══════════════════════════════════════════════════════════════ */
+.p08{width:480px;height:480px;background:var(--bg)}
+.p08 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p08 .title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;color:var(--tx);line-height:.92;margin-bottom:.8rem;letter-spacing:-.01em}
+.p08 .title em{color:var(--cyan);font-style:normal}
+.p08 .terminal{background:#020508;border:1px solid rgba(0,229,255,.15);border-radius:10px;padding:.8rem 1rem;margin-bottom:.8rem;flex:1}
+.p08 .term-bar{display:flex;align-items:center;gap:.4rem;margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.p08 .term-dots{display:flex;gap:3px}
+.p08 .tdot{width:7px;height:7px;border-radius:50%}
+.p08 .tdot.r{background:#FF5F57}.p08 .tdot.y{background:#FFBD2E}.p08 .tdot.g{background:#28C840}
+.p08 .term-title{font-size:.58rem;color:rgba(255,255,255,.2);font-family:'JetBrains Mono',monospace;flex:1;text-align:center}
+.p08 .term-line{font-family:'JetBrains Mono',monospace;font-size:.62rem;line-height:1.8}
+.p08 .t-prompt{color:var(--cyan)}
+.p08 .t-cmd{color:#E2E8F0}
+.p08 .t-comment{color:rgba(255,255,255,.25)}
+.p08 .t-str{color:#86EFAC}
+.p08 .t-key{color:#FCA5A5}
+.p08 .t-val{color:#FDE68A}
+.p08 .t-success{color:var(--green)}
+.p08 .t-out{color:rgba(255,255,255,.45)}
+
+/* ═══════════════════════════════════════════════════════════════
+   09 — STORY 9:16 — "3 mitos del desarrollo web"
+═══════════════════════════════════════════════════════════════ */
+.p09{width:390px;height:693px;background:var(--bg)}
+.p09 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p09 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.p09 .hook{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:900;line-height:.88;color:var(--tx);letter-spacing:-.02em;margin-bottom:.5rem}
+.p09 .hook em{color:var(--red);font-style:normal}
+.p09 .mitos{display:flex;flex-direction:column;gap:.6rem;flex:1;margin:.6rem 0}
+.p09 .mito{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.75rem .9rem}
+.p09 .mito-top{display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem}
+.p09 .mito-icon{font-size:.9rem}
+.p09 .mito-false{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);font-family:'DM Sans',sans-serif;background:rgba(255,61,0,.1);padding:.15rem .5rem;border-radius:3px}
+.p09 .mito-claim{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:700;color:rgba(255,255,255,.5);text-decoration:line-through;margin-bottom:.2rem}
+.p09 .mito-real{font-size:.68rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.4}
+.p09 .mito-real strong{color:var(--cyan)}
+.p09 .cta-full{background:var(--cyan);color:#080B14;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;letter-spacing:.04em;padding:.8rem;border-radius:7px;text-align:center;margin-top:auto;margin-bottom:.4rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   10 — FEED 1:1 — Proceso "Así trabajamos" visual
+═══════════════════════════════════════════════════════════════ */
+.p10{width:480px;height:480px;background:var(--bg)}
+.p10 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p10 .title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;color:var(--tx);line-height:.9;letter-spacing:-.01em;margin-bottom:.9rem}
+.p10 .title em{color:var(--cyan);font-style:normal}
+.p10 .steps{display:flex;flex-direction:column;gap:.5rem;flex:1}
+.p10 .step{display:flex;align-items:flex-start;gap:.85rem}
+.p10 .step-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.p10 .step-circle{width:32px;height:32px;border-radius:50%;border:2px solid rgba(0,229,255,.3);background:rgba(0,229,255,.08);display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:900;color:var(--cyan)}
+.p10 .step-line{width:1px;flex:1;background:linear-gradient(180deg,rgba(0,229,255,.25),rgba(0,229,255,.03));min-height:20px;margin:3px 0}
+.p10 .step:last-child .step-line{display:none}
+.p10 .step-right{padding-top:.25rem;flex:1}
+.p10 .step-title{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:800;color:var(--tx);margin-bottom:.1rem}
+.p10 .step-desc{font-size:.68rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.4}
+.p10 .step-badge{font-size:.55rem;color:var(--cyan);font-family:'JetBrains Mono',monospace;background:rgba(0,229,255,.07);padding:.15rem .5rem;border-radius:3px;display:inline-block;margin-top:.2rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   11 — FEED 1:1 — Comparativa Instagram vs Web propia
+═══════════════════════════════════════════════════════════════ */
+.p11{width:480px;height:480px;background:var(--bg)}
+.p11 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p11 .title{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:900;line-height:.9;color:var(--tx);margin-bottom:.8rem;letter-spacing:-.01em}
+.p11 .title em{color:var(--red);font-style:normal}
+.p11 .comp-wrap{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;flex:1;margin-bottom:.7rem}
+.p11 .col-head{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif;padding:.3rem .5rem;border-radius:5px;text-align:center;margin-bottom:.3rem}
+.p11 .col-head.ig{background:rgba(255,61,0,.1);color:var(--red)}
+.p11 .col-head.web{background:rgba(0,229,255,.1);color:var(--cyan)}
+.p11 .row-item{padding:.38rem .5rem;border-radius:5px;font-size:.68rem;font-family:'DM Sans',sans-serif;line-height:1.3;text-align:center}
+.p11 .row-item.bad{background:rgba(255,61,0,.06);color:rgba(255,255,255,.45);border:1px solid rgba(255,61,0,.1)}
+.p11 .row-item.good{background:rgba(0,229,255,.06);color:rgba(255,255,255,.75);border:1px solid rgba(0,229,255,.12)}
+.p11 .row-item.good strong{color:var(--cyan);display:block;font-size:.7rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   12 — STORY 9:16 — Social proof "Ya confían en nosotros"
+═══════════════════════════════════════════════════════════════ */
+.p12{width:390px;height:693px;background:var(--bg)}
+.p12 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p12 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.p12 .title{font-family:'Barlow Condensed',sans-serif;font-size:2.4rem;font-weight:900;line-height:.88;color:var(--tx);letter-spacing:-.02em;margin-bottom:.5rem}
+.p12 .title em{color:var(--cyan);font-style:normal}
+.p12 .sub{font-size:.75rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.55;margin-bottom:.9rem}
+.p12 .projects{display:flex;flex-direction:column;gap:.55rem}
+.p12 .proj-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.75rem .9rem;display:flex;align-items:flex-start;gap:.75rem}
+.p12 .proj-ico{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.p12 .proj-ico.orange{background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.25)}
+.p12 .proj-ico.purple{background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.25)}
+.p12 .proj-ico.green{background:rgba(0,200,83,.12);border:1px solid rgba(0,200,83,.22)}
+.p12 .proj-title{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:800;color:var(--tx);margin-bottom:.15rem}
+.p12 .proj-desc{font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.35}
+.p12 .proj-tag{font-size:.55rem;color:var(--cyan);font-family:'JetBrains Mono',monospace;margin-top:.2rem;opacity:.7}
+.p12 .cta-box{background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.18);border-radius:10px;padding:.85rem 1rem;margin-top:auto}
+.p12 .cta-box p{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;color:var(--tx);margin-bottom:.15rem}
+.p12 .cta-box span{font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif}
+
+/* ═══════════════════════════════════════════════════════════════
+   13 — FEED 1:1 — "¿Qué hace diferente a DatiumTech?"
+═══════════════════════════════════════════════════════════════ */
+.p13{width:480px;height:480px;background:var(--bg)}
+.p13 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p13 .title{font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:900;line-height:.9;color:var(--tx);letter-spacing:-.01em;margin-bottom:.8rem}
+.p13 .title em{color:var(--cyan);font-style:normal}
+.p13 .diffs{display:flex;flex-direction:column;gap:.45rem;flex:1}
+.p13 .diff{display:flex;align-items:flex-start;gap:.7rem;padding:.5rem .7rem;border-radius:8px;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02)}
+.p13 .diff-num{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:900;color:rgba(0,229,255,.2);line-height:1;flex-shrink:0;width:24px}
+.p13 .diff-title{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:800;color:var(--tx);margin-bottom:.1rem}
+.p13 .diff-body{font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.4}
+
+/* ═══════════════════════════════════════════════════════════════
+   14 — FEED 1:1 — App Móvil mockup visual
+═══════════════════════════════════════════════════════════════ */
+.p14{width:480px;height:480px;background:var(--bg)}
+.p14 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p14 .left-col{flex:1}
+.p14 .right-col{width:140px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.p14 .row-layout{display:flex;gap:1rem;flex:1;align-items:flex-start}
+.p14 .eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);font-family:'DM Sans',sans-serif;margin-bottom:.3rem}
+.p14 .title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;line-height:.9;color:var(--tx);letter-spacing:-.01em;margin-bottom:.5rem}
+.p14 .title em{color:var(--purple);font-style:normal;-webkit-text-stroke:1.5px var(--purple);color:transparent;filter:drop-shadow(0 0 12px rgba(139,92,246,.5))}
+.p14 .body{font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.55;margin-bottom:.8rem}
+.p14 .feats{list-style:none;display:flex;flex-direction:column;gap:.25rem}
+.p14 .feats li{font-size:.68rem;color:var(--tx2);font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px}
+.p14 .feats li::before{content:'✓';color:var(--purple);font-size:.6rem;flex-shrink:0;font-weight:700}
+.p14 .phone-frame{background:var(--bg3);border:3px solid rgba(139,92,246,.3);border-radius:20px;width:110px;height:200px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 30px rgba(139,92,246,.15)}
+.p14 .phone-notch{height:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center}
+.p14 .phone-notch-dot{width:20px;height:3px;border-radius:2px;background:rgba(255,255,255,.1)}
+.p14 .phone-screen{flex:1;background:linear-gradient(160deg,#2D1B69,#4C1D95,#7C3AED);padding:.5rem;display:flex;flex-direction:column;gap:.3rem}
+.p14 .phone-header{font-size:.35rem;font-weight:900;color:rgba(255,255,255,.8);letter-spacing:.05em;text-align:center;margin-bottom:.2rem}
+.p14 .phone-card{background:rgba(255,255,255,.12);border-radius:5px;padding:.3rem;font-size:.28rem;color:rgba(255,255,255,.7);font-family:'DM Sans',sans-serif;margin-bottom:.15rem}
+.p14 .phone-nav{display:flex;justify-content:space-around;margin-top:auto;padding-top:.3rem;border-top:1px solid rgba(255,255,255,.1)}
+.p14 .phone-nav span{font-size:.55rem}
+.p14 .price-block{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:7px;padding:.5rem .7rem;margin-top:.6rem}
+.p14 .price-val{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:900;color:var(--purple);line-height:1}
+
+/* ═══════════════════════════════════════════════════════════════
+   15 — STORY 9:16 — FAQ interactivo
+═══════════════════════════════════════════════════════════════ */
+.p15{width:390px;height:693px;background:var(--bg)}
+.p15 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p15 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.p15 .title{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;line-height:.88;color:var(--tx);letter-spacing:-.02em;margin-bottom:.5rem}
+.p15 .title em{color:var(--yellow);font-style:normal}
+.p15 .sub{font-size:.73rem;color:var(--tx2);font-family:'DM Sans',sans-serif;margin-bottom:.8rem;line-height:1.5}
+.p15 .qa-list{display:flex;flex-direction:column;gap:.5rem;flex:1}
+.p15 .qa{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:9px;padding:.7rem .85rem}
+.p15 .qa.active{background:rgba(0,229,255,.06);border-color:rgba(0,229,255,.2)}
+.p15 .qa-q{font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:800;color:var(--tx);margin-bottom:.25rem;display:flex;align-items:flex-start;gap:.4rem}
+.p15 .qa-q::before{content:'P:';color:var(--cyan);font-size:.72rem;flex-shrink:0;margin-top:2px}
+.p15 .qa.active .qa-q::before{color:var(--cyan)}
+.p15 .qa-a{font-size:.67rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.45;padding-left:1rem}
+.p15 .qa-a strong{color:var(--cyan)}
+.p15 .cta-dm{background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.2);border-radius:8px;padding:.7rem 1rem;margin-top:auto;text-align:center}
+.p15 .cta-dm p{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:800;color:var(--tx);margin-bottom:.15rem}
+.p15 .cta-dm span{font-size:.65rem;color:var(--cyan);font-family:'DM Sans',sans-serif}
+
+/* ═══════════════════════════════════════════════════════════════
+   16 — FEED 1:1 — "Errores #2: Sin SEO"
+═══════════════════════════════════════════════════════════════ */
+.p16{width:480px;height:480px;background:var(--bg)}
+.p16 .num-ghost{position:absolute;right:-10px;bottom:-20px;font-family:'Barlow Condensed',sans-serif;font-size:9rem;font-weight:900;color:rgba(255,61,0,.08);line-height:1}
+.p16 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.7rem}
+.p16 .nav-dots{display:flex;gap:4px;margin-bottom:auto}
+.p16 .dot-a{width:20px;height:4px;border-radius:2px;background:var(--red)}
+.p16 .dot-i{width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)}
+.p16 .err-tag{font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;margin-bottom:.4rem}
+.p16 .error-num{font-size:.7rem;color:rgba(255,61,0,.5)}
+.p16 .error-title{font-family:'Barlow Condensed',sans-serif;font-size:2.1rem;font-weight:900;line-height:.92;letter-spacing:-.01em;color:var(--tx);margin-bottom:.65rem}
+.p16 .error-body{font-size:.75rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.55;margin-bottom:.8rem}
+.p16 .fix-box{background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.15);border-radius:9px;padding:.65rem .9rem}
+.p16 .fix-label{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);font-family:'DM Sans',sans-serif;margin-bottom:.25rem}
+.p16 .fix-txt{font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.45}
+
+/* ═══════════════════════════════════════════════════════════════
+   17 — FEED 1:1 — E-commerce comparativa comisiones
+═══════════════════════════════════════════════════════════════ */
+.p17{width:480px;height:480px;background:var(--bg)}
+.p17 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p17 .title{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:900;line-height:.9;color:var(--tx);letter-spacing:-.01em;margin-bottom:.8rem}
+.p17 .title em{color:var(--orange);font-style:normal}
+.p17 .comp-table{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;overflow:hidden;margin-bottom:.7rem;flex:1}
+.p17 .comp-header{display:grid;grid-template-columns:1fr 80px 80px;gap:0;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);padding:.5rem .8rem}
+.p17 .comp-hcell{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);font-family:'DM Sans',sans-serif;text-align:center}
+.p17 .comp-hcell:first-child{text-align:left}
+.p17 .comp-row{display:grid;grid-template-columns:1fr 80px 80px;padding:.5rem .8rem;border-bottom:1px solid rgba(255,255,255,.04);align-items:center}
+.p17 .comp-row:last-child{border-bottom:none}
+.p17 .comp-row.hl{background:rgba(0,229,255,.05)}
+.p17 .comp-name{font-size:.75rem;color:var(--tx2);font-family:'DM Sans',sans-serif;font-weight:600}
+.p17 .comp-row.hl .comp-name{color:var(--tx);font-weight:700}
+.p17 .comp-fee{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:900;text-align:center}
+.p17 .comp-fee.bad{color:rgba(255,255,255,.3)}
+.p17 .comp-fee.our{color:var(--cyan);font-size:1.4rem}
+.p17 .comp-save{font-size:.58rem;text-align:center;font-family:'DM Sans',sans-serif}
+.p17 .comp-save.bad{color:rgba(255,255,255,.15)}
+.p17 .comp-save.good{color:var(--green)}
+
+/* ═══════════════════════════════════════════════════════════════
+   18 — STORY 9:16 — "¿Cómo saber si necesitás automatizar?"
+═══════════════════════════════════════════════════════════════ */
+.p18{width:390px;height:693px;background:var(--bg)}
+.p18 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p18 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.p18 .title{font-family:'Barlow Condensed',sans-serif;font-size:2.2rem;font-weight:900;line-height:.88;color:var(--tx);letter-spacing:-.02em;margin-bottom:.5rem}
+.p18 .title em{color:var(--purple);font-style:normal}
+.p18 .sub{font-size:.73rem;color:var(--tx2);font-family:'DM Sans',sans-serif;margin-bottom:.8rem;line-height:1.5}
+.p18 .checks{display:flex;flex-direction:column;gap:.45rem;flex:1}
+.p18 .check-item{display:flex;align-items:flex-start;gap:.7rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:.65rem .8rem}
+.p18 .check-box{width:18px;height:18px;border-radius:4px;border:1.5px solid rgba(0,229,255,.3);background:rgba(0,229,255,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.p18 .check-box.checked{background:var(--cyan);border-color:var(--cyan)}
+.p18 .check-box.checked::after{content:'✓';font-size:.6rem;color:#080B14;font-weight:900}
+.p18 .check-txt{font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.4}
+.p18 .check-txt strong{color:var(--tx);display:block;font-size:.72rem;margin-bottom:.1rem}
+.p18 .result-box{background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:10px;padding:.85rem 1rem;margin-top:auto}
+.p18 .result-box p{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;color:var(--tx);margin-bottom:.2rem}
+.p18 .result-box span{font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif}
+
+/* ═══════════════════════════════════════════════════════════════
+   19 — FEED 1:1 — Stack tecnológico
+═══════════════════════════════════════════════════════════════ */
+.p19{width:480px;height:480px;background:var(--bg)}
+.p19 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.8rem}
+.p19 .title{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;line-height:.9;color:var(--tx);letter-spacing:-.01em;margin-bottom:.7rem}
+.p19 .title em{color:var(--cyan);font-style:normal}
+.p19 .sub{font-size:.75rem;color:var(--tx2);font-family:'DM Sans',sans-serif;margin-bottom:.9rem}
+.p19 .stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;flex:1}
+.p19 .tech-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.5rem .4rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;text-align:center}
+.p19 .tech-item:hover{border-color:rgba(0,229,255,.2)}
+.p19 .tech-icon{font-size:1.1rem}
+.p19 .tech-name{font-size:.58rem;color:var(--tx2);font-family:'JetBrains Mono',monospace;font-weight:600}
+.p19 .tech-cat{font-size:.5rem;color:var(--tx3);font-family:'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.06em}
+
+/* ═══════════════════════════════════════════════════════════════
+   20 — STORY 9:16 — Anuncio chatbot IA LATAM
+═══════════════════════════════════════════════════════════════ */
+.p20{width:390px;height:693px;background:var(--bg)}
+.p20 .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.5rem}
+.p20 .top-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem}
+.p20 .hook{font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:900;line-height:.85;color:var(--tx);letter-spacing:-.03em;margin-bottom:.5rem}
+.p20 .hook em{color:var(--green);font-style:normal}
+.p20 .sub{font-size:.73rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.5;margin-bottom:.9rem}
+.p20 .chat-mock{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:.8rem;margin-bottom:.9rem}
+.p20 .chat-head{font-size:.58rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px}
+.p20 .chat-head::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
+.p20 .msg-r{display:flex;gap:.4rem;margin-bottom:.35rem}
+.p20 .msg-r.right{justify-content:flex-end}
+.p20 .bubble{max-width:80%;padding:.3rem .6rem;border-radius:9px;font-size:.6rem;font-family:'DM Sans',sans-serif;line-height:1.4;font-weight:500}
+.p20 .bbot{background:rgba(0,200,83,.1);border:1px solid rgba(0,200,83,.2);color:rgba(255,255,255,.8)}
+.p20 .buser{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5)}
+.p20 .time{font-size:.48rem;color:var(--tx3);font-family:'DM Sans',sans-serif;align-self:flex-end;padding-bottom:2px;white-space:nowrap}
+.p20 .features{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.8rem}
+.p20 .feat-item{display:flex;align-items:center;gap:.6rem;font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif}
+.p20 .feat-item::before{content:'→';color:var(--green);font-size:.65rem;flex-shrink:0}
+.p20 .price-chip{display:inline-flex;align-items:baseline;gap:.3rem;background:rgba(0,200,83,.08);border:1px solid rgba(0,200,83,.2);border-radius:6px;padding:.4rem .8rem;margin-bottom:auto}
+.p20 .pc-since{font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif}
+.p20 .pc-val{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:900;color:var(--green)}
+.p20 .cta-full{background:var(--green);color:#080B14;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;letter-spacing:.04em;padding:.8rem;border-radius:7px;text-align:center;margin-top:auto;margin-bottom:.4rem}
+.p20 .hint{text-align:center;font-size:.6rem;color:var(--tx3);font-family:'DM Sans',sans-serif}
+
+/* ═══════════════════════════════════════════════════════════════
+   21–30: FEED 1:1 posts de valor (más compactos)
+═══════════════════════════════════════════════════════════════ */
+/* Base compartido para posts 21-30 */
+.pv{width:470px;height:470px;background:var(--bg);position:relative;overflow:hidden}
+.pv .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:1.7rem}
+.pv .eyebrow{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-family:'DM Sans',sans-serif;margin-bottom:.35rem}
+.pv .title{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:900;line-height:.9;color:var(--tx);letter-spacing:-.01em;margin-bottom:.6rem}
+.pv .body{font-size:.75rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.6;margin-bottom:.8rem}
+</style>
+</head>
+<body>
+
+<div class="kit-head">
+  <div class="kit-title">DATIUMTECH — Kit Instagram Vol.2</div>
+  <div class="kit-sub">30 piezas nuevas · Feeds, Stories, Carruseles · Fondo oscuro tech</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     ANUNCIOS PAGADOS — LATAM
+════════════════════════════════════════════════════════ -->
+<div class="section-label">Anuncios pagados — Nuevas variantes LATAM</div>
+<div class="grid">
+
+  <!-- FEED AD: ROI directo -->
+  <div class="pw">
+    <div class="piece p01">
+      <div class="grid-bg"></div>
+      <div class="g-tl"></div><div class="g-br"></div>
+      <div class="hex" style="right:1.5rem;top:30%;opacity:.05">
+        <svg width="180" height="180" viewBox="0 0 100 100" fill="none"><path d="M50 5L90 27.5V72.5L50 95L10 72.5V27.5L50 5Z" stroke="#00E5FF" stroke-width="1"/><path d="M50 18L80 34.5V67.5L50 84L20 67.5V34.5L50 18Z" stroke="#00E5FF" stroke-width=".5"/></svg>
+      </div>
+      <div class="inner">
+        <div class="top">
+          <div class="badge badge-red">Calculá tu ROI</div>
+          <div class="lm"><svg width="20" height="20" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(0,229,255,0.08)" stroke="#00E5FF" stroke-width="1.5"/><path d="M13 12H20C24.4 12 28 15.6 28 20C28 24.4 24.4 28 20 28H13V12Z" stroke="#00E5FF" stroke-width="1.8" fill="none"/><circle cx="28" cy="20" r="2.5" fill="#00E5FF"/></svg><span class="wm" style="font-size:.85rem">DATIUM<em>TECH</em></span></div>
+        </div>
+        <div class="q">¿CUÁNTO<br>VALE <em>1 CLIENTE</em><br>NUEVO?</div>
+        <div class="calc-rows">
+          <div class="calc-row"><span class="calc-label">Ticket promedio de tu servicio</span><span class="calc-val">$80.000</span></div>
+          <div class="calc-row"><span class="calc-label">Clientes/mes sin web</span><span class="calc-val">3</span></div>
+          <div class="calc-row"><span class="calc-label">Clientes/mes con landing</span><span class="calc-val">6–8</span></div>
+          <div class="calc-row result"><span class="calc-label">Ingreso extra mensual</span><span class="calc-val">+$400.000</span></div>
+        </div>
+        <div class="cta-cyan" style="margin-bottom:.1rem">EMPEZÁ POR $350.000 →</div>
+        <div class="bot"><span style="font-size:.62rem;color:var(--tx3);font-family:'DM Sans',sans-serif">Se recupera en el primer cliente</span><span class="url">datiumtech.com.ar</span></div>
+      </div>
+    </div>
+    <div class="plabel">AD-03 · Feed 1:1 · ROI Calculator</div>
+    <div class="psize">1080×1080 · Anuncio pago</div>
+  </div>
+
+  <!-- FEED AD: Stat impactante -->
+  <div class="pw">
+    <div class="piece p02">
+      <div class="dots-bg"></div>
+      <div class="g-br"></div>
+      <div class="inner">
+        <div class="top" style="display:flex;justify-content:space-between;margin-bottom:auto">
+          <div class="badge badge-red">Dato real</div>
+          <div class="lm"><svg width="20" height="20" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="1.5"/></svg><span class="wm" style="font-size:.85rem">DATIUM<em>TECH</em></span></div>
+        </div>
+        <div class="big-stat">97%</div>
+        <div class="stat-label">DE LOS COMPRADORES<br>BUSCA ONLINE PRIMERO</div>
+        <div class="stat-body" style="margin-bottom:.5rem">Antes de llamarte, antes de ir, antes de comprar — buscan en Google. Si no aparecés, compraron a otro.</div>
+        <div class="source">// fuente: Google Consumer Insights 2024</div>
+        <div class="cta-red" style="margin-bottom:.6rem">DAME UNA LANDING →</div>
+        <div class="bot"><span style="font-size:.62rem;color:var(--tx3);font-family:'DM Sans',sans-serif">Landing profesional · 7 días · desde $350k</span><span class="url">datiumtech.com.ar</span></div>
+      </div>
+    </div>
+    <div class="plabel">AD-04 · Feed 1:1 · Stat de impacto</div>
+    <div class="psize">1080×1080 · Anuncio pago</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     SEMANA 1 — Posts orgánicos
+════════════════════════════════════════════════════════ -->
+<div class="section-label">Posts orgánicos — Semana 1</div>
+<div class="grid">
+
+  <!-- P03 Story Automatización -->
+  <div class="pw">
+    <div class="piece p03">
+      <div class="grid-bg-sm"></div>
+      <div class="g-tl"></div><div class="g-purple"></div>
+      <div class="inner">
+        <div class="top-row">
+          <div class="lm"><svg width="20" height="20" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(0,229,255,0.08)" stroke="#00E5FF" stroke-width="1.5"/><path d="M13 12H20C24.4 12 28 15.6 28 20C28 24.4 24.4 28 20 28H13V12Z" stroke="#00E5FF" stroke-width="1.8" fill="none"/><circle cx="28" cy="20" r="2.5" fill="#00E5FF"/></svg><span class="wm" style="font-size:.82rem">DATIUM<em>TECH</em></span></div>
+          <div class="badge badge-purple">Automatización</div>
+        </div>
+        <div class="title">TU NEGOCIO<br>EN <em>PILOTO</em><br>AUTOMÁTICO</div>
+        <div class="sub">Un lead llega → todo se mueve solo. Sin que vos hagas nada en los primeros 5 minutos.</div>
+        <div class="flow-steps">
+          <div class="step active"><span class="step-num">1</span><span class="step-ico">📝</span><div class="step-txt"><strong>Lead envía formulario</strong>Tu sitio web captura nombre, email y servicio</div></div>
+          <div class="connector"></div>
+          <div class="step"><span class="step-num">2</span><span class="step-ico">💬</span><div class="step-txt"><strong>WhatsApp automático en 2 min</strong>Mensaje personalizado con su nombre y servicio</div></div>
+          <div class="connector"></div>
+          <div class="step"><span class="step-num">3</span><span class="step-ico">📊</span><div class="step-txt"><strong>Se registra en tu CRM</strong>Google Sheets con fecha, estado y datos</div></div>
+          <div class="connector"></div>
+          <div class="step"><span class="step-num">4</span><span class="step-ico">🔔</span><div class="step-txt"><strong>Te llega una alerta</strong>Telegram/WA con todos los datos del lead</div></div>
+          <div class="connector"></div>
+          <div class="step"><span class="step-num">5</span><span class="step-ico">⏰</span><div class="step-txt"><strong>Seguimiento a 24hs</strong>Recordatorio automático si no respondió</div></div>
+        </div>
+        <div class="cta-full">AUTOMATIZÁ TU NEGOCIO →</div>
+        <div class="bot" style="margin-top:.4rem"><span class="url">datiumtech.com.ar</span></div>
+      </div>
+    </div>
+    <div class="plabel">P03 · Story 9:16 · Flujo automatización</div>
+    <div class="psize">1080×1920 · S1 Jueves</div>
+  </div>
+
+  <!-- P04 Case Study Muse App -->
+  <div class="pw">
+    <div class="piece p04">
+      <div class="header"></div>
+      <div class="g-purple"></div>
+      <div class="inner">
+        <div class="case-tag">Caso real</div>
+        <div class="case-title">Muse App</div>
+        <div class="case-sub">Marketplace de productos · SaaS · Argentina</div>
+        <div class="screen-mock">
+          <div class="screen-inner">
+            <div class="screen-icon">🛍️</div>
+            <div class="screen-txt">MUSE APP</div>
+            <div class="screen-row"></div>
+            <div class="screen-row" style="opacity:.6;margin-top:.1rem"></div>
+            <div class="screen-row" style="opacity:.3;margin-top:.1rem"></div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="metrics">
+            <div><div class="metric-v" style="color:var(--purple)">SaaS</div><div class="metric-l">Modelo</div></div>
+            <div><div class="metric-v" style="color:var(--purple)">iOS+</div><div class="metric-l">Android</div></div>
+            <div><div class="metric-v" style="color:var(--purple)">API</div><div class="metric-l">Pagos</div></div>
+          </div>
+          <div class="case-desc">Plataforma marketplace que redefine la comercialización digital. Catálogo, pagos integrados, panel admin y métricas en vivo.</div>
+        </div>
+        <div class="bot" style="margin-top:.5rem"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">¿Tu proyecto? →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P04 · Feed 4:5 · Case Muse App</div>
+    <div class="psize">1080×1350 · S1 Miércoles</div>
+  </div>
+
+  <!-- P05 Razón #1 carrusel -->
+  <div class="pw">
+    <div class="piece p05">
+      <div class="stripe"></div>
+      <div class="dots-bg"></div>
+      <div class="g-tr"></div>
+      <div class="inner">
+        <div class="slide-num">02 / 05 · deslizá →</div>
+        <div class="reason-num">02</div>
+        <div class="label" style="color:var(--cyan)">Razón para tener web</div>
+        <div class="title">TUS CLIENTES<br>TE GOOGOLEAN<br>ANTES DE LLAMAR</div>
+        <div class="body">Si no aparecés en los primeros resultados de Google, ese cliente llamó a tu competencia. No importa cuántos años de experiencia tengas.</div>
+        <div class="stat-pill">
+          <span class="n">78%</span>
+          <span class="l">de las búsquedas locales<br>terminan en una visita</span>
+        </div>
+        <div class="bot" style="margin-top:auto"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">razón 3 →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P05 · Feed 1:1 · Carrusel razón 2</div>
+    <div class="psize">1080×1080 · S1 Miércoles</div>
+  </div>
+
+  <!-- P06 Story Countdown -->
+  <div class="pw">
+    <div class="piece p06">
+      <div class="grid-bg-sm"></div>
+      <div class="g-tl"></div><div class="g-br"></div>
+      <div class="inner">
+        <div class="ig-bar"><div class="seg d"></div><div class="seg d"></div><div class="seg d"></div><div class="seg d"></div><div class="seg a"></div><div class="seg p"></div></div>
+        <div class="top-row">
+          <div class="lm"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(0,229,255,.08)" stroke="#00E5FF" stroke-width="1.5"/></svg><span class="wm" style="font-size:.8rem">DATIUM<em>TECH</em></span></div>
+          <div class="badge badge-red">⏰ Última semana</div>
+        </div>
+        <div class="hook">SE ACABA<br>LA <em>PROMO</em><br>$350.000</div>
+        <div class="sub">El precio vuelve a $650.000 el próximo lunes. Si estabas pensándolo, este es el momento.</div>
+        <div class="timer">
+          <div class="tblock"><span class="tval">04</span><span class="tlbl">Días</span></div>
+          <div class="tblock"><span class="tval">18</span><span class="tlbl">Horas</span></div>
+          <div class="tblock"><span class="tval">32</span><span class="tlbl">Min</span></div>
+          <div class="tblock"><span class="tval">09</span><span class="tlbl">Seg</span></div>
+        </div>
+        <div class="price-card">
+          <div class="price-lbl">Landing page profesional</div>
+          <div class="price-big"><em>$</em>350.000</div>
+          <div class="price-old">Precio normal: $650.000</div>
+          <ul class="includes">
+            <li>Diseño único · sin plantillas</li>
+            <li>SEO + formulario + WhatsApp</li>
+            <li>100% adaptada a mobile</li>
+            <li>Entrega garantizada en 7 días</li>
+          </ul>
+        </div>
+        <div class="swipe">QUIERO ESTA PROMO →</div>
+        <div class="hint">Escribinos por DM · datiumtech.com.ar</div>
+      </div>
+    </div>
+    <div class="plabel">P06 · Story 9:16 · Countdown promo</div>
+    <div class="psize">1080×1920 · S1 Viernes</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     SEMANA 2
+════════════════════════════════════════════════════════ -->
+<div class="section-label">Posts orgánicos — Semana 2</div>
+<div class="grid">
+
+  <!-- P07 SEO mockup -->
+  <div class="pw">
+    <div class="piece p07">
+      <div class="grid-bg"></div>
+      <div class="g-green"></div>
+      <div class="inner">
+        <div class="eyebrow" style="color:var(--green)">Posicionamiento Google</div>
+        <div class="title">APARECER<br>PRIMERO<br><em>SÍ IMPORTA</em></div>
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="b-dots"><div class="b-dot"></div><div class="b-dot"></div><div class="b-dot"></div></div>
+            <div class="b-url">google.com/search?q=tu+servicio+cerca</div>
+          </div>
+          <div class="g-result hl">
+            <div class="g-rank">🏆 Resultado #1 — Tu Negocio</div>
+            <div class="g-title">Tu Empresa — Servicio Profesional · Cotización gratis</div>
+            <div class="g-url">datiumtech.com.ar/tu-negocio</div>
+          </div>
+          <div class="g-result"><div class="g-rank">#2</div><div class="g-title">Competidor A</div><div class="g-url">competidor1.com</div></div>
+          <div class="g-result"><div class="g-rank">#3</div><div class="g-title">Competidor B</div><div class="g-url">otro.com</div></div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-b"><div class="stat-n">91%</div><div class="stat-l">clicks en top 3</div></div>
+          <div class="stat-b"><div class="stat-n">0%</div><div class="stat-l">clicks en pág 2</div></div>
+          <div class="stat-b"><div class="stat-n">3x</div><div class="stat-l">más leads con SEO</div></div>
+        </div>
+        <div class="bot" style="margin-top:.6rem"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--green);font-family:'DM Sans',sans-serif">Posicioná tu negocio →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P07 · Feed 1:1 · SEO Google mockup</div>
+    <div class="psize">1080×1080 · S2 Lunes</div>
+  </div>
+
+  <!-- P08 Terminal código -->
+  <div class="pw">
+    <div class="piece p08">
+      <div class="grid-bg"></div>
+      <div class="g-tl"></div>
+      <div class="inner">
+        <div class="title">ASÍ SE VE<br>UNA <em>AUTOMATIZACIÓN</em><br>EN ACCIÓN</div>
+        <div class="terminal">
+          <div class="term-bar"><div class="term-dots"><div class="tdot r"></div><div class="tdot y"></div><div class="tdot g"></div></div><div class="term-title">datiumtech-automations.js</div></div>
+          <div class="term-line"><span class="t-comment">// Lead entra al formulario web</span></div>
+          <div class="term-line"><span class="t-prompt">→ </span><span class="t-cmd">onFormSubmit</span><span class="t-out">(lead) {</span></div>
+          <div class="term-line"><span class="t-out">&nbsp;&nbsp;</span><span class="t-key">nombre</span><span class="t-out">: </span><span class="t-str">"Mariano García"</span></div>
+          <div class="term-line"><span class="t-out">&nbsp;&nbsp;</span><span class="t-key">servicio</span><span class="t-out">: </span><span class="t-str">"Landing Page"</span></div>
+          <div class="term-line"><span class="t-out">&nbsp;&nbsp;</span><span class="t-key">tel</span><span class="t-out">: </span><span class="t-val">"+54911..."</span></div>
+          <div class="term-line"><span class="t-out">}</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line"><span class="t-comment">// WhatsApp automático en 2 min</span></div>
+          <div class="term-line"><span class="t-prompt">✓ </span><span class="t-success">sendWhatsApp</span><span class="t-out">(lead.tel)</span></div>
+          <div class="term-line"><span class="t-prompt">✓ </span><span class="t-success">addToCRM</span><span class="t-out">(lead)</span></div>
+          <div class="term-line"><span class="t-prompt">✓ </span><span class="t-success">notifyTeam</span><span class="t-out">()</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line"><span class="t-comment">// Resultado: lead contactado en</span></div>
+          <div class="term-line"><span class="t-success">STATUS: 2min 14seg ✓ DONE</span></div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">Automatizá tu negocio →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P08 · Feed 1:1 · Terminal automatización</div>
+    <div class="psize">1080×1080 · S2 Martes</div>
+  </div>
+
+  <!-- P09 Story 3 mitos -->
+  <div class="pw">
+    <div class="piece p09">
+      <div class="grid-bg-sm"></div>
+      <div class="g-tl"></div><div class="g-br"></div>
+      <div class="inner">
+        <div class="top-row">
+          <div class="lm"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(0,229,255,.08)" stroke="#00E5FF" stroke-width="1.5"/></svg><span class="wm" style="font-size:.8rem">DATIUM<em>TECH</em></span></div>
+          <div class="badge badge-red">Mitos</div>
+        </div>
+        <div class="hook">3 MITOS QUE<br>TE FRENAN<br><em>HOY</em></div>
+        <div class="sub">Estas tres creencias le costaron clientes a miles de negocios en LATAM. ¿Cuántas creés vos?</div>
+        <div class="mitos">
+          <div class="mito">
+            <div class="mito-top"><span class="mito-icon">❌</span><span class="mito-false">Falso</span></div>
+            <div class="mito-claim">"Una web es cara"</div>
+            <div class="mito-real">Landing profesional desde <strong>USD 350</strong>. Se recupera con 1 cliente nuevo.</div>
+          </div>
+          <div class="mito">
+            <div class="mito-top"><span class="mito-icon">❌</span><span class="mito-false">Falso</span></div>
+            <div class="mito-claim">"Con Instagram alcanza"</div>
+            <div class="mito-real">Instagram puede cerrar tu cuenta. <strong>Tu web no depende de nadie.</strong></div>
+          </div>
+          <div class="mito">
+            <div class="mito-top"><span class="mito-icon">❌</span><span class="mito-false">Falso</span></div>
+            <div class="mito-claim">"Tarda meses en estar"</div>
+            <div class="mito-real">Nosotros entregamos en <strong>7 días hábiles.</strong> Garantizado.</div>
+          </div>
+        </div>
+        <div class="cta-full">¿HABLAMOS? ES GRATIS →</div>
+        <div class="hint" style="text-align:center;font-size:.6rem;color:var(--tx3);font-family:'DM Sans',sans-serif">datiumtech.com.ar</div>
+      </div>
+    </div>
+    <div class="plabel">P09 · Story 9:16 · 3 mitos</div>
+    <div class="psize">1080×1920 · S2 Miércoles</div>
+  </div>
+
+  <!-- P10 Proceso visual -->
+  <div class="pw">
+    <div class="piece p10">
+      <div class="grid-bg"></div>
+      <div class="g-tl"></div>
+      <div class="inner">
+        <div class="title">DE IDEA A<br>SITIO WEB EN<br><em>7 DÍAS</em></div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-left"><div class="step-circle">1</div><div class="step-line"></div></div>
+            <div class="step-right"><div class="step-title">Primera llamada (gratis)</div><div class="step-desc">Entendemos tu negocio, objetivos y público</div><div class="step-badge">// día 0</div></div>
+          </div>
+          <div class="step">
+            <div class="step-left"><div class="step-circle">2</div><div class="step-line"></div></div>
+            <div class="step-right"><div class="step-title">Propuesta en 24hs</div><div class="step-desc">Precio fijo. Sin sorpresas. Sin vueltas.</div><div class="step-badge">// día 1</div></div>
+          </div>
+          <div class="step">
+            <div class="step-left"><div class="step-circle">3</div><div class="step-line"></div></div>
+            <div class="step-right"><div class="step-title">Diseño y desarrollo</div><div class="step-desc">Seguimiento diario. Podés pedir cambios.</div><div class="step-badge">// días 2-6</div></div>
+          </div>
+          <div class="step">
+            <div class="step-left"><div class="step-circle">4</div></div>
+            <div class="step-right"><div class="step-title">Entrega y lanzamiento</div><div class="step-desc">Online, con HTTPS, SEO y soporte incluido.</div><div class="step-badge">// día 7 ✓</div></div>
+          </div>
+        </div>
+        <div class="bot" style="margin-top:.6rem"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">Empezá hoy →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P10 · Feed 1:1 · Proceso 4 pasos</div>
+    <div class="psize">1080×1080 · S2 Jueves</div>
+  </div>
+
+  <!-- P11 Comparativa IG vs Web -->
+  <div class="pw">
+    <div class="piece p11">
+      <div class="grid-bg"></div>
+      <div class="g-br"></div>
+      <div class="inner">
+        <div class="title">INSTAGRAM<br>VS TU <em>WEB PROPIA</em><br>¿QUÉ CONVIENE?</div>
+        <div class="comp-wrap">
+          <div>
+            <div class="col-head ig">❌ Solo Instagram</div>
+            <div class="row-item bad">Pueden cerrar tu cuenta</div>
+            <div class="row-item bad" style="margin-top:.25rem">No aparecés en Google</div>
+            <div class="row-item bad" style="margin-top:.25rem">Algoritmo controla tu alcance</div>
+            <div class="row-item bad" style="margin-top:.25rem">Sin formulario propio</div>
+            <div class="row-item bad" style="margin-top:.25rem">Sin SEO local</div>
+          </div>
+          <div>
+            <div class="col-head web">✓ Web + Instagram</div>
+            <div class="row-item good"><strong>Es tuya para siempre</strong></div>
+            <div class="row-item good" style="margin-top:.25rem"><strong>Top 3 de Google</strong></div>
+            <div class="row-item good" style="margin-top:.25rem"><strong>Tráfico directo</strong></div>
+            <div class="row-item good" style="margin-top:.25rem"><strong>Leads 24/7</strong></div>
+            <div class="row-item good" style="margin-top:.25rem"><strong>Autoridad de marca</strong></div>
+          </div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">Creá la tuya desde $350k →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P11 · Feed 1:1 · Comparativa</div>
+    <div class="psize">1080×1080 · S2 Viernes</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     SEMANA 3
+════════════════════════════════════════════════════════ -->
+<div class="section-label">Posts orgánicos — Semana 3</div>
+<div class="grid">
+
+  <!-- P12 Story Social Proof -->
+  <div class="pw">
+    <div class="piece p12">
+      <div class="grid-bg-sm"></div>
+      <div class="g-tl"></div><div class="g-green"></div>
+      <div class="inner">
+        <div class="top-row">
+          <div class="lm"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(0,229,255,.08)" stroke="#00E5FF" stroke-width="1.5"/><path d="M13 12H20C24.4 12 28 15.6 28 20C28 24.4 24.4 28 20 28H13V12Z" stroke="#00E5FF" stroke-width="1.8" fill="none"/><circle cx="28" cy="20" r="2.5" fill="#00E5FF"/></svg><span class="wm" style="font-size:.8rem">DATIUM<em>TECH</em></span></div>
+          <div class="badge badge-cyan">Portfolio</div>
+        </div>
+        <div class="title">PROYECTOS QUE<br><em>FUNCIONAN</em><br>EN PRODUCCIÓN</div>
+        <div class="sub">No prometemos. Mostramos resultados reales de clientes en Argentina, México y España.</div>
+        <div class="projects">
+          <div class="proj-card">
+            <div class="proj-ico orange">🏠</div>
+            <div><div class="proj-title">iResident</div><div class="proj-desc">App gestión condominios · iOS & Android · Control de accesos, invitados y notificaciones</div><div class="proj-tag">// react-native · node.js · argentina</div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-ico purple">🛍️</div>
+            <div><div class="proj-title">Muse App</div><div class="proj-desc">Marketplace SaaS · Catálogo, pagos, panel admin y métricas en tiempo real</div><div class="proj-tag">// vue.js · python · pagos integrados</div></div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-ico green">🎙️</div>
+            <div><div class="proj-title">Podcast Ganadero</div><div class="proj-desc">Plataforma de contenidos · España · Streaming, offline y recomendaciones con IA</div><div class="proj-tag">// react-native · firebase · españa</div></div>
+          </div>
+        </div>
+        <div class="cta-box">
+          <p>¿Tu negocio es el siguiente?</p>
+          <span>Escribinos por DM y contanos tu idea</span>
+        </div>
+      </div>
+    </div>
+    <div class="plabel">P12 · Story 9:16 · Social proof</div>
+    <div class="psize">1080×1920 · S3 Lunes</div>
+  </div>
+
+  <!-- P13 Por qué elegirnos -->
+  <div class="pw">
+    <div class="piece p13">
+      <div class="grid-bg"></div>
+      <div class="g-tl"></div>
+      <div class="inner">
+        <div class="title">POR QUÉ<br>NOS ELIGEN<br><em>A NOSOTROS</em></div>
+        <div class="diffs">
+          <div class="diff"><div class="diff-num">01</div><div><div class="diff-title">Precio fijo desde el día 1</div><div class="diff-body">Te decimos el precio total antes de empezar. Sin "horas extra", sin costos ocultos.</div></div></div>
+          <div class="diff"><div class="diff-num">02</div><div><div class="diff-title">7 días y está online</div><div class="diff-body">No prometemos lo imposible. Pero 7 días sí lo cumplimos. Siempre.</div></div></div>
+          <div class="diff"><div class="diff-num">03</div><div><div class="diff-title">Soporte directo por WhatsApp</div><div class="diff-body">Sin tickets, sin call centers. Hablás directamente con quien hizo tu proyecto.</div></div></div>
+          <div class="diff"><div class="diff-num">04</div><div><div class="diff-title">Orientados a resultados</div><div class="diff-body">No cobramos por horas. Cobramos cuando entregamos algo que funciona de verdad.</div></div></div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">datiumtech.com.ar</span></div>
+      </div>
+    </div>
+    <div class="plabel">P13 · Feed 1:1 · Por qué elegirnos</div>
+    <div class="psize">1080×1080 · S3 Martes</div>
+  </div>
+
+  <!-- P14 App Móvil -->
+  <div class="pw">
+    <div class="piece p14">
+      <div class="grid-bg"></div>
+      <div class="g-purple"></div>
+      <div class="inner">
+        <div class="row-layout">
+          <div class="left-col">
+            <div class="eyebrow" style="color:var(--purple)">Desarrollo mobile</div>
+            <div class="title">TU APP<br>EN IOS &amp;<br><em>ANDROID</em></div>
+            <div class="body">No es solo para grandes empresas. Si tenés más de 200 clientes, una app fideliza, automatiza y vende.</div>
+            <ul class="feats">
+              <li>iOS + Android (React Native)</li>
+              <li>Notificaciones push</li>
+              <li>Pagos integrados</li>
+              <li>Panel de administración</li>
+              <li>Soporte post-lanzamiento</li>
+            </ul>
+            <div class="price-block">
+              <div style="font-size:.6rem;color:var(--tx3);font-family:'DM Sans',sans-serif;margin-bottom:.15rem">desde</div>
+              <div class="price-val">USD 3.500</div>
+            </div>
+          </div>
+          <div class="right-col">
+            <div class="phone-frame">
+              <div class="phone-notch"><div class="phone-notch-dot"></div></div>
+              <div class="phone-screen">
+                <div class="phone-header">MI APP</div>
+                <div class="phone-card">Dashboard · ventas hoy: $82.400</div>
+                <div class="phone-card">Pedidos nuevos: 14 ✓</div>
+                <div class="phone-card">Clientes activos: 287</div>
+                <div class="phone-nav"><span>🏠</span><span>📊</span><span>👤</span><span>⚙️</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bot" style="margin-top:.6rem"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--purple);font-family:'DM Sans',sans-serif">Cotizá tu app →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P14 · Feed 1:1 · App Móvil</div>
+    <div class="psize">1080×1080 · S3 Miércoles</div>
+  </div>
+
+  <!-- P15 Story FAQ -->
+  <div class="pw">
+    <div class="piece p15">
+      <div class="grid-bg-sm"></div>
+      <div class="g-tl"></div>
+      <div class="inner">
+        <div class="top-row">
+          <div class="lm"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(0,229,255,.08)" stroke="#00E5FF" stroke-width="1.5"/></svg><span class="wm" style="font-size:.8rem">DATIUM<em>TECH</em></span></div>
+          <div class="badge badge-yellow">FAQ</div>
+        </div>
+        <div class="title">RESPONDEMOS<br>LAS <em>5 PREGUNTAS</em><br>MÁS COMUNES</div>
+        <div class="sub">Las mismas que pensás pero no preguntás.</div>
+        <div class="qa-list">
+          <div class="qa active">
+            <div class="qa-q">¿Cuánto cuesta una landing?</div>
+            <div class="qa-a">Desde <strong>USD 350 / $350.000 ARS</strong> en promo. Precio fijo, sin sorpresas.</div>
+          </div>
+          <div class="qa">
+            <div class="qa-q">¿Cuánto tiempo tarda?</div>
+            <div class="qa-a"><strong>7 días hábiles</strong> garantizados desde que confirmás el proyecto.</div>
+          </div>
+          <div class="qa">
+            <div class="qa-q">¿Trabajan en todo LATAM?</div>
+            <div class="qa-a">Sí. Clientes en AR, MX, CO, CL, PE, UY y España. <strong>100% remoto.</strong></div>
+          </div>
+          <div class="qa">
+            <div class="qa-q">¿Puedo editar el contenido yo?</div>
+            <div class="qa-a">Sí. Te capacitamos y entregamos con todo <strong>listo para administrar solo.</strong></div>
+          </div>
+          <div class="qa">
+            <div class="qa-q">¿Qué incluye el soporte?</div>
+            <div class="qa-a">WhatsApp directo con el equipo. Sin call centers, sin tickets.</div>
+          </div>
+        </div>
+        <div class="cta-dm">
+          <p>¿Más preguntas? DM gratis →</p>
+          <span>Respondemos en menos de 2hs</span>
+        </div>
+      </div>
+    </div>
+    <div class="plabel">P15 · Story 9:16 · FAQ</div>
+    <div class="psize">1080×1920 · S3 Jueves</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     CARRUSELES — Slides individuales
+════════════════════════════════════════════════════════ -->
+<div class="section-label">Carruseles — Slides individuales</div>
+<div class="grid">
+
+  <!-- P16 Error #2 -->
+  <div class="pw">
+    <div class="piece p16">
+      <div class="dots-bg"></div>
+      <div class="num-ghost">02</div>
+      <div class="g-br" style="background:radial-gradient(circle,rgba(255,61,0,.08),transparent 65%)"></div>
+      <div class="inner">
+        <div class="nav-dots"><div class="dot-i"></div><div class="dot-a"></div><div class="dot-i"></div><div class="dot-i"></div><div class="dot-i"></div></div>
+        <div class="err-tag"><span class="error-num">⚠</span> Error 2 de 5</div>
+        <div class="error-title">NO TENER<br>SEO EN TU<br>SITIO WEB</div>
+        <div class="error-body">Podés tener el sitio más lindo del mundo. Si nadie lo encuentra en Google, no sirve de nada. El SEO no es opcional.</div>
+        <div class="fix-box">
+          <div class="fix-label">✓ Cómo lo resolvemos</div>
+          <div class="fix-txt">Cada sitio que hacemos incluye SEO on-page: títulos, descripciones, velocidad de carga, meta tags y sitemap enviado a Google.</div>
+        </div>
+        <div class="bot" style="margin-top:auto"><div class="lm"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#FF3D00" stroke-width="2"/></svg><span class="wm" style="font-size:.65rem;color:var(--red)">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--red);font-family:'DM Sans',sans-serif">Error #3 →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P16 · Feed 1:1 · Carrusel error 2/5</div>
+    <div class="psize">1080×1080</div>
+  </div>
+
+  <!-- P17 E-commerce comisiones -->
+  <div class="pw">
+    <div class="piece p17">
+      <div class="grid-bg"></div>
+      <div class="g-tr" style="background:radial-gradient(circle,rgba(249,115,22,.1),transparent 65%)"></div>
+      <div class="inner">
+        <div class="title">VENDÉ SIN<br>PAGAR <em>COMISIONES</em><br>A NADIE</div>
+        <div class="comp-table">
+          <div class="comp-header">
+            <div class="comp-hcell">Plataforma</div>
+            <div class="comp-hcell">Comisión</div>
+            <div class="comp-hcell">En $100k</div>
+          </div>
+          <div class="comp-row"><span class="comp-name">MercadoLibre</span><span class="comp-fee bad">15%</span><span class="comp-save bad">-$15.000</span></div>
+          <div class="comp-row"><span class="comp-name">Tiendanube</span><span class="comp-fee bad">3%</span><span class="comp-save bad">-$3.000</span></div>
+          <div class="comp-row"><span class="comp-name">Wix Store</span><span class="comp-fee bad">2.9%</span><span class="comp-save bad">-$2.900</span></div>
+          <div class="comp-row hl"><span class="comp-name">Tu tienda propia</span><span class="comp-fee our">0%</span><span class="comp-save good">$0</span></div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--orange);font-family:'DM Sans',sans-serif">Creá tu tienda →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P17 · Feed 1:1 · E-commerce comisiones</div>
+    <div class="psize">1080×1080</div>
+  </div>
+
+  <!-- P18 Story checklist automatización -->
+  <div class="pw">
+    <div class="piece p18">
+      <div class="grid-bg-sm"></div>
+      <div class="g-purple"></div>
+      <div class="inner">
+        <div class="top-row">
+          <div class="lm"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(0,229,255,.08)" stroke="#00E5FF" stroke-width="1.5"/></svg><span class="wm" style="font-size:.8rem">DATIUM<em>TECH</em></span></div>
+          <div class="badge badge-purple">Checklist</div>
+        </div>
+        <div class="title">¿NECESITÁS<br>AUTOMATIZAR<br><em>TU NEGOCIO</em>?</div>
+        <div class="sub">Marcá los que aplican. Si son 3 o más, ya es urgente.</div>
+        <div class="checks">
+          <div class="check-item"><div class="check-box checked"></div><div class="check-txt"><strong>Respondés leads horas después</strong>Para cuando llamás, ya compró en otro lado.</div></div>
+          <div class="check-item"><div class="check-box checked"></div><div class="check-txt"><strong>Cargás datos a mano en planillas</strong>Nombre, email, teléfono... una y otra vez.</div></div>
+          <div class="check-item"><div class="check-box checked"></div><div class="check-txt"><strong>Mandás presupuestos desde cero</strong>Copiás y pegás lo mismo con distintos precios.</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-txt"><strong>No sabés cuántos leads perdiste</strong>No tenés métricas de conversión claras.</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-txt"><strong>Hacés seguimiento a mano</strong>"Llamar mañana" está en el WhatsApp sin orden.</div></div>
+          <div class="check-item"><div class="check-box"></div><div class="check-txt"><strong>Tu equipo no sabe el estado de cada proyecto</strong>Comunicación desorganizada e interna.</div></div>
+        </div>
+        <div class="result-box">
+          <p>3+ checks = hora de automatizar</p>
+          <span>Escribinos y te armamos un diagnóstico gratis</span>
+        </div>
+      </div>
+    </div>
+    <div class="plabel">P18 · Story 9:16 · Checklist automatización</div>
+    <div class="psize">1080×1920</div>
+  </div>
+
+  <!-- P19 Stack tecnológico -->
+  <div class="pw">
+    <div class="piece p19">
+      <div class="grid-bg"></div>
+      <div class="g-c"></div>
+      <div class="inner">
+        <div class="title">LAS HERRAMIENTAS<br>QUE USAN LOS<br><em>GRANDES</em></div>
+        <div class="sub">Nuestro stack tecnológico para construir productos sólidos y escalables.</div>
+        <div class="stack-grid">
+          <div class="tech-item"><div class="tech-icon">⚛️</div><div class="tech-name">React Native</div><div class="tech-cat">Mobile</div></div>
+          <div class="tech-item"><div class="tech-icon">▲</div><div class="tech-name">Next.js</div><div class="tech-cat">Web</div></div>
+          <div class="tech-item"><div class="tech-icon">🟩</div><div class="tech-name">Node.js</div><div class="tech-cat">Backend</div></div>
+          <div class="tech-item"><div class="tech-icon">🐍</div><div class="tech-name">Python</div><div class="tech-cat">IA / API</div></div>
+          <div class="tech-item"><div class="tech-icon">🤖</div><div class="tech-name">OpenAI</div><div class="tech-cat">IA</div></div>
+          <div class="tech-item"><div class="tech-icon">💬</div><div class="tech-name">WA Business</div><div class="tech-cat">Bot</div></div>
+          <div class="tech-item"><div class="tech-icon">🔄</div><div class="tech-name">Make</div><div class="tech-cat">Automating</div></div>
+          <div class="tech-item"><div class="tech-icon">🏦</div><div class="tech-name">MercadoPago</div><div class="tech-cat">Pagos</div></div>
+          <div class="tech-item"><div class="tech-icon">💳</div><div class="tech-name">Stripe</div><div class="tech-cat">Pagos</div></div>
+          <div class="tech-item"><div class="tech-icon">🐘</div><div class="tech-name">PostgreSQL</div><div class="tech-cat">DB</div></div>
+          <div class="tech-item"><div class="tech-icon">🔥</div><div class="tech-name">Firebase</div><div class="tech-cat">Cloud</div></div>
+          <div class="tech-item"><div class="tech-icon">☁️</div><div class="tech-name">AWS / Vercel</div><div class="tech-cat">Deploy</div></div>
+        </div>
+        <div class="bot" style="margin-top:.5rem"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span class="url">datiumtech.com.ar</span></div>
+      </div>
+    </div>
+    <div class="plabel">P19 · Feed 1:1 · Stack tecnológico</div>
+    <div class="psize">1080×1080</div>
+  </div>
+
+  <!-- P20 Story chatbot LATAM -->
+  <div class="pw">
+    <div class="piece p20">
+      <div class="grid-bg-sm"></div>
+      <div class="g-green"></div>
+      <div class="inner">
+        <div class="top-row">
+          <div class="lm"><svg width="18" height="18" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(0,229,255,.08)" stroke="#00E5FF" stroke-width="1.5"/><path d="M13 12H20C24.4 12 28 15.6 28 20C28 24.4 24.4 28 20 28H13V12Z" stroke="#00E5FF" stroke-width="1.8" fill="none"/><circle cx="28" cy="20" r="2.5" fill="#00E5FF"/></svg><span class="wm" style="font-size:.8rem">DATIUM<em>TECH</em></span></div>
+          <div class="badge badge-green">Chatbot IA</div>
+        </div>
+        <div class="hook">TU NEGOCIO<br>ATIENDE<br><em>LAS 24HS</em><br>CON IA</div>
+        <div class="sub">Un asistente entrenado con tu negocio responde, califica leads y agenda — sin que vos hagas nada.</div>
+        <div class="chat-mock">
+          <div class="chat-head">Bot activo · 03:47 AM</div>
+          <div class="msg-r"><div class="bubble bbot">¡Hola! ¿En qué te puedo ayudar?</div><span class="time">03:47 ✓✓</span></div>
+          <div class="msg-r right"><span class="time">03:48</span><div class="bubble buser">¿Cuánto cuesta una web?</div></div>
+          <div class="msg-r"><div class="bubble bbot">Landings desde $350k · entrega en 7 días ✓ ¿Te agendo una llamada?</div><span class="time">03:48 ✓✓</span></div>
+          <div class="msg-r right"><span class="time">03:49</span><div class="bubble buser">Sí, mañana a las 10</div></div>
+          <div class="msg-r"><div class="bubble bbot">¡Listo! Reunión agendada para mañana 10:00 ✅</div><span class="time">03:49 ✓✓</span></div>
+        </div>
+        <div class="features">
+          <div class="feat-item">WhatsApp + Instagram + Web</div>
+          <div class="feat-item">Califica leads automáticamente</div>
+          <div class="feat-item">Agenda reuniones sin intervención</div>
+          <div class="feat-item">Panel con analytics de conversaciones</div>
+        </div>
+        <div class="price-chip"><span class="pc-since">desde</span><span class="pc-val">$480.000</span><span class="pc-since">(~USD 480)</span></div>
+        <div class="cta-full">QUIERO MI CHATBOT →</div>
+        <div class="hint">datiumtech.com.ar · DM para más info</div>
+      </div>
+    </div>
+    <div class="plabel">P20 · Story 9:16 · Chatbot IA</div>
+    <div class="psize">1080×1920</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     POSTS DE VALOR ADICIONALES (21-30)
+════════════════════════════════════════════════════════ -->
+<div class="section-label">Posts de valor adicionales — 10 más</div>
+<div class="grid">
+
+  <!-- 21 Errores #3 -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="dots-bg"></div>
+      <div class="g-br" style="background:radial-gradient(circle,rgba(255,61,0,.08),transparent 65%)"></div>
+      <div style="position:absolute;right:-10px;bottom:-10px;font-family:'Barlow Condensed',sans-serif;font-size:9rem;font-weight:900;color:rgba(255,61,0,.07);line-height:1">03</div>
+      <div class="inner">
+        <div style="display:flex;gap:4px;margin-bottom:auto"><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:20px;height:4px;border-radius:2px;background:var(--red)"></div><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div></div>
+        <div class="eyebrow" style="color:var(--red)">⚠ Error 3 de 5</div>
+        <div class="title">VELOCIDAD<br>DE CARGA<br>LENTA</div>
+        <div class="body">Si tu sitio tarda más de 3 segundos en cargar, el 53% de los visitantes se van. Google te penaliza y perdés posiciones.</div>
+        <div style="background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.15);border-radius:9px;padding:.65rem .9rem;margin-bottom:auto">
+          <div style="font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);font-family:'DM Sans',sans-serif;margin-bottom:.25rem">✓ Cómo lo resolvemos</div>
+          <div style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.45">Optimizamos imágenes, usamos CDN y hosting de alto rendimiento. Nuestros sitios cargan en menos de 1.5 segundos.</div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#FF3D00" stroke-width="2"/></svg><span class="wm" style="font-size:.65rem;color:var(--red)">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--red);font-family:'DM Sans',sans-serif">Error #4 →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P21 · Feed 1:1 · Error 3/5 velocidad</div><div class="psize">1080×1080</div>
+  </div>
+
+  <!-- 22 Errores #4 -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="dots-bg"></div>
+      <div class="g-br" style="background:radial-gradient(circle,rgba(255,61,0,.08),transparent 65%)"></div>
+      <div style="position:absolute;right:-10px;bottom:-10px;font-family:'Barlow Condensed',sans-serif;font-size:9rem;font-weight:900;color:rgba(255,61,0,.07);line-height:1">04</div>
+      <div class="inner">
+        <div style="display:flex;gap:4px;margin-bottom:auto"><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:20px;height:4px;border-radius:2px;background:var(--red)"></div><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div></div>
+        <div class="eyebrow" style="color:var(--red)">⚠ Error 4 de 5</div>
+        <div class="title">SIN VERSIÓN<br>MOBILE<br>RESPONSIVE</div>
+        <div class="body">El 75% del tráfico web viene del celular. Si tu sitio se ve mal en el teléfono, perdiste ese visitante para siempre.</div>
+        <div style="background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.15);border-radius:9px;padding:.65rem .9rem;margin-bottom:auto">
+          <div style="font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);font-family:'DM Sans',sans-serif;margin-bottom:.25rem">✓ Cómo lo resolvemos</div>
+          <div style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.45">Diseñamos mobile-first. Cada pixel queda perfecto en cualquier tamaño de pantalla, sin excepciones.</div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#FF3D00" stroke-width="2"/></svg><span class="wm" style="font-size:.65rem;color:var(--red)">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--red);font-family:'DM Sans',sans-serif">Error #5 →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P22 · Feed 1:1 · Error 4/5 mobile</div><div class="psize">1080×1080</div>
+  </div>
+
+  <!-- 23 Error #5 final carrusel -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="dots-bg"></div>
+      <div class="g-br" style="background:radial-gradient(circle,rgba(255,61,0,.1),transparent 65%)"></div>
+      <div style="position:absolute;right:-10px;bottom:-10px;font-family:'Barlow Condensed',sans-serif;font-size:9rem;font-weight:900;color:rgba(255,61,0,.08);line-height:1">05</div>
+      <div class="inner">
+        <div style="display:flex;gap:4px;margin-bottom:auto"><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:8px;height:4px;border-radius:2px;background:rgba(255,61,0,.2)"></div><div style="width:20px;height:4px;border-radius:2px;background:var(--red)"></div></div>
+        <div class="eyebrow" style="color:var(--red)">⚠ Error 5 de 5</div>
+        <div class="title">SIN FORMA<br>DE MEDIR<br>RESULTADOS</div>
+        <div class="body">Sin analytics, no sabés cuántas visitas tenés, de dónde vienen ni qué hace la gente en tu sitio. Volás a ciegas.</div>
+        <div style="background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.15);border-radius:9px;padding:.65rem .9rem;margin-bottom:.5rem">
+          <div style="font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);font-family:'DM Sans',sans-serif;margin-bottom:.25rem">✓ Cómo lo resolvemos</div>
+          <div style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.45">Google Analytics 4 + Meta Pixel instalados en cada proyecto. Sabés exactamente qué funciona y qué no.</div>
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,61,0,.1);border:1px solid rgba(255,61,0,.25);border-radius:5px;padding:.4rem .8rem;margin-bottom:auto"><span style="font-size:.7rem;color:var(--red);font-family:'DM Sans',sans-serif;font-weight:700">¿Tenés alguno de estos 5 errores?</span></div>
+        <div style="background:var(--red);border-radius:7px;padding:.65rem;text-align:center;margin-top:.4rem;font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:900;letter-spacing:.03em;color:#fff">AUDITÁ TU WEB GRATIS →</div>
+        <div class="bot" style="margin-top:.5rem"><div class="lm"><svg width="13" height="13" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#FF3D00" stroke-width="2"/></svg><span class="wm" style="font-size:.65rem;color:var(--red)">DATIUMTECH</span></div><span class="url">datiumtech.com.ar</span></div>
+      </div>
+    </div>
+    <div class="plabel">P23 · Feed 1:1 · Error 5/5 + CTA final</div><div class="psize">1080×1080</div>
+  </div>
+
+  <!-- 24 Qué es un CRM -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="grid-bg"></div>
+      <div class="g-tl"></div>
+      <div class="inner">
+        <div class="eyebrow" style="color:var(--cyan)">CRM a medida</div>
+        <div class="title">¿QUÉ ES UN<br>CRM Y POR QUÉ<br>LO NECESITÁS?</div>
+        <div class="body">Un CRM (Customer Relationship Manager) es el sistema que centraliza todos tus leads, clientes y proyectos en un solo lugar.</div>
+        <div style="display:flex;flex-direction:column;gap:.35rem;flex:1;margin-bottom:.6rem">
+          <div style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:.45rem .7rem"><span style="font-size:.75rem">📋</span><span style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif">Sin CRM: datos en WhatsApp, papel y memoria</span></div>
+          <div style="display:flex;align-items:center;gap:.6rem;background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.15);border-radius:7px;padding:.45rem .7rem"><span style="font-size:.75rem">✅</span><span style="font-size:.7rem;color:var(--tx);font-family:'DM Sans',sans-serif;font-weight:600">Con CRM: todo centralizado, ordenado y medible</span></div>
+          <div style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:.45rem .7rem"><span style="font-size:.75rem">📊</span><span style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif">Estado de cada lead: nuevo / contactado / cerrado</span></div>
+          <div style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:.45rem .7rem"><span style="font-size:.75rem">🔔</span><span style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif">Alertas automáticas de seguimiento</span></div>
+          <div style="display:flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:.45rem .7rem"><span style="font-size:.75rem">📈</span><span style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif">Métricas de conversión en tiempo real</span></div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">Cotizá tu CRM →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P24 · Feed 1:1 · Qué es un CRM</div><div class="psize">1080×1080</div>
+  </div>
+
+  <!-- 25 "Antes de contratar un dev" -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="dots-bg"></div>
+      <div class="g-tl"></div>
+      <div class="inner">
+        <div class="eyebrow" style="color:var(--yellow)">Antes de contratar</div>
+        <div class="title">5 PREGUNTAS<br>QUE TENÉS<br>QUE HACER</div>
+        <div style="display:flex;flex-direction:column;gap:.4rem;flex:1;margin-bottom:.6rem">
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,214,0,.12);border-radius:8px;padding:.5rem .75rem"><div style="font-size:.62rem;color:var(--yellow);font-family:'JetBrains Mono',monospace;margin-bottom:.15rem">01.</div><div style="font-size:.72rem;color:var(--tx);font-family:'DM Sans',sans-serif;font-weight:600">¿Me mostrás proyectos anteriores reales?</div></div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,214,0,.12);border-radius:8px;padding:.5rem .75rem"><div style="font-size:.62rem;color:var(--yellow);font-family:'JetBrains Mono',monospace;margin-bottom:.15rem">02.</div><div style="font-size:.72rem;color:var(--tx);font-family:'DM Sans',sans-serif;font-weight:600">¿El precio es fijo o por horas?</div></div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,214,0,.12);border-radius:8px;padding:.5rem .75rem"><div style="font-size:.62rem;color:var(--yellow);font-family:'JetBrains Mono',monospace;margin-bottom:.15rem">03.</div><div style="font-size:.72rem;color:var(--tx);font-family:'DM Sans',sans-serif;font-weight:600">¿Quién tiene los accesos y el dominio?</div></div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,214,0,.12);border-radius:8px;padding:.5rem .75rem"><div style="font-size:.62rem;color:var(--yellow);font-family:'JetBrains Mono',monospace;margin-bottom:.15rem">04.</div><div style="font-size:.72rem;color:var(--tx);font-family:'DM Sans',sans-serif;font-weight:600">¿Incluye soporte post-lanzamiento?</div></div>
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,214,0,.12);border-radius:8px;padding:.5rem .75rem"><div style="font-size:.62rem;color:var(--yellow);font-family:'JetBrains Mono',monospace;margin-bottom:.15rem">05.</div><div style="font-size:.72rem;color:var(--tx);font-family:'DM Sans',sans-serif;font-weight:600">¿Cuánto tarda realmente?</div></div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--yellow);font-family:'DM Sans',sans-serif">Preguntanos todo →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P25 · Feed 1:1 · Antes de contratar</div><div class="psize">1080×1080</div>
+  </div>
+
+  <!-- 26 Métricas reales negocio -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="grid-bg"></div>
+      <div class="g-tl"></div>
+      <div class="inner">
+        <div class="eyebrow" style="color:var(--cyan)">Resultados típicos</div>
+        <div class="title">NÚMEROS<br>REALES DE<br><em>CLIENTES</em></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;flex:1;margin-bottom:.6rem">
+          <div style="background:rgba(0,229,255,.06);border:1px solid rgba(0,229,255,.15);border-radius:10px;padding:.8rem .9rem;text-align:center">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:900;color:var(--cyan);line-height:1">+78%</div>
+            <div style="font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif;margin-top:.2rem">aumento de leads</div>
+          </div>
+          <div style="background:rgba(0,200,83,.06);border:1px solid rgba(0,200,83,.15);border-radius:10px;padding:.8rem .9rem;text-align:center">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:900;color:var(--green);line-height:1">-90%</div>
+            <div style="font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif;margin-top:.2rem">tiempo de respuesta</div>
+          </div>
+          <div style="background:rgba(255,214,0,.06);border:1px solid rgba(255,214,0,.15);border-radius:10px;padding:.8rem .9rem;text-align:center">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:900;color:var(--yellow);line-height:1">3X</div>
+            <div style="font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif;margin-top:.2rem">ROI promedio</div>
+          </div>
+          <div style="background:rgba(255,61,0,.06);border:1px solid rgba(255,61,0,.15);border-radius:10px;padding:.8rem .9rem;text-align:center">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:900;color:var(--red);line-height:1">-62%</div>
+            <div style="font-size:.65rem;color:var(--tx2);font-family:'DM Sans',sans-serif;margin-top:.2rem">costos operativos</div>
+          </div>
+        </div>
+        <div style="font-size:.62rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;text-align:center;margin-bottom:.5rem">// promedio clientes activos últimos 6 meses</div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">¿Querés estos números? →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P26 · Feed 1:1 · Métricas de resultados</div><div class="psize">1080×1080</div>
+  </div>
+
+  <!-- 27 "Consultoría digital" -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="dots-bg"></div>
+      <div class="g-tl"></div>
+      <div class="inner">
+        <div class="eyebrow" style="color:var(--purple)">Consultoría digital</div>
+        <div class="title">NO SABÉS<br>POR DÓNDE<br><em>EMPEZAR</em></div>
+        <div class="body">Eso es exactamente para lo que estamos. Analizamos tu negocio, te decimos qué necesitás y por qué, y lo ejecutamos.</div>
+        <div style="display:flex;flex-direction:column;gap:.35rem;flex:1;margin-bottom:.6rem">
+          <div style="display:flex;align-items:center;gap:.6rem;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:.4rem"><span style="font-size:.75rem">🔍</span><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">Diagnóstico digital completo de tu negocio</span></div>
+          <div style="display:flex;align-items:center;gap:.6rem;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:.4rem"><span style="font-size:.75rem">🗺️</span><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">Roadmap de implementación por etapas</span></div>
+          <div style="display:flex;align-items:center;gap:.6rem;border-bottom:1px solid rgba(255,255,255,.05);padding-bottom:.4rem"><span style="font-size:.75rem">🛠️</span><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">Recomendación de herramientas ideales</span></div>
+          <div style="display:flex;align-items:center;gap:.6rem;padding-bottom:.4rem"><span style="font-size:.75rem">🤝</span><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">Acompañamiento durante todo el proceso</span></div>
+        </div>
+        <div style="background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.2);border-radius:7px;padding:.5rem .8rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
+          <span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">Consultoría desde</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:900;color:var(--purple)">$150.000</span>
+        </div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--purple);font-family:'DM Sans',sans-serif">Primera llamada gratis →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P27 · Feed 1:1 · Consultoría digital</div><div class="psize">1080×1080</div>
+  </div>
+
+  <!-- 28 Balance trimestral -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="grid-bg"></div>
+      <div class="g-c"></div>
+      <div class="inner">
+        <div class="eyebrow" style="color:var(--cyan)">Balance Q1 · 2025</div>
+        <div class="title">3 MESES,<br>RESULTADOS<br><em>REALES</em></div>
+        <div style="display:flex;flex-direction:column;gap:.45rem;flex:1;margin-bottom:.6rem">
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.55rem .8rem">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:900;color:var(--cyan)">+80</span>
+            <span style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif">proyectos desarrollados en LATAM y España</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.55rem .8rem">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:900;color:var(--green)">7</span>
+            <span style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif">días promedio de entrega garantizada</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.55rem .8rem">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:900;color:var(--yellow)">5</span>
+            <span style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif">países con clientes activos · AR · MX · CO · CL · ES</span>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:.6rem;align-items:center;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.55rem .8rem">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.8rem;font-weight:900;color:var(--purple)">98%</span>
+            <span style="font-size:.7rem;color:var(--tx2);font-family:'DM Sans',sans-serif">tasa de satisfacción de clientes</span>
+          </div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">Sumate en Q2 →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P28 · Feed 1:1 · Balance trimestral</div><div class="psize">1080×1080</div>
+  </div>
+
+  <!-- 29 Servicios con precios USD -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="grid-bg"></div>
+      <div class="g-tl"></div>
+      <div class="inner">
+        <div class="eyebrow" style="color:var(--cyan)">Todos los servicios</div>
+        <div class="title">¿QUÉ<br>PODEMOS<br><em>HACER JUNTOS</em>?</div>
+        <div style="display:flex;flex-direction:column;gap:.3rem;flex:1;margin-bottom:.5rem">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;background:rgba(255,61,0,.06);border:1px solid rgba(255,61,0,.15);border-radius:7px"><span style="font-size:.72rem;color:var(--tx);font-family:'DM Sans',sans-serif;font-weight:600">🚀 Landing Page</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--red)">USD 350</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px"><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">🌐 Sitio Web Corporativo</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--cyan)">USD 850</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px"><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">📱 App Móvil</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--cyan)">USD 3.500</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px"><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">🤖 Chatbot con IA</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--cyan)">USD 480</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px"><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">⚙️ Automatizaciones / CRM</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--cyan)">USD 680</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px"><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">📈 SEO mensual</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--cyan)">USD 280/mes</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem .6rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:7px"><span style="font-size:.72rem;color:var(--tx2);font-family:'DM Sans',sans-serif">🛒 E-commerce</span><span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;color:var(--cyan)">USD 1.500</span></div>
+        </div>
+        <div class="bot"><div class="lm"><svg width="14" height="14" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="#00E5FF" stroke-width="2"/></svg><span class="wm" style="font-size:.7rem">DATIUMTECH</span></div><span style="font-size:.62rem;color:var(--cyan);font-family:'DM Sans',sans-serif">Presupuesto gratis →</span></div>
+      </div>
+    </div>
+    <div class="plabel">P29 · Feed 1:1 · Todos los precios USD</div><div class="psize">1080×1080</div>
+  </div>
+
+  <!-- 30 CTA final "Empezá hoy" -->
+  <div class="pw">
+    <div class="pv piece">
+      <div class="grid-bg"></div>
+      <div class="g-tl"></div><div class="g-br"></div>
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(0,229,255,.06),transparent 70%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),rgba(0,229,255,.2))"></div>
+      <div class="inner" style="justify-content:center;text-align:center;gap:1rem">
+        <div style="margin-bottom:.5rem"><svg width="48" height="48" viewBox="0 0 40 40" fill="none"><path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" fill="rgba(0,229,255,0.08)" stroke="#00E5FF" stroke-width="1.2"/><path d="M13 12H20C24.4 12 28 15.6 28 20C28 24.4 24.4 28 20 28H13V12Z" stroke="#00E5FF" stroke-width="1.8" fill="none"/><circle cx="28" cy="20" r="3" fill="#00E5FF"/><circle cx="28" cy="20" r="5.5" fill="rgba(0,229,255,0.15)"/></svg></div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:3rem;font-weight:900;line-height:.85;letter-spacing:-.03em;color:var(--tx)">EL MOMENTO<br>ES <span style="color:transparent;-webkit-text-stroke:2px var(--cyan);filter:drop-shadow(0 0 16px rgba(0,229,255,.5))">AHORA</span></div>
+        <div style="font-size:.82rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.6;max-width:300px">Cada día sin presencia digital es un cliente que va a otro lado. Primera llamada gratis, sin compromisos.</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem;width:100%">
+          <div style="background:var(--cyan);color:#080B14;font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:.04em;padding:.8rem;border-radius:7px;text-align:center">QUIERO EMPEZAR →</div>
+          <div style="background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.25);color:#25D366;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;letter-spacing:.04em;padding:.7rem;border-radius:7px;text-align:center">💬 WHATSAPP DIRECTO</div>
+        </div>
+        <div style="font-size:.65rem;color:var(--tx3);font-family:'JetBrains Mono',monospace;letter-spacing:.06em">datiumtech.com.ar</div>
+      </div>
+    </div>
+    <div class="plabel">P30 · Feed 1:1 · CTA final</div><div class="psize">1080×1080</div>
+  </div>
+
+</div>
+
+<!-- Instrucciones -->
+<div style="margin:4rem 0 2rem;padding:1.5rem;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.1);border-radius:12px;max-width:700px">
+  <div style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;color:var(--cyan);margin-bottom:.6rem">Instrucciones de captura</div>
+  <div style="font-size:.8rem;color:var(--tx2);font-family:'DM Sans',sans-serif;line-height:1.7">
+    <strong style="color:var(--tx)">Feeds 1:1 (480px mostrado):</strong> Chrome DevTools → Device → 1080px ancho → screenshot<br>
+    <strong style="color:var(--tx)">Stories 9:16 (390×693 mostrado):</strong> DevTools → 1080×1920<br>
+    <strong style="color:var(--tx)">Feed 4:5 (420×525 mostrado):</strong> DevTools → 1080×1350<br><br>
+    Total: <strong style="color:var(--cyan)">30 piezas nuevas</strong> + las del kit anterior = <strong style="color:var(--cyan)">37 piezas</strong> en total
+  </div>
+</div>
+
+</body>
+</html>
