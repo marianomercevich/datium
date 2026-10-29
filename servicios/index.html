@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es-419">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios DatiumTech | Landing, apps, chatbots y SEO</title>
+<meta name="description" content="Servicios de DatiumTech: landing pages, sitios web, chatbots WhatsApp, apps, automatizaciones, SEO y e-commerce para Argentina y LATAM.">
+<link rel="canonical" href="https://datiumtech.com.ar/servicios/">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../css/site.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+</head>
+<body>
+<nav>
+  <a href="../" class="logo" style="display:flex;align-items:center;gap:10px;text-decoration:none">
+    <span style="color:var(--tx)">DATIUM<span style="color:var(--cyan)">TECH</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="../servicios/">Servicios</a>
+    <a href="../#planes">Planes</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a href="#contacto" class="nav-cta">Hablar con un asesor</a>
+  <button type="button" class="nav-menu" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="brand-kicker">DATIUMTECH</p>
+    <h1 class="page-h1">Servicios de desarrollo y automatización</h1>
+    <p class="page-lead">Landing pages, sitios, apps, chatbots con IA, CRM y SEO. Precio fijo. Contado, cuotas o plan a medida. Argentina y LATAM.</p>
+  </div>
+</section>
+<section id="servicios">
+  <div class="section-inner">
+    <div class="services-grid"><a class="svc-card" href="../landing-page/"><h3>Landing page</h3><p>Una landing page bien hecha es la diferencia entre una campaña que quema plata y una que trae clientes. En DatiumTech diseñamos landing page…</p><div class="svc-price">desde $350.000 (~USD 250)</div><span class="svc-more">Ver servicio →</span></a><a class="svc-card" href="../sitio-web/"><h3>Sitio web</h3><p>Tu empresa necesita más que una tarjeta digital. Un sitio web corporativo explica quién sos, qué vendés y por qué confiar. DatiumTech lo con…</p><div class="svc-price">desde $850.000 (~USD 600)</div><span class="svc-more">Ver servicio →</span></a><a class="svc-card" href="../chatbot-whatsapp/"><h3>Chatbot WhatsApp</h3><p>El 80% de tus consultas llegan fuera de horario o se enfrían en el inbox. Un chatbot con IA en WhatsApp responde al toque, califica al lead …</p><div class="svc-price">desde $480.000 (~USD 350)</div><span class="svc-more">Ver servicio →</span></a><a class="svc-card" href="../apps-moviles/"><h3>Apps móviles</h3><p>Una app tiene sentido cuando tu cliente vuelve: pedidos, turnos, comunidad, campo o un interno de la empresa. DatiumTech desarrolla iOS y An…</p><div class="svc-price">desde USD 3.500</div><span class="svc-more">Ver servicio →</span></a><a class="svc-card" href="../automatizaciones/"><h3>Automatizaciones</h3><p>Si tu equipo copia datos de WhatsApp a una planilla, se te escapan leads. Automatizamos ese flujo: CRM, recordatorios, reportes y el puente …</p><div class="svc-price">desde $680.000 (~USD 500)</div><span class="svc-more">Ver servicio →</span></a><a class="svc-card" href="../seo/"><h3>SEO</h3><p>Si nadie busca tu marca, Google no te va a regalar tráfico. El SEO de DatiumTech arranca por lo técnico (indexación, velocidad, URLs) y sigu…</p><div class="svc-price">desde $280.000/mes (~USD 200)</div><span class="svc-more">Ver servicio →</span></a><a class="svc-card" href="../ecommerce/"><h3>E-commerce</h3><p>Una tienda online que no cobra en MercadoPago o que se cae en el celular no vende. Armamos e-commerce para marcas que necesitan catálogo, ca…</p><div class="svc-price">desde $1.500.000 (~USD 1.000)</div><span class="svc-more">Ver servicio →</span></a></div>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">DATIUM<span>TECH</span></div>
+    <div class="footer-links"><a href="../">Inicio</a><a href="../#planes">Planes</a><a href="../privacidad.html">Privacidad</a></div>
+  </div>
+</footer>
+<script>
+const navToggle=document.getElementById('nav-toggle');
+const navLinks=document.querySelector('.nav-links');
+if(navToggle&&navLinks){
+  navToggle.addEventListener('click',()=>{
+    const open=navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open?'true':'false');
+  });
+}
+</script>
+<script src="../js/consent.js" defer></script>
+<div id="cookie-bar" class="cookie-bar" role="dialog" aria-label="Cookies">
+  <p>Usamos cookies de Analytics y Meta Pixel si las aceptás. Detalle en la <a href="../privacidad.html">política de privacidad</a>.</p>
+  <div class="cookie-actions">
+    <button type="button" id="cookie-no">Solo esenciales</button>
+    <button type="button" id="cookie-ok">Aceptar</button>
+  </div>
+</div>
+</body>
+</html>

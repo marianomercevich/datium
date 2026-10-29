@@ -75,7 +75,7 @@ Opción B — Google Workspace (USD 6/mes, mejor integración):
 20.	workspace.google.com → Empezar prueba gratis
 21.	Configurar dominio + crear cuenta Gmail corporativa
 7. WhatsApp Business API
-El botón flotante del sitio va al número +54 911 6161 3067. Cambios a hacer:
+El botón flotante del sitio va al número +54 9 11 7652-2232. Cambios a hacer:
 •	Registrar ese número como WhatsApp Business (app gratis en el celular)
 •	Crear perfil: foto del logo DatiumTech, descripción del negocio, horarios
 •	Activar respuestas rápidas para las consultas más comunes
@@ -104,5 +104,5 @@ Marcá cada ítem antes de correr los primeros anuncios:
 •	☐ Primer anuncio configurado (ver Plan de Meta Ads)
 
 
-DatiumTech — info@datiumtech.com.ar — +54 911 6161 
+DatiumTech — datiumtech@gmail.com — +54 9 11 7652-2232 
 
