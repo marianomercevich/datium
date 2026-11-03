@@ -1,108 +1,105 @@
+# DatiumTech — sitio, medición y operación
 
-DATIUMTECH
-Guía de Lanzamiento y Configuración Técnica
-Versión 1.0 — Abril 2025
+Sitio estático en **https://datiumtech.com.ar** (Hostinger). Contactos por **Web3Forms** al mail. Visitas y campañas: **GA4** + **Meta Pixel** (solo si el visitante acepta cookies).
 
+## Dónde mirar cada cosa
 
-1. Archivos del Proyecto
-El sitio está compuesto por los siguientes archivos. Subí todos al mismo directorio raíz del hosting:
+| Pregunta | Dónde | Qué ves |
+|---|---|---|
+| ¿Quién entra al sitio? | [Google Analytics 4](https://analytics.google.com/) → propiedad **G-ZTE21X9Q9V** → Informes → Adquisición | Canal (Organic, Paid, Direct, Referral), landing, dispositivo |
+| ¿Por qué palabras nos encuentran? | [Search Console](https://search.google.com/search-console) → propiedad `datiumtech.com.ar` | Consultas, clics, impresiones, páginas |
+| ¿De qué anuncio de IG/FB viene el lead? | Mail del formulario (campo **canal** / **utm_***) + [Events Manager](https://business.facebook.com/events_manager) Pixel **1927140795342157** | Eventos PageView, Lead, whatsapp_click |
+| ¿Llegó un contacto? | Inbox de **datiumtech@gmail.com** (Web3Forms) | Nombre, servicio, pago, **canal**, **landing**, **pagina**, UTM |
+| ¿Alguien tocó WhatsApp? | GA4 → Eventos → `whatsapp_click` | Clics al botón / flotante (si aceptó cookies) |
 
-index.html	Sitio principal — toda la landing de DatiumTech
-privacidad.html	Página de política de privacidad
-README.txt	Este documento en formato texto plano
+Los contactos **siempre** llegan por mail, aunque la persona rechace cookies. El origen (Google Ads, Meta, orgánico, directo) viaja en el mismo mail.
 
-2. Activar el Formulario de Contacto
-El formulario usa Web3Forms — gratuito, sin PHP, funciona en cualquier hosting incluido Squarespace.
+## Cómo leer un mail de lead
 
-Paso a paso:
-1.	Ir a web3forms.com → clic en 'Get your Access Key'
-2.	Ingresar: info@datiumtech.com.ar
-3.	Confirmar el email que te envían (importante)
-4.	Copiar el Access Key generado (formato: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
-5.	Abrir index.html en un editor de texto
-6.	Buscar: YOUR_WEB3FORMS_KEY
-7.	Reemplazar con tu key real → guardar → subir
+Asunto ejemplo: `Nuevo lead — Datium · meta_ads`
 
-Límite gratuito: 250 envíos/mes. Plan de pago desde USD 9/mes sin límite.
-¿No llegás a 250 leads por mes? El gratuito es suficiente para empezar.
-3. Instalar el Pixel de Meta
-El Pixel permite trackear cuántos leads vienen de tus anuncios de Facebook/Instagram. CRÍTICO para optimizar campañas.
+| Campo | Significado |
+|---|---|
+| `canal` | `google_ads` · `google_organico` · `meta_ads` · `whatsapp` · `directo` · `referral` · `redes` |
+| `landing` | Primera URL de esa visita (dónde aterrizó) |
+| `pagina` | URL desde la que envió el formulario |
+| `referrer` | Sitio anterior, o `(directo)` |
+| `utm_source` / `utm_medium` / `utm_campaign` | Campaña (último toque) |
+| `gclid` / `fbclid` | Clic de Google Ads o Meta |
+| `first_utm_source` | Primera campaña de la sesión |
 
-Cómo obtener tu Pixel ID:
-8.	Ir a business.facebook.com
-9.	Events Manager → Conectar fuentes de datos → Web
-10.	Elegir 'Pixel de Meta' → dar nombre (ej: DatiumTech Pixel)
-11.	Copiar el Pixel ID (número de 15-16 dígitos)
+## Links de campaña (usar siempre UTM)
 
-Dónde insertarlo en index.html:
-Buscar el comentario <!-- META PIXEL --> antes del cierre </head>. Si no está, agregarlo ahí. Reemplazar XXXXXXXXXXX con tu Pixel ID real:
+```
+https://datiumtech.com.ar/landing-page/?utm_source=meta&utm_medium=cpc&utm_campaign=landing_mayo
+https://datiumtech.com.ar/?utm_source=google&utm_medium=cpc&utm_campaign=brand
+https://datiumtech.com.ar/chatbot-whatsapp/?utm_source=instagram&utm_medium=bio&utm_campaign=perfil
+```
 
-<script> fbq("init","XXXXXXXXXXX"); fbq("track","PageView"); </script>
+Convención:
 
-Eventos configurados para trackear automáticamente en el formulario:
-•	Lead — cuando el formulario se envía correctamente
-•	ViewContent — al visitar la página
-4. Opciones de Hosting
-El sitio es un HTML estático — funciona en prácticamente cualquier hosting. Recomendaciones:
+- Meta Ads: `utm_source=meta` `utm_medium=cpc` `utm_campaign=nombre_del_ad`
+- Google Ads: activar auto-tagging (`gclid`); opcional los mismos UTM
+- Historias / bio: `utm_source=instagram` `utm_medium=bio`
+- WhatsApp de campaña: `utm_source=whatsapp` `utm_medium=broadcast`
 
-Vercel (recomendado)	Gratis, deploy en 30 segundos, dominio .vercel.app incluido. Conectás GitHub y actualiza automático.
-Netlify	Similar a Vercel. Drag & drop del HTML directo en la interfaz. Muy fácil para empezar.
-Squarespace	Si ya tenés cuenta, usás Code Injection. Sin PHP nativo pero el formulario Web3Forms funciona.
-cPanel/Hostinger	Subís por FTP. Funciona todo. Si querés el contact.php con PHP, acá sí corre.
+## Eventos que dispara el sitio
 
-Deploy en Vercel (más rápido):
-12.	Crear cuenta en vercel.com
-13.	Arrastrar la carpeta del proyecto a vercel.com/new
-14.	En 30 segundos está online con HTTPS
-15.	Para dominio propio: Settings → Domains → agregar datiumtech.com.ar
-5. Configuración del Dominio
-Si registrás datiumtech.com.ar en NIC.ar o en un registrar privado:
+Con cookies aceptadas (`js/consent.js` + `js/track.js`):
 
-Tipo de registro	Valor
-A Record	IP de tu servidor hosting
-CNAME www	datiumtech.com.ar
-MX (email)	Configurar con Google Workspace o Zoho para info@datiumtech.com.ar
+| Evento | Cuándo | GA4 | Meta |
+|---|---|---|---|
+| `page_view` | Cada página | sí | PageView |
+| `generate_lead` | Formulario OK | sí | Lead |
+| `whatsapp_click` | Clic en wa.me | sí | custom |
+| `cta_click` | CTA planes / “Hablar con un asesor” | sí | custom |
 
-Propagación DNS: entre 15 minutos y 48 horas dependiendo del registrar.
-6. Email Profesional info@datiumtech.com.ar
-Opción A — Zoho Mail (gratis hasta 5 usuarios):
-16.	Ir a zoho.com/es-xl/mail → Free Plan
-17.	Agregar dominio datiumtech.com.ar
-18.	Configurar los registros MX que te dan en tu panel de DNS
-19.	Crear la casilla info@datiumtech.com.ar
+## SEO (ya en el sitio)
 
-Opción B — Google Workspace (USD 6/mes, mejor integración):
-20.	workspace.google.com → Empezar prueba gratis
-21.	Configurar dominio + crear cuenta Gmail corporativa
-7. WhatsApp Business API
-El botón flotante del sitio va al número +54 9 11 7652-2232. Cambios a hacer:
-•	Registrar ese número como WhatsApp Business (app gratis en el celular)
-•	Crear perfil: foto del logo DatiumTech, descripción del negocio, horarios
-•	Activar respuestas rápidas para las consultas más comunes
-•	Para escalar: contratar API oficial de Meta Business (necesitás BSPS como Leadsales o Treble)
-8. SEO Inicial (primeros 30 días)
-El sitio ya tiene meta description configurada. Tareas adicionales:
-•	Crear Google Search Console → verificar propiedad con metatag
-•	Crear Google Analytics 4 → insertar código de medición
-•	Dar de alta en Google My Business (aunque sea servicio digital)
-•	Registrar en Bing Webmaster Tools
-•	Crear sitemap.xml (usar xml-sitemaps.com → subir al servidor → declarar en GSC)
-9. Checklist de Lanzamiento
-Marcá cada ítem antes de correr los primeros anuncios:
+- Canonical apex `https://datiumtech.com.ar/` (www redirige)
+- Sitemap: `/sitemap.xml` — declarado en `robots.txt`
+- Schema: ProfessionalService + Offer (ARS) + FAQ
+- Páginas de servicio indexables: `/landing-page/`, `/sitio-web/`, `/chatbot-whatsapp/`, `/apps-moviles/`, `/automatizaciones/`, `/seo/`, `/ecommerce/`, `/servicios/`
+- OG image: `/og-image.jpg` (1200×630)
 
-•	☐ index.html subido al servidor
-•	☐ privacidad.html subido al servidor
-•	☐ Web3Forms configurado con access_key real
-•	☐ Test del formulario realizado (enviaste un mensaje de prueba)
-•	☐ Recibiste el email de confirmación en info@datiumtech.com.ar
-•	☐ Pixel de Meta instalado
-•	☐ Evento Lead verificado en Events Manager
-•	☐ HTTPS activo en el dominio
-•	☐ Instagram de DatiumTech creado y con bio completa
-•	☐ Cuenta de Meta Business Manager creada
-•	☐ Tarjeta de crédito cargada en Meta Ads
-•	☐ Primer anuncio configurado (ver Plan de Meta Ads)
+Pendiente en Search Console (una vez):
 
+1. Verificar la propiedad **sin www** si no está.
+2. Enviar sitemap `https://datiumtech.com.ar/sitemap.xml`.
+3. Inspeccionar las URLs de servicio nuevas.
 
-DatiumTech — datiumtech@gmail.com — +54 9 11 7652-2232 
+## Panel local de métricas
 
+No va a Hostinger. En tu PC:
+
+```
+cd panel
+python -m pip install -r requirements.txt
+python app.py
+```
+
+Abrí http://127.0.0.1:8788/ — la clave se imprime en la terminal (queda en `panel/.env`).
+
+Sin `credentials.json` ves los accesos a GA4, Search Console, Meta y Web3Forms. Con una cuenta de servicio de Google, el mismo panel trae usuarios, canales, landings, leads, WhatsApp y consultas.
+
+## Hosting y deploy
+
+Hostinger, cuenta FTP del sitio DatiumTech. Carpeta remota: `public_html`.
+
+Subir, como mínimo: `index.html`, `privacidad.html`, `robots.txt`, `sitemap.xml`, `favicon.svg`, `og-image.jpg`, `css/`, `js/`, y las carpetas de servicio.
+
+No hace falta base de datos.
+
+Regenerar landings de servicio:
+
+```
+python tools/gen_servicios.py
+```
+
+## Formulario
+
+Web3Forms, access key ya cargada. Límite free ~250 envíos/mes. Restringir la key al dominio `datiumtech.com.ar` en el panel de Web3Forms.
+
+WhatsApp: **+54 9 11 7652-2232** (`wa.me/5491176522232`).
+
+DatiumTech — datiumtech@gmail.com — +54 9 11 7652-2232

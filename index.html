@@ -5,13 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="DatiumTech desarrolla landing pages, sitios web, apps, chatbots con IA y automatizaciones para negocios de Argentina y LATAM. Precio fijo. Entrega en 7 días.">
 <title>DatiumTech | Landing pages, apps y chatbots con IA</title>
-<!-- ═══════════════════ SEO & META — DatiumTech ═══════════════════
-     TODO antes de publicar:
-     1. Reemplazar PIXEL_ID_AQUI con tu Meta Pixel ID
-     2. Reemplazar G-XXXXXXXXXX con tu Google Analytics 4 ID
-     3. Crear og-image.jpg (1200×630px) y subirla al servidor
-     4. Crear sitemap.xml (usar xml-sitemaps.com)
-═══════════════════════════════════════════════════════════════ -->
 
 <!-- Básicos -->
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -29,7 +22,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DatiumTech">
 <meta property="og:title" content="DatiumTech | Landing pages, apps y chatbots con IA">
-<meta property="og:description" content="Desarrollamos landing pages desde USD 350, apps móviles, chatbots con IA y automatizaciones para negocios de toda Latinoamérica. Entrega en 7 días.">
+<meta property="og:description" content="Landing pages desde $350.000, apps, chatbots con IA y automatizaciones para negocios de Argentina y LATAM. Precio fijo. Entrega en 7 días.">
 <meta property="og:url" content="https://datiumtech.com.ar/">
 <meta property="og:image" content="https://datiumtech.com.ar/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -40,7 +33,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DatiumTech | Landing Pages, Apps y Chatbots con IA">
-<meta name="twitter:description" content="Landing pages desde USD 350, apps, chatbots con IA y automatizaciones para negocios de LATAM. Resultados reales.">
+<meta name="twitter:description" content="Landing pages desde $350.000, apps, chatbots con IA y automatizaciones para negocios de LATAM. Precio fijo.">
 <meta name="twitter:image" content="https://datiumtech.com.ar/og-image.jpg">
 
 <!-- Schema.org — Negocio + Servicios + FAQ -->
@@ -56,13 +49,13 @@
    "priceRange":"$$","openingHours":"Mo-Fr 09:00-18:00",
    "sameAs":["https://www.instagram.com/datiumtech","https://www.facebook.com/datiumtech"],
    "hasOfferCatalog":{"@type":"OfferCatalog","name":"Servicios DatiumTech","itemListElement":[
-     {"@type":"Offer","name":"Landing Page Profesional","url":"https://datiumtech.com.ar/landing-page/","price":"350","priceCurrency":"USD","description":"Landing page a medida, SEO, formulario y mobile. Entrega en 7 días."},
-     {"@type":"Offer","name":"Sitio Web Corporativo","url":"https://datiumtech.com.ar/sitio-web/","price":"850","priceCurrency":"USD"},
+     {"@type":"Offer","name":"Landing Page Profesional","url":"https://datiumtech.com.ar/landing-page/","price":"350000","priceCurrency":"ARS","description":"Landing page a medida, SEO, formulario y mobile. Entrega en 7 días."},
+     {"@type":"Offer","name":"Sitio Web Corporativo","url":"https://datiumtech.com.ar/sitio-web/","price":"850000","priceCurrency":"ARS"},
      {"@type":"Offer","name":"App Móvil iOS y Android","url":"https://datiumtech.com.ar/apps-moviles/","price":"3500","priceCurrency":"USD"},
-     {"@type":"Offer","name":"Chatbot con IA","url":"https://datiumtech.com.ar/chatbot-whatsapp/","price":"480","priceCurrency":"USD"},
-     {"@type":"Offer","name":"Automatizaciones y CRM","url":"https://datiumtech.com.ar/automatizaciones/","price":"680","priceCurrency":"USD"},
-     {"@type":"Offer","name":"E-commerce","url":"https://datiumtech.com.ar/ecommerce/","price":"1500","priceCurrency":"USD"},
-     {"@type":"Offer","name":"SEO y Posicionamiento","url":"https://datiumtech.com.ar/seo/","price":"280","priceCurrency":"USD"}
+     {"@type":"Offer","name":"Chatbot con IA","url":"https://datiumtech.com.ar/chatbot-whatsapp/","price":"480000","priceCurrency":"ARS"},
+     {"@type":"Offer","name":"Automatizaciones y CRM","url":"https://datiumtech.com.ar/automatizaciones/","price":"680000","priceCurrency":"ARS"},
+     {"@type":"Offer","name":"E-commerce","url":"https://datiumtech.com.ar/ecommerce/","price":"1500000","priceCurrency":"ARS"},
+     {"@type":"Offer","name":"SEO y Posicionamiento","url":"https://datiumtech.com.ar/seo/","price":"280000","priceCurrency":"ARS"}
    ]}},
   {"@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"¿Cuánto cuesta una landing page profesional?",
@@ -704,7 +697,9 @@ section{padding:6rem 2rem;position:relative}
   box-shadow:0 0 24px rgba(0,229,255,0.3);
 }
 .form-submit:hover{opacity:0.92;transform:translateY(-1px);box-shadow:0 0 40px rgba(0,229,255,0.45)}
-#form-msg{display:none;margin-top:1rem;padding:.9rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:500;text-align:center}
+#form-msg,.form-msg{display:none;margin-top:1rem;padding:.9rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:500;text-align:center}
+#form-msg.ok,.form-msg.ok{display:block;background:rgba(0,229,255,.1);color:var(--cyan);border:1px solid var(--cyan-brd)}
+#form-msg.err,.form-msg.err{display:block;background:rgba(255,61,0,.12);color:#ff8a70;border:1px solid rgba(255,61,0,.35)}
 
 /* ═══════════════════════════════════════════
    FOOTER
@@ -865,6 +860,7 @@ footer{
   </a>
   <div class="nav-links">
     <a href="servicios/">Servicios</a>
+    <a href="blog/">Blog</a>
     <a href="#planes">Planes</a>
     <a href="#proceso">Cómo trabajamos</a>
     <a href="#contacto">Contacto</a>
@@ -1256,7 +1252,7 @@ footer{
           <li>Prioridad de agenda</li>
           <li>Factura al contado</li>
         </ul>
-        <a class="plan-cta" href="#contacto">Pagar de contado</a>
+        <a class="plan-cta" href="#contacto" data-pago="Contado">Pagar de contado</a>
       </article>
       <article class="plan-card featured reveal reveal-d1">
         <div class="plan-tag">Más elegido</div>
@@ -1267,7 +1263,7 @@ footer{
           <li>6 y 12 cuotas a medida</li>
           <li>Anticipo para reservar fecha</li>
         </ul>
-        <a class="plan-cta" href="#contacto">Quiero cuotas</a>
+        <a class="plan-cta" href="#contacto" data-pago="3 cuotas">Quiero cuotas</a>
       </article>
       <article class="plan-card reveal reveal-d2">
         <div class="plan-tag">A tu operación</div>
@@ -1278,7 +1274,7 @@ footer{
           <li>Hitos de pago por etapa</li>
           <li>Soporte incluido si lo pedís</li>
         </ul>
-        <a class="plan-cta" href="#contacto">Armar mi plan</a>
+        <a class="plan-cta" href="#contacto" data-servicio="Plan a medida">Armar mi plan</a>
       </article>
     </div>
     <table class="cuotas reveal">
@@ -1378,7 +1374,7 @@ footer{
           <label for="prv">Acepto la <a href="privacidad.html">política de privacidad</a> y que Datium me contacte con información sobre sus servicios.</label>
         </div>
         <button type="submit" class="form-submit" id="submit-btn">QUIERO QUE ME CONTACTEN →</button>
-        <div id="form-msg"></div>
+        <div id="form-msg" class="form-msg" role="status"></div>
       </form>
       
     </div>
@@ -1481,6 +1477,7 @@ if (navToggle && navLinks) {
 }
 </script>
 <script src="js/consent.js" defer></script>
+<script src="js/track.js" defer></script>
 <div id="cookie-bar" class="cookie-bar" role="dialog" aria-label="Cookies">
   <p>Usamos cookies de Google Analytics y Meta Pixel para medir visitas y campañas. Podés aceptarlas o seguir solo con las esenciales. Detalle en la <a href="privacidad.html">política de privacidad</a>.</p>
   <div class="cookie-actions">

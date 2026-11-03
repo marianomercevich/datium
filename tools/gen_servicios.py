@@ -22,6 +22,7 @@ EXTRA_CSS = """
 .page-hero .hero-grid,.page-hero .hero-glow{position:absolute;inset:0}
 .page-hero-inner{max-width:1100px;margin:0 auto;position:relative}
 .crumbs{display:flex;flex-wrap:wrap;gap:.4rem;font-size:.78rem;color:var(--tx3);margin-bottom:1.4rem}
+nav.crumbs{position:static;inset:auto;top:auto;left:auto;right:auto;height:auto;width:auto;padding:0;background:none;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;z-index:auto;justify-content:flex-start;align-items:center}
 .crumbs a{color:var(--tx3);text-decoration:none}
 .crumbs a:hover{color:var(--cyan)}
 .page-h1{
@@ -64,6 +65,9 @@ form.contact-form{background:var(--bg2);border:1px solid var(--brd);border-radiu
   display:block;font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.1rem,2vw,1.35rem);
   font-weight:800;letter-spacing:.14em;color:var(--cyan);margin-bottom:.6rem
 }
+#form-msg,.form-msg{display:none;margin-top:1rem;padding:.9rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:500;text-align:center}
+#form-msg.ok,.form-msg.ok{display:block;background:rgba(0,229,255,.1);color:var(--cyan);border:1px solid var(--cyan-brd)}
+#form-msg.err,.form-msg.err{display:block;background:rgba(255,61,0,.12);color:#ff8a70;border:1px solid rgba(255,61,0,.35)}
 """
 
 (ROOT / "css").mkdir(exist_ok=True)
@@ -306,10 +310,12 @@ HEAD = """<!DOCTYPE html>
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
 <meta property="og:url" content="https://datiumtech.com.ar/{slug}/">
+<meta property="og:image" content="https://datiumtech.com.ar/og-image.jpg">
 <meta property="og:locale" content="es_419">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{description}">
+<meta name="twitter:image" content="https://datiumtech.com.ar/og-image.jpg">
 <script type="application/ld+json">{schema}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -325,6 +331,7 @@ NAV = """<nav>
   </a>
   <div class="nav-links">
     <a href="../servicios/">Servicios</a>
+    <a href="../blog/">Blog</a>
     <a href="../#planes">Planes</a>
     <a href="#contacto">Contacto</a>
   </div>
@@ -466,6 +473,7 @@ def page_html(s):
           <label for="prv">Acepto la <a href="../privacidad.html">política de privacidad</a>.</label>
         </div>
         <button class="form-submit" type="submit">QUIERO QUE ME CONTACTEN →</button>
+        <div class="form-msg" role="status"></div>
       </form>
     </div>
   </div>
@@ -478,6 +486,7 @@ def page_html(s):
       <a href="../">Inicio</a>
       <a href="../#planes">Planes</a>
       <a href="../servicios/">Servicios</a>
+      <a href="../blog/">Blog</a>
       <a href="../privacidad.html">Privacidad</a>
     </div>
   </div>
@@ -493,6 +502,7 @@ if(navToggle&&navLinks){{
 }}
 </script>
 <script src="../js/consent.js" defer></script>
+<script src="../js/track.js" defer></script>
 <div id="cookie-bar" class="cookie-bar" role="dialog" aria-label="Cookies">
   <p>Usamos cookies de Analytics y Meta Pixel si las aceptás. Detalle en la <a href="../privacidad.html">política de privacidad</a>.</p>
   <div class="cookie-actions">
@@ -526,6 +536,10 @@ hub = f"""<!DOCTYPE html>
 <meta name="description" content="Servicios de DatiumTech: landing pages, sitios web, chatbots WhatsApp, apps, automatizaciones, SEO y e-commerce para Argentina y LATAM.">
 <link rel="canonical" href="https://datiumtech.com.ar/servicios/">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta property="og:title" content="Servicios DatiumTech | Landing, apps, chatbots y SEO">
+<meta property="og:description" content="Landing pages, sitios, apps, chatbots con IA, CRM y SEO. Precio fijo. Argentina y LATAM.">
+<meta property="og:url" content="https://datiumtech.com.ar/servicios/">
+<meta property="og:image" content="https://datiumtech.com.ar/og-image.jpg">
 <link rel="stylesheet" href="../css/site.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -562,6 +576,7 @@ if(navToggle&&navLinks){{
 }}
 </script>
 <script src="../js/consent.js" defer></script>
+<script src="../js/track.js" defer></script>
 <div id="cookie-bar" class="cookie-bar" role="dialog" aria-label="Cookies">
   <p>Usamos cookies de Analytics y Meta Pixel si las aceptás. Detalle en la <a href="../privacidad.html">política de privacidad</a>.</p>
   <div class="cookie-actions">

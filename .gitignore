@@ -1,0 +1,7 @@
+.cursor/
+panel/.env
+panel/credentials.json
+panel/ga-credentials.json
+panel/.venv/
+panel/__pycache__/
+__pycache__/

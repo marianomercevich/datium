@@ -15,10 +15,12 @@
 <meta property="og:title" content="App móvil iOS y Android | DatiumTech">
 <meta property="og:description" content="Desarrollo de apps móviles iOS y Android con React Native. MVP desde USD 3.500. DatiumTech, Argentina y LATAM.">
 <meta property="og:url" content="https://datiumtech.com.ar/apps-moviles/">
+<meta property="og:image" content="https://datiumtech.com.ar/og-image.jpg">
 <meta property="og:locale" content="es_419">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="App móvil iOS y Android | DatiumTech">
 <meta name="twitter:description" content="Desarrollo de apps móviles iOS y Android con React Native. MVP desde USD 3.500. DatiumTech, Argentina y LATAM.">
+<meta name="twitter:image" content="https://datiumtech.com.ar/og-image.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://datiumtech.com.ar/"},{"@type":"ListItem","position":2,"name":"Apps móviles","item":"https://datiumtech.com.ar/apps-moviles/"}]},{"@type":"Service","name":"Apps móviles iOS y Android","provider":{"@type":"ProfessionalService","name":"DatiumTech","url":"https://datiumtech.com.ar"},"areaServed":["AR","MX","CL","CO","UY","PE"],"description":"Desarrollo de apps móviles iOS y Android con React Native. MVP desde USD 3.500. DatiumTech, Argentina y LATAM.","url":"https://datiumtech.com.ar/apps-moviles/"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuánto tarda un MVP?","acceptedAnswer":{"@type":"Answer","text":"Depende del alcance. Un MVP acotado suele llevar varias semanas, no meses eternos."}},{"@type":"Question","name":"¿Queda el código para nosotros?","acceptedAnswer":{"@type":"Answer","text":"Sí. El producto es tuyo. Lo acordamos en contrato."}},{"@type":"Question","name":"¿Sirve para Argentina y el exterior?","acceptedAnswer":{"@type":"Answer","text":"Sí. Podemos publicar en ambos stores y adaptar pagos por país."}}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +36,7 @@
   </a>
   <div class="nav-links">
     <a href="../servicios/">Servicios</a>
+    <a href="../blog/">Blog</a>
     <a href="../#planes">Planes</a>
     <a href="#contacto">Contacto</a>
   </div>
@@ -129,6 +132,7 @@
           <label for="prv">Acepto la <a href="../privacidad.html">política de privacidad</a>.</label>
         </div>
         <button class="form-submit" type="submit">QUIERO QUE ME CONTACTEN →</button>
+        <div class="form-msg" role="status"></div>
       </form>
     </div>
   </div>
@@ -141,6 +145,7 @@
       <a href="../">Inicio</a>
       <a href="../#planes">Planes</a>
       <a href="../servicios/">Servicios</a>
+      <a href="../blog/">Blog</a>
       <a href="../privacidad.html">Privacidad</a>
     </div>
   </div>
@@ -156,6 +161,7 @@ if(navToggle&&navLinks){
 }
 </script>
 <script src="../js/consent.js" defer></script>
+<script src="../js/track.js" defer></script>
 <div id="cookie-bar" class="cookie-bar" role="dialog" aria-label="Cookies">
   <p>Usamos cookies de Analytics y Meta Pixel si las aceptás. Detalle en la <a href="../privacidad.html">política de privacidad</a>.</p>
   <div class="cookie-actions">
