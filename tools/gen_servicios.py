@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Genera css/site.css y las landings de servicio."""
 from pathlib import Path
+import html
 import json
 import re
 
@@ -71,22 +72,22 @@ form.contact-form{background:var(--bg2);border:1px solid var(--brd);border-radiu
 """
 
 (ROOT / "css").mkdir(exist_ok=True)
-(ROOT / "css" / "site.css").write_text(css_match.group(1).strip() + "\n" + EXTRA_CSS, encoding="utf-8")
+# site.css se edita a mano (blog y 404). No pisarlo al regenerar las páginas.
 
 SERVICES = [
     {
         "slug": "landing-page",
-        "nav": "Landing page",
-        "h1": "Landing page profesional en Argentina",
-        "title": "Landing page Argentina | DatiumTech",
-        "description": "Landing page a medida desde $350.000. Diseño único, SEO, WhatsApp y entrega en 7 días. DatiumTech — Argentina y LATAM.",
+        "nav": "Diseño de landing page",
+        "h1": "Diseño de landing pages de alta conversión",
+        "title": "Diseño de landing pages en Argentina | DatiumTech",
+        "description": "Diseño de landing pages profesionales en Argentina, de alta conversión, para captar leads. Desde $350.000. DatiumTech.",
         "price": "desde $350.000 (~USD 250)",
         "option": "Landing Page — Promo $350.000",
         "wa": "Hola%20DatiumTech%2C%20quiero%20una%20landing%20page",
         "chips": ["7 días de entrega", "SEO on-page", "Mobile first"],
-        "intro": "Una landing page bien hecha es la diferencia entre una campaña que quema plata y una que trae clientes. En DatiumTech diseñamos landing pages para negocios de Argentina y LATAM: una sola página, un solo objetivo, copy claro y formulario que llega.",
+        "intro": "Diseño de landing pages en Argentina para PyMEs que necesitan una página de aterrizaje de alta conversión: una oferta, un formulario y un camino corto hasta el contacto.",
         "body": """
-<p>Si estás por invertir en Meta Ads o Google Ads, necesitás una URL que convierta. No un sitio genérico con diez menús. Una <strong>landing page profesional</strong> enfocada en un servicio, un turno o un pedido.</p>
+<p>Si estás por invertir en Meta Ads o Google Ads, necesitás una página de aterrizaje que convierta. Una landing page profesional, de alta conversión, enfocada en un servicio, un turno o un pedido.</p>
 <p>Trabajamos a medida: no usamos plantillas recicladas. Entregamos en 7 días hábiles, con versión mobile, WhatsApp, SEO básico y formulario funcional.</p>
 <h2>Qué incluye la landing page</h2>
 <ul>
@@ -101,7 +102,7 @@ SERVICES = [
 <p>Consultorios, estudios, comercios, infoproductos, inmobiliarias y cualquier negocio que necesite captar leads rápido sin armar un sitio de 8 páginas.</p>
 """,
         "faqs": [
-            ("¿Cuánto cuesta una landing page profesional?", "La promo de lanzamiento arranca en $350.000 ARS (aprox. USD 250). Precio fijo, sin sorpresas."),
+            ("¿Cuánto cuesta una landing page en Argentina?", "Una landing page profesional arranca en $350.000 ARS (aprox. USD 250). Precio fijo, sin sorpresas."),
             ("¿En cuánto tiempo la entregan?", "7 días hábiles desde que cerramos textos, fotos y el objetivo de la página."),
             ("¿Sirve para anuncios de Instagram y Google?", "Sí. La armamos para campañas: un mensaje, un CTA y tracking (Pixel / Analytics)."),
             ("¿Se puede financiar?", "Sí. Contado, 3 cuotas sin interés, o 6/12 cuotas a convenir. También armamos un plan a medida."),
@@ -110,15 +111,15 @@ SERVICES = [
     },
     {
         "slug": "sitio-web",
-        "nav": "Sitio web",
-        "h1": "Sitio web corporativo para empresas",
-        "title": "Sitio web corporativo | DatiumTech",
-        "description": "Sitio web profesional con hasta 8 secciones, panel de edición y hosting. Desde $850.000. DatiumTech en Argentina.",
+        "nav": "Página web",
+        "h1": "Diseño web para empresas en Argentina",
+        "title": "Diseño web para empresas en Argentina | DatiumTech",
+        "description": "Diseño web para empresas en Argentina: hasta 8 secciones, panel para editar y hosting. Desde $850.000. DatiumTech.",
         "price": "desde $850.000 (~USD 600)",
         "option": "Sitio Web Corporativo",
         "wa": "Hola%20DatiumTech%2C%20quiero%20un%20sitio%20web",
         "chips": ["Hasta 8 secciones", "Panel admin", "Hosting 1er año"],
-        "intro": "Tu empresa necesita más que una tarjeta digital. Un sitio web corporativo explica quién sos, qué vendés y por qué confiar. DatiumTech lo construye con estructura clara, rápido y administrable.",
+        "intro": "Diseño web para empresas en Argentina que necesitan explicar qué venden y que el cliente pueda escribirles. Hasta 8 secciones, panel para editar textos y una base lista para Google.",
         "body": """
 <p>Diseñamos sitios institucionales para pymes de Argentina, México, Chile y el resto de LATAM. Home, servicios, nosotros, blog o casos, contacto — sin plantillas genéricas.</p>
 <h2>Qué incluye</h2>
@@ -141,17 +142,17 @@ SERVICES = [
     },
     {
         "slug": "chatbot-whatsapp",
-        "nav": "Chatbot WhatsApp",
-        "h1": "Chatbot con IA para WhatsApp",
-        "title": "Chatbot WhatsApp con IA | DatiumTech",
-        "description": "Chatbot con IA para WhatsApp, Instagram y web. Califica leads y responde 24/7. Desde $480.000. DatiumTech.",
+        "nav": "Chatbot para WhatsApp",
+        "h1": "Chatbot de WhatsApp Business con IA para PyMEs",
+        "title": "Chatbot de WhatsApp Business con IA | DatiumTech",
+        "description": "Chatbot de WhatsApp Business con IA para PyMEs. Agente IA sobre la API oficial, precio de proyecto en pesos. Desde $480.000. DatiumTech, Argentina.",
         "price": "desde $480.000 (~USD 350)",
         "option": "Chatbot con IA",
         "wa": "Hola%20DatiumTech%2C%20quiero%20un%20chatbot%20para%20WhatsApp",
-        "chips": ["WhatsApp + Instagram", "IA entrenada", "24/7"],
-        "intro": "El 80% de tus consultas llegan fuera de horario o se enfrían en el inbox. Un chatbot con IA en WhatsApp responde al toque, califica al lead y te avisa solo cuando hay una oportunidad real.",
+        "chips": ["WhatsApp Business API", "Agente IA", "PyMEs"],
+        "intro": "Chatbot de WhatsApp Business con IA para PyMEs. Un agente IA responde cuando el local está cerrado, califica la consulta y deriva a una persona si hace falta.",
         "body": """
-<p>En DatiumTech entrenamos el bot con tu negocio: precios, FAQs, zonas, turnos. Se integra a WhatsApp, Instagram y la web. No es un menú rígido de “presioná 1”: entiende lenguaje natural.</p>
+<p>El agente IA se entrena con tu negocio: precios, preguntas frecuentes, zonas y turnos. Va sobre WhatsApp Business API, Instagram y la web. No es un menú de “presioná 1”: entiende lenguaje natural.</p>
 <h2>Qué incluye</h2>
 <ul>
 <li>IA entrenada con tu catálogo y tono de marca</li>
@@ -164,7 +165,7 @@ SERVICES = [
 <p>Menos tiempo en copiar y pegar la misma respuesta. Más turnos o ventas tomados de noche y el finde. El bot no reemplaza a tu equipo: le saca el trabajo repetido.</p>
 """,
         "faqs": [
-            ("¿Funciona con el WhatsApp que ya uso?", "Sí. Lo conectamos a WhatsApp Business. Coordinamos el número en la llamada de arranque."),
+            ("¿Funciona con WhatsApp Business API?", "Sí. Lo conectamos a la API oficial de WhatsApp Business, también si ya usás la app. Coordinamos el número en la llamada de arranque."),
             ("¿Se entrena con mi información?", "Sí. Cargamos FAQs, precios y objeciones. Lo vamos ajustando las primeras semanas."),
             ("¿Puede agendar reuniones?", "Sí, si tu calendario lo permite (Google Calendar u otra agenda que definamos)."),
         ],
@@ -172,15 +173,15 @@ SERVICES = [
     },
     {
         "slug": "apps-moviles",
-        "nav": "Apps móviles",
-        "h1": "Apps móviles iOS y Android",
-        "title": "App móvil iOS y Android | DatiumTech",
-        "description": "Desarrollo de apps móviles iOS y Android con React Native. MVP desde USD 3.500. DatiumTech, Argentina y LATAM.",
+        "nav": "Aplicaciones móviles",
+        "h1": "Desarrollo de apps a medida en Argentina",
+        "title": "Desarrollo de apps a medida en Argentina | DatiumTech",
+        "description": "Desarrollo de apps a medida para iOS y Android. Un MVP parte desde USD 3.500. DatiumTech, Argentina.",
         "price": "desde USD 3.500",
         "option": "App Móvil",
         "wa": "Hola%20DatiumTech%2C%20quiero%20una%20app%20móvil",
         "chips": ["iOS + Android", "React Native", "MVP rápido"],
-        "intro": "Una app tiene sentido cuando tu cliente vuelve: pedidos, turnos, comunidad, campo o un interno de la empresa. DatiumTech desarrolla iOS y Android con una sola base (React Native) para no pagar dos veces.",
+        "intro": "Desarrollo de apps a medida para pedidos, turnos o el equipo interno. iOS y Android salen de una sola base, con panel y la opción de cobrar con MercadoPago.",
         "body": """
 <p>Arrancamos por un MVP: lo mínimo para validar. Panel de administración, notificaciones push y pagos con MercadoPago si vendés desde la app.</p>
 <h2>Qué incluye</h2>
@@ -195,6 +196,8 @@ SERVICES = [
 <p>Si todavía no tenés demanda ni un flujo claro, una landing o un PWA puede alcanzar. Te lo decimos en la primera llamada: no vendemos app por vender app.</p>
 """,
         "faqs": [
+            ("¿Cuánto cuesta desarrollar una app móvil en Argentina?", "Una app a medida, en su versión mínima para iOS y Android, parte desde USD 3.500. El número final depende de pantallas, panel e integraciones."),
+            ("¿Cuánto cuesta hacer una app en Argentina?", "El mismo punto de partida: desde USD 3.500 para un MVP. Una app con backend, pagos y más flujos se cotiza por alcance."),
             ("¿Cuánto tarda un MVP?", "Depende del alcance. Un MVP acotado suele llevar varias semanas, no meses eternos."),
             ("¿Queda el código para nosotros?", "Sí. El producto es tuyo. Lo acordamos en contrato."),
             ("¿Sirve para Argentina y el exterior?", "Sí. Podemos publicar en ambos stores y adaptar pagos por país."),
@@ -203,46 +206,53 @@ SERVICES = [
     },
     {
         "slug": "automatizaciones",
-        "nav": "Automatizaciones",
-        "h1": "Automatizaciones y CRM a medida",
-        "title": "Automatizaciones y CRM | DatiumTech",
-        "description": "Automatizá ventas, WhatsApp y reportes. CRM a medida desde $680.000. DatiumTech — Make, APIs y paneles propios.",
+        "nav": "Automatización y CRM",
+        "h1": "Automatización de procesos e integraciones con IA",
+        "title": "Automatización con IA para PyMEs | DatiumTech",
+        "description": "Automatización de procesos para PyMEs en Argentina: n8n, WhatsApp Business API, CRM e integraciones con IA. Desde $680.000. DatiumTech.",
         "price": "desde $680.000 (~USD 500)",
         "option": "Automatizaciones y CRM",
         "wa": "Hola%20DatiumTech%2C%20quiero%20automatizar%20mi%20negocio",
-        "chips": ["CRM a medida", "WhatsApp API", "Menos trabajo manual"],
-        "intro": "Si tu equipo copia datos de WhatsApp a una planilla, se te escapan leads. Automatizamos ese flujo: CRM, recordatorios, reportes y el puente con las herramientas que ya usás.",
+        "chips": ["n8n", "WhatsApp Business API", "Integraciones con IA"],
+        "intro": "Automatización de procesos para PyMEs en Argentina. Conectamos WhatsApp Business API, CRM e integraciones con IA para que los leads, los recordatorios y los reportes dejen de pasar por una planilla.",
         "body": """
-<p>Integramos Make, APIs, WhatsApp Business y paneles propios. El objetivo no es “tener un CRM famoso”: es que tu operación deje de depender de memoria y Excel.</p>
+<p>Es automatización de procesos para empresas y también un CRM para PyMEs. La armamos con n8n, APIs y paneles propios. Si ya usás HubSpot u otro CRM, lo integramos. Si no, el CRM puede ser a medida.</p>
+<h2>Integraciones con IA</h2>
+<p>Las integraciones con IA leen el mensaje, clasifican la consulta y completan el CRM. El equipo entra solo cuando hace falta una persona. Sirve para ventas, turnos, soporte y seguimiento.</p>
+<h2>Automatización n8n para PyMEs</h2>
+<p>La automatización n8n para PyMEs conecta WhatsApp, formularios, mail, MercadoPago, agenda y el CRM. Cada flujo tiene una regla: qué entra, qué se valida y qué pasa si falla. Queda documentado y se puede mantener.</p>
+<h2>WhatsApp Business API y CRM</h2>
+<p>La integración de WhatsApp Business API deja el chat en el mismo lugar que el cliente: HubSpot, un CRM a medida u otro sistema con API. El mensaje crea o actualiza el contacto, asigna un responsable y dispara el seguimiento.</p>
 <h2>Qué automatizamos</h2>
 <ul>
-<li>Captura de leads desde web y anuncios hacia un CRM</li>
-<li>Seguimiento y recordatorios</li>
-<li>Mensajes de WhatsApp con plantillas y bots</li>
-<li>Reportes diarios o semanales</li>
-<li>Sincronización con MercadoPago, calendarios y mail</li>
+<li>Captura de leads desde la web y los anuncios hacia un CRM</li>
+<li>Integraciones con IA para clasificar consultas</li>
+<li>Automatización n8n entre WhatsApp, CRM y pagos</li>
+<li>WhatsApp Business API con HubSpot o CRM propio</li>
+<li>Recordatorios, reportes y sincronización con MercadoPago, calendarios y mail</li>
 </ul>
 """,
         "faqs": [
-            ("¿Reemplazan HubSpot o es algo propio?", "Puede ser CRM a medida o integrar el que ya tenés. Lo definimos según volumen y presupuesto."),
-            ("¿Hace falta saber programar para usarlo?", "No. El día a día es un panel o las apps que ya usan (WhatsApp, mail)."),
-            ("¿Cuánto tarda?", "Un flujo acotado puede salir en días. Un CRM completo se arma por etapas."),
+            ("¿Hacen automatización n8n para PyMEs?", "Sí. Usamos n8n cuando el flujo tiene que conectar varias herramientas. Definimos las reglas, los errores y quién interviene si algo falla."),
+            ("¿Integran WhatsApp Business API con un CRM?", "Sí. Puede ser HubSpot o un CRM a medida. El chat queda registrado y puede disparar seguimientos."),
+            ("¿Qué son las integraciones con IA?", "La IA clasifica el mensaje, completa datos del CRM y responde lo repetido. Una persona sigue los casos que necesitan criterio."),
+            ("¿Cuánto tarda una automatización de procesos?", "Un flujo acotado puede salir en días. Un CRM completo se arma por etapas."),
         ],
         "related": ["chatbot-whatsapp", "apps-moviles", "seo"],
     },
     {
         "slug": "seo",
-        "nav": "SEO",
-        "h1": "SEO y posicionamiento en Google",
-        "title": "SEO y posicionamiento | DatiumTech",
-        "description": "SEO para negocios de Argentina y LATAM: técnico, contenidos y medición. Desde $280.000/mes. DatiumTech.",
+        "nav": "Posicionamiento web",
+        "h1": "Posicionamiento web para PyMEs en Argentina",
+        "title": "SEO orgánico para empresas | DatiumTech",
+        "description": "SEO orgánico y posicionamiento web para PyMEs. SEO empresarial en Argentina, con reporte mensual. Desde $280.000. DatiumTech.",
         "price": "desde $280.000/mes (~USD 200)",
         "option": "SEO y Posicionamiento",
         "wa": "Hola%20DatiumTech%2C%20quiero%20mejorar%20mi%20SEO",
         "chips": ["SEO técnico", "Keywords locales", "Reporte mensual"],
-        "intro": "Si nadie busca tu marca, Google no te va a regalar tráfico. El SEO de DatiumTech arranca por lo técnico (indexación, velocidad, URLs) y sigue con páginas que responden búsquedas reales: “landing page”, “chatbot WhatsApp”, el nombre de tu servicio + ciudad.",
+        "intro": "SEO orgánico para empresas y posicionamiento web para PyMEs en Argentina. El trabajo arranca por lo técnico y sigue con páginas que responden las búsquedas de tus servicios.",
         "body": """
-<p>Search Console no miente: sin páginas de servicio y sin marca consolidada, un sitio no aparece. Por eso combinamos auditoría, contenido y enlaces con sentido (no granjas).</p>
+<p>El SEO empresarial combina auditoría, contenido y enlaces con sentido. Sin páginas de servicio, un sitio no aparece cuando alguien busca lo que vendés.</p>
 <h2>Qué incluye el plan mensual</h2>
 <ul>
 <li>Auditoría técnica</li>
@@ -262,17 +272,17 @@ SERVICES = [
     },
     {
         "slug": "ecommerce",
-        "nav": "E-commerce",
-        "h1": "Tienda online y e-commerce",
-        "title": "E-commerce y tienda online | DatiumTech",
-        "description": "Tienda online con MercadoPago, catálogo y stock. Desde $1.500.000. DatiumTech, Argentina.",
+        "nav": "Tienda online",
+        "h1": "Diseño de tienda online en Argentina",
+        "title": "Diseño de tienda online en Argentina | DatiumTech",
+        "description": "Diseño de tienda online en Argentina con Mercado Pago. WooCommerce, Shopify o a medida, sin comisión de plataforma por venta. Desde $1.500.000.",
         "price": "desde $1.500.000 (~USD 1.000)",
         "option": "E-commerce",
         "wa": "Hola%20DatiumTech%2C%20quiero%20una%20tienda%20online",
         "chips": ["MercadoPago", "Catálogo y stock", "Checkout claro"],
-        "intro": "Una tienda online que no cobra en MercadoPago o que se cae en el celular no vende. Armamos e-commerce para marcas que necesitan catálogo, carrito, medios de pago locales y un panel de pedidos entendible.",
+        "intro": "Diseño de tienda online en Argentina para crear tu tienda y cobrar con Mercado Pago. Catálogo, carrito y stock, sin comisión de plataforma sobre cada venta.",
         "body": """
-<p>Integramos MercadoPago, tarjetas y transferencia. Gestión de stock y pedidos. Si además vendés afuera, vemos Stripe u otro medio.</p>
+<p>La tienda puede ir en WooCommerce, Shopify o a medida, según el catálogo. Integramos Mercado Pago, tarjetas y transferencia. La plataforma no se queda con un porcentaje de cada venta: Mercado Pago cobra la suya.</p>
 <h2>Qué incluye</h2>
 <ul>
 <li>Catálogo (escalable)</li>
@@ -283,7 +293,7 @@ SERVICES = [
 </ul>
 """,
         "faqs": [
-            ("¿Es Shopify o a medida?", "Elegimos según catálogo, presupuesto y si necesitás algo muy custom. Te lo decimos en la propuesta."),
+            ("¿Es WooCommerce, Shopify o a medida?", "Puede ser WooCommerce, Shopify, Tiendanube o a medida. Lo elegimos según catálogo y si necesitás algo muy propio."),
             ("¿Puedo cargar productos yo?", "Sí. El panel está pensado para que tu equipo cargue fotos, precios y stock."),
             ("¿Hacen envíos y facturación?", "Integramos lo que uses (correo, OCA, facturadores). Se cotiza según el stack."),
         ],
@@ -292,6 +302,20 @@ SERVICES = [
 ]
 
 BY_SLUG = {s["slug"]: s for s in SERVICES}
+
+NOTES_FILE = ROOT / "blog" / "notas.json"
+NOTES = json.loads(NOTES_FILE.read_text(encoding="utf-8")) if NOTES_FILE.exists() else []
+
+
+def notes_html(slug):
+    notes = [n for n in NOTES if n.get("servicio") == slug]
+    if not notes:
+        return ""
+    links = "".join(
+        f'<a href="../blog/{n["slug"]}/"><strong>{html.escape(n["titulo"])}</strong>{html.escape(n["rubro"])}</a>'
+        for n in notes
+    )
+    return f'<h2>Notas del blog</h2>\n    <div class="related">{links}</div>\n    '
 
 HEAD = """<!DOCTYPE html>
 <html lang="es-419">
@@ -428,7 +452,7 @@ def page_html(s):
     {s['body']}
     <h2>Preguntas frecuentes</h2>
     <div class="faq">{''.join(faqs)}</div>
-    <h2>Otros servicios DatiumTech</h2>
+    {notes_html(s['slug'])}<h2>Otros servicios DatiumTech</h2>
     <div class="related">{''.join(related)}</div>
   </div>
 </section>
@@ -484,9 +508,9 @@ def page_html(s):
     <div class="footer-copy">© 2026 DatiumTech</div>
     <div class="footer-links">
       <a href="../">Inicio</a>
-      <a href="../#planes">Planes</a>
-      <a href="../servicios/">Servicios</a>
+      <a href="../proyectos/">Proyectos</a>
       <a href="../blog/">Blog</a>
+      <a href="../condiciones.html">Condiciones</a>
       <a href="../privacidad.html">Privacidad</a>
     </div>
   </div>
@@ -532,12 +556,12 @@ hub = f"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Servicios DatiumTech | Landing, apps, chatbots y SEO</title>
-<meta name="description" content="Servicios de DatiumTech: landing pages, sitios web, chatbots WhatsApp, apps, automatizaciones, SEO y e-commerce para Argentina y LATAM.">
+<title>Servicios: landing page, página web, chatbot y tienda online | DatiumTech</title>
+<meta name="description" content="Diseño de landing page, página web para empresas, chatbot para WhatsApp, aplicaciones móviles, automatización, posicionamiento web y tienda online con MercadoPago.">
 <link rel="canonical" href="https://datiumtech.com.ar/servicios/">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-<meta property="og:title" content="Servicios DatiumTech | Landing, apps, chatbots y SEO">
-<meta property="og:description" content="Landing pages, sitios, apps, chatbots con IA, CRM y SEO. Precio fijo. Argentina y LATAM.">
+<meta property="og:title" content="Servicios: landing page, página web, chatbot y tienda online | DatiumTech">
+<meta property="og:description" content="Diseño de landing page, página web, chatbot para WhatsApp, apps, automatización, posicionamiento web y tienda online con MercadoPago.">
 <meta property="og:url" content="https://datiumtech.com.ar/servicios/">
 <meta property="og:image" content="https://datiumtech.com.ar/og-image.jpg">
 <link rel="stylesheet" href="../css/site.css">
@@ -550,8 +574,8 @@ hub = f"""<!DOCTYPE html>
 <section class="page-hero">
   <div class="page-hero-inner">
     <p class="brand-kicker">DATIUMTECH</p>
-    <h1 class="page-h1">Servicios de desarrollo y automatización</h1>
-    <p class="page-lead">Landing pages, sitios, apps, chatbots con IA, CRM y SEO. Precio fijo. Contado, cuotas o plan a medida. Argentina y LATAM.</p>
+    <h1 class="page-h1">Diseño web, chatbot, apps y tienda online</h1>
+    <p class="page-lead">Diseño de landing page, página web para empresas, chatbot para WhatsApp, aplicaciones móviles, automatización de procesos, posicionamiento web y tienda online con MercadoPago. Precio fijo.</p>
   </div>
 </section>
 <section id="servicios">
@@ -562,7 +586,7 @@ hub = f"""<!DOCTYPE html>
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">DATIUM<span>TECH</span></div>
-    <div class="footer-links"><a href="../">Inicio</a><a href="../#planes">Planes</a><a href="../privacidad.html">Privacidad</a></div>
+    <div class="footer-links"><a href="../">Inicio</a><a href="../proyectos/">Proyectos</a><a href="../blog/">Blog</a><a href="../condiciones.html">Condiciones</a><a href="../privacidad.html">Privacidad</a></div>
   </div>
 </footer>
 <script>

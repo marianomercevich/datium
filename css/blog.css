@@ -14,3 +14,7 @@
 .prose em{color:var(--tx3);font-size:.85rem}
 .post-cta{margin-top:2.4rem;padding:1.6rem;border:1px solid var(--brd-c);border-radius:14px;background:var(--cyan-dim)}
 .post-cta p{margin-bottom:1rem}
+.post-date{display:block;margin-top:.8rem;font-size:.85rem;color:var(--tx3)}
+.post-more{margin-top:2.4rem}
+.post-more h2{margin-bottom:1rem}
+.post-more .post-list{margin-top:0}

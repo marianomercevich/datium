@@ -1,0 +1,79 @@
+[
+ {
+  "slug": "gastronomia-comisiones-apps",
+  "titulo": "Cómo pagar menos comisión a PedidosYa y Rappi sin dejar las apps",
+  "bajada": "Las apps te traen clientes, pero se quedan con casi un tercio de cada pedido. Con una web propia podés quedarte con esos clientes y que la segunda compra no pague comisión.",
+  "rubro": "Gastronomía",
+  "servicio": "ecommerce"
+ },
+ {
+  "slug": "hoteleria-reservas-directas",
+  "titulo": "Reservas directas: cómo pagarle menos comisión a Booking sin salir de Booking",
+  "bajada": "Booking y Airbnb te llenan habitaciones, pero se quedan con alrededor del 15% de cada reserva. La clave está en que el huésped que ya te conoce vuelva por tu web.",
+  "rubro": "Hotelería",
+  "servicio": "sitio-web"
+ },
+ {
+  "slug": "comercio-facturacion-automatica",
+  "titulo": "Facturación automática: cómo dejar de cargar cada venta a mano",
+  "bajada": "Si vendés en el local, por Mercado Libre, por Instagram o por tu web, cada venta termina en la misma tarea: hacer la factura. Se puede automatizar y conectar con el stock y los cobros.",
+  "rubro": "Comercios",
+  "servicio": "automatizaciones"
+ },
+ {
+  "slug": "salud-turnos-online",
+  "titulo": "Turnos online y recordatorios: menos ausencias y menos llamados en el consultorio",
+  "bajada": "Cada turno que no se cubre es tiempo perdido. Con turnos online y recordatorios automáticos el paciente confirma, reprograma o cancela solo, y la agenda se llena sola.",
+  "rubro": "Salud",
+  "servicio": "automatizaciones"
+ },
+ {
+  "slug": "belleza-agenda-clientes",
+  "titulo": "Peluquerías y centros de estética: cómo llenar la agenda y que los clientes vuelvan",
+  "bajada": "Turnos por WhatsApp a toda hora, clientes que se olvidan y huecos en la agenda. Con reservas online y mensajes automáticos la agenda se llena y los clientes vuelven solos.",
+  "rubro": "Belleza",
+  "servicio": "chatbot-whatsapp"
+ },
+ {
+  "slug": "educacion-automatizacion-administrativa",
+  "titulo": "Cuánto tiempo pierde un colegio en tareas que se pueden automatizar",
+  "bajada": "Inscripciones, cuotas, avisos a las familias y legajos. Gran parte del trabajo administrativo de un colegio se repite todos los días y se puede automatizar sin cambiar cómo trabajan.",
+  "rubro": "Educación",
+  "servicio": "automatizaciones"
+ },
+ {
+  "slug": "inmobiliarias-consultas",
+  "titulo": "Inmobiliarias: responder cada consulta en minutos, aunque sean las 11 de la noche",
+  "bajada": "Las consultas de los portales llegan a toda hora y el que responde primero se queda con el interesado. Con respuestas automáticas y un seguimiento ordenado no se pierde ninguno.",
+  "rubro": "Inmobiliarias",
+  "servicio": "chatbot-whatsapp"
+ },
+ {
+  "slug": "gimnasios-cuotas-clases",
+  "titulo": "Gimnasios: cobrar las cuotas a tiempo y que los socios no abandonen",
+  "bajada": "Cuotas que se pagan tarde, clases con cupo que se manejan por WhatsApp y socios que dejan de venir sin que nadie lo note. Las tres cosas se pueden automatizar.",
+  "rubro": "Gimnasios",
+  "servicio": "automatizaciones"
+ },
+ {
+  "slug": "veterinarias-recordatorios",
+  "titulo": "Veterinarias: vacunas, controles y turnos sin depender de la memoria del dueño",
+  "bajada": "Vacunas, desparasitaciones y controles tienen fecha. Si el recordatorio sale solo, el dueño vuelve y la mascota está al día. Y la veterinaria trabaja con agenda en vez de urgencias.",
+  "rubro": "Veterinarias",
+  "servicio": "chatbot-whatsapp"
+ },
+ {
+  "slug": "talleres-presupuestos-avisos",
+  "titulo": "Talleres y servicios técnicos: presupuestos y avisos sin llamar a nadie",
+  "bajada": "\"¿Ya está listo?\" es la pregunta que más se repite en un taller. Con presupuestos aprobados por WhatsApp y avisos automáticos de cada etapa, el cliente está al tanto y el taller trabaja tranquilo.",
+  "rubro": "Talleres",
+  "servicio": "chatbot-whatsapp"
+ },
+ {
+  "slug": "profesionales-estudios",
+  "titulo": "Estudios y oficinas: menos tiempo en tareas repetitivas, más tiempo para los clientes",
+  "bajada": "Pedir la misma documentación una y otra vez, recordar vencimientos y contestar consultas de estado. En un estudio, las tareas repetitivas se pueden automatizar y conectar entre sí.",
+  "rubro": "Estudios y oficinas",
+  "servicio": "automatizaciones"
+ }
+]
